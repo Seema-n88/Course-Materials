@@ -1,0 +1,183 @@
+-------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\...\oil.log
+  log type:  text
+ opened on:   7 Nov 2012, 14:00:23
+
+. 
+. di 12*40-1
+479
+
+. generate time = 479+_n
+
+. format time %tmm_Y
+
+. tsset time 
+        time variable:  time, Jan 00 to Sep 08
+                delta:  1 month
+
+. tsline oil, lwidth(thick)
+
+. 
+. gen oil_exp3 = oil
+
+. local alpha = 0.3
+
+. forvalues num = 2/105 {
+  2.   replace  oil_exp3 = `alpha'*oil + (1-`alpha')*oil_exp3[`num'-1] in `num'
+  3. }
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+
+. list time oil oil_exp3 in 1/4
+
+     +--------------------------+
+     |   time    oil   oil_exp3 |
+     |--------------------------|
+  1. | Jan 00   82.6       82.6 |
+  2. | Feb 00   91.2      85.18 |
+  3. | Mar 00   94.3     87.916 |
+  4. | Apr 00   82.9    86.4112 |
+     +--------------------------+
+
+. tsline oil oil_exp3, clwidth(thick thick)
+
+. 
+. tssmooth exponential oil_exp3_stata = oil, parms(.3) s0(82.6) replace
+
+exponential coefficient  =       0.3000
+sum-of-squared residuals =        22922
+root mean squared error  =       14.775
+
+. list time oil oil_exp3 oil_exp3_stata in 1/12
+
+     +--------------------------------------+
+     |   time     oil   oil_exp3   oil_ex~a |
+     |--------------------------------------|
+  1. | Jan 00    82.6       82.6       82.6 |
+  2. | Feb 00    91.2      85.18       82.6 |
+  3. | Mar 00    94.3     87.916      85.18 |
+  4. | Apr 00    82.9    86.4112     87.916 |
+  5. | May 00    94.9   88.95784    86.4112 |
+     |--------------------------------------|
+  6. | Jun 00   100.7   92.48048   88.95784 |
+  7. | Jul 00    99.5   94.58634   92.48048 |
+  8. | Aug 00     106   98.01044   94.58634 |
+  9. | Sep 00   117.8   103.9473   98.01044 |
+ 10. | Oct 00   114.9   107.2331   103.9473 |
+     |--------------------------------------|
+ 11. | Nov 00     119   110.7632   107.2331 |
+ 12. | Dec 00    96.1   106.3642   110.7632 |
+     +--------------------------------------+
+
+. tsline oil F.oil_exp3_stata, clwidth(thick thick) legend(rows(2))
+
+. 
+. log close
+      name:  <unnamed>
+       log:  C:\...\oil.log
+  log type:  text
+ closed on:   7 Nov 2012, 14:00:26
+-------------------------------------------------------------------------------------------------------------------------------

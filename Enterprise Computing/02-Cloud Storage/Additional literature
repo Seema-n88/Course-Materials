@@ -1,0 +1,7 @@
+Additional literature that complements the lecture and exercises.
+Brewer, Eric A. "Towards robust distributed systems." PODC. Vol. 7. 2000.
+G. DeCandia et.al. “Dynamo: Amazon’s Highly Available Key-value Store”, in: Procs. SOSP’07
+Kristina Chodorow “MongoDB: The Definitive Guide, Second Edition”, O’Reilly, 2013
+S. Ghemawat, H. Gobioff, S.-T. Leung: The Google File System, Procs. SOSP‘03, ACM, 2003
+F. Chang, J. Dean, S. Ghemawat, W. Hsieh, D. Wallach, M. Burrows, T. Chandra, A. Fikes, R. Gruber: Bigtable: A distributed storage system for structured data, OSDI, 2006.
+Avinash Lakshman and Prashant Malik. 2010. Cassandra: a decentralized structured storage system. SIGOPS Oper. Syst. Rev. 44, 2 (April 2010), 35-40.

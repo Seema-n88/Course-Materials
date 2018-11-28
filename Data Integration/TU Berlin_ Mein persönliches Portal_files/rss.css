@@ -1,0 +1,16 @@
+a.rss{background:transparent url(../img/rss_add.png) no-repeat scroll 0pt 50%;padding:6px 0pt 6px 20px;}
+.twrss_table{font-size:110%;font-style:normal;font-weight:normal;margin-top:10px;margin-bottom:10px;line-height:16px;}
+#extras .twrss_table{font-size:110%;font-style:normal;font-weight:normal;margin-top:10px;margin-bottom:10px;margin-left:40px;line-height:16px;}
+.twrss_head{font-size:110%;color:#666666;font-style:normal;font-weight:bold;margin-top:10px;margin-bottom:10px;line-height:16px;}
+.twrss_head_channel{font-size:110%;color:#666666;font-style:normal;font-weight:bold;margin-top:10px;margin-bottom:10px;line-height:16px;}
+.twrss_imagefile{float:left;}
+.twrss_bodytext{font-size:110%;color:#666666;font-style:normal;font-weight:normal;margin-top:8px;margin-bottom:8px;line-height:16px;}
+.twrss_channel_description{border:1px dotted #dddddd;background-color:#EAEAEA;color:#000;font-size:110%;font-style:normal;font-weight:bold;padding:3px;}
+.twrss_table .twrss_item_link a{background:url(../img/icon-link-intern.gif) 0 5px no-repeat;font-size:90%;font-style:normal;font-weight:normal;padding:5px 0 0 20px;text-decoration:none;}
+#extras .twrss_table .twrss_item_link a{background:url(../img/icon-link-intern.gif) 0 5px no-repeat;font-size:80%;font-style:normal;font-weight:normal;padding:5px 0 0 20px;text-decoration:none;}
+.twrss_table .twrss_item_link a:hover{background:url(../img/icon-link-intern.gif) 0 5px no-repeat;font-size:90%;font-style:normal;font-weight:normal;padding:5px 0 0 20px;text-decoration:underline;}
+.twrss_table .twrss_item_content{border-bottom:1px dotted #CCCCCC;font-size:90%;color:#000;font-style:normal;font-weight:normal;padding:3px;line-height:16px;}
+.twrss_table .twrss_bodytext .twrss_channel_link a{font-size:90%;font-style:normal;font-weight:bold;padding:3px;line-height:16px;text-decoration:none;}
+.twrss_table .twrss_bodytext .twrss_channel_link a:hover{font-size:110%;font-style:normal;font-weight:bold;padding:3px;line-height:16px;text-decoration:underline;}
+/* und in der rechten Spalte ... */
+#extras .twrss_head_channel{font-size:140%;font-weight:bold;color:inherit;font-family:arial, geneva, helvetica, verdana, tahoma, sans-serif;margin-top:10px;margin-bottom:10px;}

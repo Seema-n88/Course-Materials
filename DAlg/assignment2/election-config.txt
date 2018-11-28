@@ -1,0 +1,49 @@
+[graph]
+# number of nodes
+6  bb b
+
+# connections
+#Best case
+#1-0
+#2-1
+#3-2
+#4-3
+#5-4
+#0-5
+
+#Multiple initiator case
+1-0
+2-1
+3-2
+4-3
+5-4
+0-5
+
+#Worst case
+#4-5
+#3-4
+#2-3
+#1-2
+#0-1
+#5-0
+
+#[graph.random]
+#teachnet.util.RandomConnectedGraphGenerator
+#n=java.lang.Integer:10
+#e=java.lang.Integer:30
+
+
+[network]
+teachnet.network.LinearDelayNetwork
+delay.min=java.lang.Double:0.8
+delay.max=java.lang.Double:2.0
+
+[stack.algorithms]
+Election
+
+[stack.configs]
+0.node.id=java.lang.String:$node.id
+
+[inits]
+#*,0,0.0
+*,0,0.0

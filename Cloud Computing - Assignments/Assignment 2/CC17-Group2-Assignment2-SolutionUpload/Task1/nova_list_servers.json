@@ -1,0 +1,31 @@
+{
+  "NovaServers.list_servers": [
+    {
+      "runner": {
+        "type": "constant", 
+        "concurrency": 1, 
+        "times": 10
+      }, 
+      "args": {
+        "detailed": true,
+        
+      }, 
+     
+      "context": {
+        
+        "servers": {
+          "servers_per_tenant": 2, 
+          "flavor": {
+            "name": "Cloud Computing"
+          }, 
+          "image": {
+            "name": "ubuntu-16.04"
+          },
+          "nics": [
+               "64a7d16e-91b9-4ab4-a1fb-8a48368e1fdb"
+            ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+key_pair:cloudgroup02
+        
+flavor:604de11c-3222-4902-8523-11cc61b5b485
+        
+image:11f6b8aa-31df-4b66-8b42-5ee9760c47ba
+        
+network:64a7d16e-91b9-4ab4-a1fb-8a48368e1fdb
+        
+zone:Cloud Computing 2017
+
+security_groups:a87e65e1-f959-4255-9b40-cafe1d9db47c
+
+zone=Cloud\ Computing\ 2017
+        
+
+openstack stack create --template server.yml --parameter "name=CCG2_First_Stack;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=64a7d16e-91b9-4ab4-a1fb-8a48368e1fdb;zone='Cloud Computing 2017';security_groups=a87e65e1-f959-4255-9b40-cafe1d9db47c" CCG2_First_Stack
+
+openstack stack create --template server.yml --parameter "name=CCG2_First_Stack;key_pair=cloudgroup02;flavor='Cloud Computing';image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=64a7d16e-91b9-4ab4-a1fb-8a48368e1fdb;zone='Cloud Computing 2017';security_groups=a87e65e1-f959-4255-9b40-cafe1d9db47c" CCG2_First_Stack
+
+openstack stack create --template server.yml --parameter "name=CCG2_First_Stack;key_pair=cloudgroup02;flavor='Cloud\ Computing';image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=64a7d16e-91b9-4ab4-a1fb-8a48368e1fdb;zone='Cloud\ Computing\ 2017';security_groups=a87e65e1-f959-4255-9b40-cafe1d9db47c" CCG2_First_Stack
+
+
+wlan-141-23-129-66:~ yuchunchen$ openstack flavor list
++-------------+-------------+-----+------+-----------+-------+-----------+
+| ID          | Name        | RAM | Disk | Ephemeral | VCPUs | Is Public |
++-------------+-------------+-----+------+-----------+-------+-----------+
+| 604de11c-32 | Cloud       | 512 |   10 |         0 |     1 | False     |
+| 22-4902-852 | Computing   |     |      |           |       |           |
+| 3-11cc61b5b |             |     |      |           |       |           |
+| 485         |             |     |      |           |       |           |
++-------------+-------------+-----+------+-----------+-------+-----------+
+wlan-141-23-129-66:~ yuchunchen$ openstack zone list
+openstack: 'zone list' is not an openstack command. See 'openstack --help'.
+Did you mean one of these?
+  token issue
+  token revoke
+wlan-141-23-129-66:~ yuchunchen$ openstack availability zone list
++----------------------+-------------+
+| Zone Name            | Zone Status |
++----------------------+-------------+
+| Default              | available   |
+| Cloud Computing 2017 | available   |
+| nova                 | available   |
+| nova                 | available   |
+| nova                 | available   |
++----------------------+-------------+
+wlan-141-23-129-66:~ yuchunchen$ openstack stack create --template server.yml --parameter "name=CCG2_First_Stack;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=64a7d16e-91b9-4ab4-a1fb-8a48368e1fdb;zone=Cloud Computing 2017;security_groups=a87e65e1-f959-4255-9b40-cafe1d9db47c" CCG2_First_Stack
++---------------------+--------------------------------------+
+| Field               | Value                                |
++---------------------+--------------------------------------+
+| id                  | 8e83ff4d-ac43-4eda-880c-c0285a119f00 |
+| stack_name          | CCG2_First_Stack                     |
+| description         | One VM instance                      |
+| creation_time       | 2017-06-22T12:41:40                  |
+| updated_time        | None                                 |
+| stack_status        | CREATE_IN_PROGRESS                   |
+| stack_status_reason |                                      |
++---------------------+--------------------------------------+
+wlan-141-23-129-66:~ yuchunchen$ openstack stack list
++---------------+---------------+---------------+---------------+--------------+
+| ID            | Stack Name    | Stack Status  | Creation Time | Updated Time |
++---------------+---------------+---------------+---------------+--------------+
+| 8e83ff4d-ac43 | CCG2_First_St | CREATE_COMPLE | 2017-06-22T12 | None         |
+| -4eda-880c-   | ack           | TE            | :41:40        |              |
+| c0285a119f00  |               |               |               |              |
++---------------+---------------+---------------+---------------+--------------+
+wlan-141-23-129-66:~ yuchunchen$ openstack server list
++-----------------+-----------------+--------+------------------+--------------+
+| ID              | Name            | Status | Networks         | Image Name   |
++-----------------+-----------------+--------+------------------+--------------+
+| e04034d7-4336-4 | CCG2_First_Stac | ACTIVE | cc17-net=10.12.1 | ubuntu-16.04 |
+| 3e3-9424-39f315 | k               |        | .110             |              |
+| 592461          |                 |        |                  |              |
++-----------------+-----------------+--------+------------------+--------------+
+
+wlan-141-23-129-66:~ yuchunchen$ openstack floating ip list
++-------------+---------------------+------------------+------+------------------+---------------+
+| ID          | Floating IP Address | Fixed IP Address | Port | Floating Network | Project       |
++-------------+---------------------+------------------+------+------------------+---------------+
+| 4f7b88c1    | 10.200.2.199        | None             | None | 25fe17bd-c5a2-44 | 4894c882bfcc4 |
+| -47fe-4f47- |                     |                  |      | c6-af49-fe93aad0 | 558ab515cdc55 |
+| 8523-a24e6d |                     |                  |      | 66b7             | b32446        |
+| 6415b4      |                     |                  |      |                  |               |
++-------------+---------------------+------------------+------+------------------+---------------+
+
+wlan-141-23-129-66:~ yuchunchen$ openstack server add floating ip CCG2_First_Stack 10.200.2.199
+
+
+ssh-keygen -f known_hosts -R 10.200.2.199
+
+
+
+
+openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Stack;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Creation_Stack
+
+openstack stack create --template server.yml --parameter "name=CCG2_First_Stack;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=a36d76ba-d124-4ae0-8138-33b9362767de;zone=Cloud Computing 2017;security_groups=a87e65e1-f959-4255-9b40-cafe1d9db47c" CCG2_Second_Stack
+
+
+23 June:
+
+openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+
+
+
+public_net: cc17G2-pubnet
+        
+    private_net_name: cc17G2-privnet
+        
+    private_subnet_name: cc17G2-subnet
+        
+    private_net_cidr:10.12.1.0/24
+        
+    private_net_gateway:10.12.1.1
+    
+    router_name:cc17G2-router
+    
+network a36d76ba-d124-4ae0-8138-33b9362767de
+        

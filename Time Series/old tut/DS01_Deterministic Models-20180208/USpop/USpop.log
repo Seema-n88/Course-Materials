@@ -1,0 +1,405 @@
+-------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\...\USpop_E.log
+  log type:  text
+ opened on:   9 Nov 2016, 17:18:14
+
+. 
+. describe
+
+Contains data from C:\Users\...\USpop.dta
+  obs:            23                          
+ vars:             1                          31 Oct 2011 13:21
+ size:           184                          
+-------------------------------------------------------------------------------------------------------------------
+              storage   display    value
+variable name   type    format     label      variable label
+-------------------------------------------------------------------------------------------------------------------
+uspop           double  %12.0g                US-Population at ten-year intervals, 1790-1990
+-------------------------------------------------------------------------------------------------------------------
+Sorted by: 
+
+. gen time = 1780 + 10*_n
+
+. format time %ty
+
+. tsset time
+        time variable:  time, 1790 to 2010, but with gaps
+                delta:  1 year
+
+. label variable time "Time"
+
+. tsline uspop, lwidth(thick)
+
+. 
+. regress uspop time
+
+      Source |       SS           df       MS      Number of obs   =        21
+-------------+----------------------------------   F(1, 19)        =    224.33
+       Model |  113745.587         1  113745.587   Prob > F        =    0.0000
+    Residual |  9634.07504        19  507.056581   R-squared       =    0.9219
+-------------+----------------------------------   Adj R-squared   =    0.9178
+       Total |  123379.662        20   6168.9831   Root MSE        =    22.518
+
+------------------------------------------------------------------------------
+       uspop |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        time |   1.215408   .0811489    14.98   0.000     1.045561    1.385254
+       _cons |  -2211.338   153.4502   -14.41   0.000    -2532.513   -1890.163
+------------------------------------------------------------------------------
+
+. predict L_lin, xb
+
+. tsline uspop, lwidth(thick) || tsline L_lin, lwidth(thick) legend(rows(2))
+
+. predict res_lin, residuals
+(2 missing values generated)
+
+. twoway scatter res_lin time, lwidth(thick)
+
+. 
+. gen luspop = ln(uspop)
+(2 missing values generated)
+
+. tsline luspop, lwidth(thick)
+
+. regress luspop time
+
+      Source |       SS           df       MS      Number of obs   =        21
+-------------+----------------------------------   F(1, 19)        =    570.37
+       Model |  33.2140643         1  33.2140643   Prob > F        =    0.0000
+    Residual |  1.10641977        19  .058232619   R-squared       =    0.9678
+-------------+----------------------------------   Adj R-squared   =    0.9661
+       Total |  34.3204841        20   1.7160242   Root MSE        =    .24131
+
+------------------------------------------------------------------------------
+      luspop |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        time |    .020769   .0008696    23.88   0.000     .0189488    .0225892
+       _cons |  -35.41252   1.644456   -21.53   0.000    -38.85441   -31.97063
+------------------------------------------------------------------------------
+
+. predict lL_exp, xb
+
+. gen L_exp = exp(_b[_cons])*exp(_b[time]*time)
+
+. tsline uspop L_exp, lwidth(thick thick) legend(rows(2))
+
+. generate res_exp = uspop-L_exp
+(2 missing values generated)
+
+. twoway scatter res_exp time
+
+. 
+. di (uspop[2]-uspop[1])/uspop[1]
+.35102924
+
+. di ln(uspop[2])-ln(uspop[1])
+.3008667
+
+. 
+. regress luspop time if time < 1920
+
+      Source |       SS           df       MS      Number of obs   =        13
+-------------+----------------------------------   F(1, 11)        =   2207.27
+       Model |  13.0132112         1  13.0132112   Prob > F        =    0.0000
+    Residual |   .06485171        11   .00589561   R-squared       =    0.9950
+-------------+----------------------------------   Adj R-squared   =    0.9946
+       Total |  13.0780629        12  1.08983857   Root MSE        =    .07678
+
+------------------------------------------------------------------------------
+      luspop |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        time |   .0267397   .0005692    46.98   0.000      .025487    .0279924
+       _cons |  -46.40423   1.053148   -44.06   0.000    -48.72219   -44.08627
+------------------------------------------------------------------------------
+
+. predict lL_exp_lt1920, xb
+
+. regress  luspop time if time >= 1920
+
+      Source |       SS           df       MS      Number of obs   =         8
+-------------+----------------------------------   F(1, 6)         =   1040.93
+       Model |  .653216419         1  .653216419   Prob > F        =    0.0000
+    Residual |  .003765175         6  .000627529   R-squared       =    0.9943
+-------------+----------------------------------   Adj R-squared   =    0.9933
+       Total |  .656981594         7  .093854513   Root MSE        =    .02505
+
+------------------------------------------------------------------------------
+      luspop |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        time |   .0124711   .0003865    32.26   0.000     .0115253    .0134169
+       _cons |  -19.27795   .7557339   -25.51   0.000    -21.12716   -17.42873
+------------------------------------------------------------------------------
+
+. predict lL_exp_ge1920, xb
+
+. gen L_exp_lt1920 = exp(lL_exp_lt1920)
+
+. gen L_exp_ge1920 = exp(lL_exp_ge1920)
+
+. tsline uspop, lwidth(thick) || tsline L_exp_lt1920 if time < 1920, lwidth(thick) || tsline L_exp_ge1920 if time >
+> = 1920, lwidth(thick) legend(rows(3))
+
+. 
+. regress luspop time if time < 1910
+
+      Source |       SS           df       MS      Number of obs   =        12
+-------------+----------------------------------   F(1, 10)        =   2970.44
+       Model |  10.7325253         1  10.7325253   Prob > F        =    0.0000
+    Residual |  .036131051        10  .003613105   R-squared       =    0.9966
+-------------+----------------------------------   Adj R-squared   =    0.9963
+       Total |  10.7686563        11  .978968758   Root MSE        =    .06011
+
+------------------------------------------------------------------------------
+      luspop |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        time |   .0273957   .0005027    54.50   0.000     .0262757    .0285157
+       _cons |  -47.60259   .9275656   -51.32   0.000    -49.66933   -45.53584
+------------------------------------------------------------------------------
+
+. predict lL_exp_lt1910, xb
+
+. regress luspop time if time >= 1910
+
+      Source |       SS           df       MS      Number of obs   =         9
+-------------+----------------------------------   F(1, 7)         =   1682.06
+       Model |  .950747229         1  .950747229   Prob > F        =    0.0000
+    Residual |  .003956591         7  .000565227   R-squared       =    0.9959
+-------------+----------------------------------   Adj R-squared   =    0.9953
+       Total |   .95470382         8  .119337978   Root MSE        =    .02377
+
+------------------------------------------------------------------------------
+      luspop |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        time |    .012588   .0003069    41.01   0.000     .0118622    .0133138
+       _cons |  -19.50791   .5985613   -32.59   0.000    -20.92328   -18.09253
+------------------------------------------------------------------------------
+
+. predict lL_exp_ge1910, xb
+
+. gen L_exp_lt1910 = exp(lL_exp_lt1910)
+
+. gen L_exp_ge1910 = exp(lL_exp_ge1910)
+
+. tsline uspop, lwidth(thick) || tsline L_exp_lt1910 if time < 1910, lwidth(thick) || tsline L_exp_ge1910 if time >
+> = 1910, lwidth(thick) legend(rows(3))
+
+. 
+. regress luspop time if time < 1900
+
+      Source |       SS           df       MS      Number of obs   =        11
+-------------+----------------------------------   F(1, 9)         =   4543.03
+       Model |  8.64082511         1  8.64082511   Prob > F        =    0.0000
+    Residual |  .017117971         9  .001901997   R-squared       =    0.9980
+-------------+----------------------------------   Adj R-squared   =    0.9978
+       Total |  8.65794308        10  .865794308   Root MSE        =    .04361
+
+------------------------------------------------------------------------------
+      luspop |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        time |   .0280273   .0004158    67.40   0.000     .0270866     .028968
+       _cons |  -48.75414   .7652274   -63.71   0.000    -50.48521   -47.02308
+------------------------------------------------------------------------------
+
+. predict lL_exp_lt1900, xb
+
+. regress  luspop time if time >= 1900
+
+      Source |       SS           df       MS      Number of obs   =        10
+-------------+----------------------------------   F(1, 8)         =   1445.96
+       Model |  1.39454103         1  1.39454103   Prob > F        =    0.0000
+    Residual |  .007715501         8  .000964438   R-squared       =    0.9945
+-------------+----------------------------------   Adj R-squared   =    0.9938
+       Total |  1.40225653         9  .155806281   Root MSE        =    .03106
+
+------------------------------------------------------------------------------
+      luspop |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        time |   .0130014   .0003419    38.03   0.000     .0122129    .0137898
+       _cons |  -20.31945   .6650849   -30.55   0.000    -21.85314   -18.78577
+------------------------------------------------------------------------------
+
+. predict lL_exp_ge1900, xb
+
+. gen L_exp_lt1900 = exp(lL_exp_lt1900)
+
+. gen L_exp_ge1900 = exp(lL_exp_ge1900)
+
+. tsline uspop, lwidth(thick) || tsline L_exp_lt1900 if time < 1900, lwidth(thick) || tsline L_exp_ge1900 if time >
+> = 1900, lwidth(thick) legend(rows(3))
+
+. 
+. gen time2 = time^2
+
+. regress uspop time time2
+
+      Source |       SS           df       MS      Number of obs   =        21
+-------------+----------------------------------   F(2, 18)        =   8050.39
+       Model |  123241.883         2  61620.9414   Prob > F        =    0.0000
+    Residual |  137.779342        18  7.65440787   R-squared       =    0.9989
+-------------+----------------------------------   Adj R-squared   =    0.9988
+       Total |  123379.662        20   6168.9831   Root MSE        =    2.7667
+
+------------------------------------------------------------------------------
+       uspop |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        time |  -23.37855   .6983151   -33.48   0.000    -24.84566   -21.91145
+       time2 |   .0065063   .0001847    35.22   0.000     .0061183    .0068944
+       _cons |    21006.1   659.4327    31.85   0.000     19620.68    22391.51
+------------------------------------------------------------------------------
+
+. predict L_qua, xb
+
+. tsline uspop L_qua, lwidth(thick thick) legend(rows(2))
+
+. predict res_qua, residuals
+(2 missing values generated)
+
+. scatter res_qua time
+
+. 
+. gen time3 =time^3
+
+. regress uspop time time2 time3
+
+      Source |       SS           df       MS      Number of obs   =        21
+-------------+----------------------------------   F(3, 17)        =   5319.49
+       Model |   123248.37         3    41082.79   Prob > F        =    0.0000
+    Residual |  131.292208        17  7.72307107   R-squared       =    0.9989
+-------------+----------------------------------   Adj R-squared   =    0.9987
+       Total |  123379.662        20   6168.9831   Root MSE        =     2.779
+
+------------------------------------------------------------------------------
+       uspop |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        time |   11.18374    37.7178     0.30   0.770    -68.39385    90.76134
+       time2 |  -.0117918   .0199662    -0.59   0.563    -.0539167    .0303331
+       time3 |   3.23e-06   3.52e-06     0.92   0.372    -4.20e-06    .0000107
+       _cons |  -741.4073   23738.17    -0.03   0.975    -50824.56    49341.75
+------------------------------------------------------------------------------
+
+. predict L_cub, xb
+
+. tsline uspop L_cub, lwidth(thick thick) legend(rows(2))
+
+. predict res_cub, residuals
+(2 missing values generated)
+
+. scatter res_cub time
+
+. 
+. list time L_lin L_exp L_exp_ge1920 L_exp_ge1910 L_exp_ge1900 L_qua L_cub if time >= 2000
+
+     +-----------------------------------------------------------------------------------+
+     | time      L_lin      L_exp   L_~e1920   L_~e1910   L_~e1900      L_qua      L_cub |
+     |-----------------------------------------------------------------------------------|
+ 22. | 2000   219.4774   457.3676   288.3588   289.4849   293.9057   274.3476   276.3069 |
+ 23. | 2010   231.6315   562.9426   326.6588   328.3181   334.7128   301.4662   304.4946 |
+     +-----------------------------------------------------------------------------------+
+
+. 
+. replace uspop = 281.55 in 22
+(1 real change made)
+
+. replace uspop = 310.3 in 23
+(1 real change made)
+
+. 
+. scatter uspop L_lin L_exp L_exp_ge1920 L_exp_ge1910 L_exp_ge1900 L_qua L_cub time if time == 2000, ///
+> legend(label(1 "US-Population at year 2000") label(2 "Linear Trend Prediction") label(3 "Exponential Trend Predic
+> tion") ///
+> label(4 "Exponential Trend Prediction, 1920") label(5 "Exponential Trend Prediction, 1910") label(6 "Exponential 
+> Trend Prediction, 1900") ///
+> label(7 "Quadratic Trend Prediction") label(8 "Cubic Trend prediction"))
+
+. 
+. scatter uspop L_lin L_exp L_exp_ge1920 L_exp_ge1910 L_exp_ge1900 L_qua L_cub time if time == 2010, ///
+> legend(label(1 "US-Population at year 2010") label(2 "Linear Trend Prediction") label(3 "Exponential Trend Predic
+> tion") ///
+> label(4 "Exponential Trend Prediction, 1920") label(5 "Exponential Trend Prediction, 1910") label(6 "Exponential 
+> Trend Prediction, 1900") ///
+> label(7 "Quadratic Trend Prediction") label(8 "Cubic Trend prediction"))
+
+. 
+. *calculate "forecast errors"
+. gen p_lin = .
+(23 missing values generated)
+
+. replace p_lin = ( L_lin[22] -  281.55)/281.55 in 22
+(1 real change made)
+
+. replace p_lin = ( L_lin[23] -  310.3)/310.3 in 23
+(1 real change made)
+
+. gen p_exp = .
+(23 missing values generated)
+
+. replace p_exp = ( L_exp[22] -  281.55)/281.55 in 22
+(1 real change made)
+
+. replace p_exp = ( L_exp[23] -  310.3)/310.3 in 23
+(1 real change made)
+
+. gen p_exp_ge1920 = .
+(23 missing values generated)
+
+. replace p_exp_ge1920 = ( L_exp_ge1920[22] -  281.55)/281.55 in 22
+(1 real change made)
+
+. replace p_exp_ge1920 = ( L_exp_ge1920[23] -  310.3)/310.3 in 23
+(1 real change made)
+
+. gen p_exp_ge1910 = .
+(23 missing values generated)
+
+. replace p_exp_ge1910 = ( L_exp_ge1910[22] -  281.55)/281.55 in 22
+(1 real change made)
+
+. replace p_exp_ge1910 = ( L_exp_ge1910[23] -  310.3)/310.3 in 23
+(1 real change made)
+
+. gen p_exp_ge1900 = .
+(23 missing values generated)
+
+. replace p_exp_ge1900 = ( L_exp_ge1900[22] -  281.55)/281.55 in 22
+(1 real change made)
+
+. replace p_exp_ge1900 = ( L_exp_ge1900[23] -  310.3)/310.3 in 23
+(1 real change made)
+
+. gen p_qua = .
+(23 missing values generated)
+
+. replace p_qua = ( L_qua[22] -  281.55)/281.55 in 22
+(1 real change made)
+
+. replace p_qua = ( L_qua[23] -  310.3)/310.3 in 23
+(1 real change made)
+
+. gen p_cub = .
+(23 missing values generated)
+
+. replace p_cub = ( L_cub[22] -  281.55)/281.55 in 22
+(1 real change made)
+
+. replace p_cub = ( L_cub[23] -  310.3)/310.3 in 23
+(1 real change made)
+
+. list time p_lin p_exp p_exp_ge1920 p_exp_ge1910 p_exp_ge1900 p_qua p_cub if time >= 2000
+
+     +--------------------------------------------------------------------------------------+
+     | time       p_lin      p_exp   p_e~1920   p_e~1910   p_e~1900       p_qua       p_cub |
+     |--------------------------------------------------------------------------------------|
+ 22. | 2000   -.2204672   .6244633   .0241833    .028183   .0438846   -.0255814   -.0186224 |
+ 23. | 2010   -.2535239   .8141881   .0527193   .0580668   .0786749   -.0284685    -.018709 |
+     +--------------------------------------------------------------------------------------+
+
+. 
+. 
+. log close
+      name:  <unnamed>
+       log:  C:\Users\...\USpop_E.log
+  log type:  text
+ closed on:   9 Nov 2016, 17:18:23
+-------------------------------------------------------------------------------------------------------------------

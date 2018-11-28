@@ -1,0 +1,19 @@
+Additional literature that complements the lecture and exercises.
+
+Gray, Jim. "The Benchmark Handbook for Database and Transasction Systems." Mergan Kaufmann, San Mateo (1993)
+Huppler, Karl. "The art of building a good benchmark." Performance Evaluation and Benchmarking. Springer Berlin Heidelberg, 2009. 18-30.
+Folkerts et al. Benchmarking in the Cloud: What it Should, Can, and Cannot Be. TPCTC, 2012
+K. Saller et. al. Benchmarking Methodology. In: Benchmarking Peer-to-Peer Systems, Springer, 2013.
+C. Binnig, D. Kossmann, T. Kraska, S. Loesing. How is the Weather tomorrow? Towards a Benchmark for the Cloud. DBTest’09, ACM, 2009
+B.F. Cooper, A. Silberstein, E. Tam, R. Ramakrishnan, R. Sears "Benchmarking cloud serving systems with YCSB.“, ACM SOCC, 2010
+A. Iosup et al. IaaS Cloud Benchmarking: Approaches, Challenges, and Experience. MTAGS, 2012
+A. Iosup et al. Towards Benchmarking IaaS and PaaS Clouds for Graph Analytics. WBDB 2014, Springer 2015
+M. Klems: Experiment-driven Evaluation of Cloud-based Distributed Sytems, Ph.D. Thesis, TU Berlin, 2016
+D. Bermbach, S. Tai. “Eventual Consistency: How soon is eventual? An evaluation of Amazon S3‘s consistency guarantees“, ACM MW4SOC, 2011
+D. Bermbach, S. Tai. “Benchmarking Eventual Consistency: Lessons Learned from Long-Term Experimental Studies“, IEEE IC2E, 2014
+Bermbach, Klems, Tai, Menzel: “MetaStorage: A Federated Cloud Storage System to Manage Consistency-Latency Tradeoffs”, Proc. of CLOUD‘11, 2011, pp. 452-459.
+Achenbach, Gabel, Huber: “MimoSecco: A Middleware for Secure Cloud Storage”, Proc. of Improving Complex Systems Today, London, 2011, S. 175-181.
+Müller, Bermbach, Pallas, Tai: “Benchmarking the Performance Impact of Transport Layer Security in Cloud Database Systems”, Proc. of IC2E’14, 2014.
+Sandhu: “Good-enough security”, Internet Computing, IEEE, 2003, 7, 66-68.
+D. Bermbach, J. Kuhlenkamp, A. Dey "BenchFoundry: A Benchmarking Framework for Cloud Database Services “, to appear , 2017
+ 

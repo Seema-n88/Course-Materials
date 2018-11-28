@@ -1,0 +1,194 @@
+From b2d1a5ef7bc5edf5e7348abefc7b93f6df7da0a7 Mon Sep 17 00:00:00 2001
+From: Seema-n88 <seemabharadwaj29@gmail.com>
+Date: Sat, 27 May 2017 19:43:05 +0200
+Subject: [PATCH] assignment1
+
+---
+ .../assignment1/AverageTemperaturePerMonth.java    | 87 +++++++++++++++++++++-
+ .../dima/aim3/assignment1/FilteringWordCount.java  | 19 ++++-
+ .../aim3/assignment1/PrimeNumbersWritable.java     | 13 +++-
+ 3 files changed, 113 insertions(+), 6 deletions(-)
+
+diff --git a/Assignment1/HadoopTask/src/main/java/de/tuberlin/dima/aim3/assignment1/AverageTemperaturePerMonth.java b/Assignment1/HadoopTask/src/main/java/de/tuberlin/dima/aim3/assignment1/AverageTemperaturePerMonth.java
+index 7457e6d..12a0964 100755
+--- a/Assignment1/HadoopTask/src/main/java/de/tuberlin/dima/aim3/assignment1/AverageTemperaturePerMonth.java
++++ b/Assignment1/HadoopTask/src/main/java/de/tuberlin/dima/aim3/assignment1/AverageTemperaturePerMonth.java
+@@ -1,13 +1,28 @@
+ package de.tuberlin.dima.aim3.assignment1;
+ 
+ 
++import com.google.common.io.Closeables;
+ import de.tuberlin.dima.aim3.HadoopJob;
+ import org.apache.hadoop.fs.Path;
++import org.apache.hadoop.io.DoubleWritable;
++import org.apache.hadoop.io.IntWritable;
++import org.apache.hadoop.io.Text;
++import org.apache.hadoop.mapreduce.Job;
++import org.apache.hadoop.mapreduce.Mapper;
++import org.apache.hadoop.mapreduce.Reducer;
++import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
++import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+ 
++import java.io.*;
++import java.util.ArrayList;
++import java.util.List;
+ import java.util.Map;
+ 
+ public class AverageTemperaturePerMonth extends HadoopJob {
+ 
++  private static double minimumQuality;
++    private File averageTemperatureOutput;
++    private PrintWriter pw;
+   @Override
+   public int run(String[] args) throws Exception {
+     Map<String,String> parsedArgs = parseArgs(args);
+@@ -15,10 +30,78 @@ public class AverageTemperaturePerMonth extends HadoopJob {
+     Path inputPath = new Path(parsedArgs.get("--input"));
+     Path outputPath = new Path(parsedArgs.get("--output"));
+ 
+-    double minimumQuality = Double.parseDouble(parsedArgs.get("--minimumQuality"));
++      if (averageTemperatureOutput == null) {
++          averageTemperatureOutput = new File("/Users/seema/Documents/Semester2/AIM3/Assignment1/output/averageTemperatureOutput.csv");
++          if(averageTemperatureOutput.exists()) averageTemperatureOutput.delete();
++          if (!averageTemperatureOutput.getParentFile().exists()) {
++              if(!averageTemperatureOutput.getParentFile().mkdir()) {
++                  throw new IOException("Could not create " + averageTemperatureOutput);
++              }
++          }
++          averageTemperatureOutput.createNewFile();
++          pw = new PrintWriter(averageTemperatureOutput);
++      }
+ 
+-    //IMPLEMENT ME
++    double minimumQuality = Double.parseDouble(parsedArgs.get("--minimumQuality"));
++    this.minimumQuality = minimumQuality;
++    Job avgTempPerMonth = prepareJob(inputPath, outputPath, TextInputFormat.class, AverageTemperaturePerMonth.AverageTemperaturePerMonthMapper.class,
++            Text.class, IntWritable.class, AverageTemperaturePerMonth.AverageTemperaturePerMonthReducer.class, Text.class, DoubleWritable.class, TextOutputFormat.class);
++    avgTempPerMonth.waitForCompletion(true);
++      StringBuilder sb = new StringBuilder();
++      sb.append("Year and Month" + "\t" + "Avg.Temperature");
++      pw.println(sb);
++      List<String> records = readLines(outputPath.toString()+ "/" + "part-r-00000");
++      for(String record:records){
++          String[] tokens = record.split("\t");
++          String YearAndMonth = tokens[0] + "/" + tokens[1];
++          pw.println(YearAndMonth + "\t" + tokens[2]);
++      }
+ 
++      pw.close();
+     return 0;
+   }
++
++  static class AverageTemperaturePerMonthMapper extends Mapper<Object,Text,Text,IntWritable> {
++    @Override
++    protected void map(Object key, Text line, Context ctx) throws IOException, InterruptedException {
++        String record = line.toString();
++        String[] fields = record.split("\\s+|,");
++        if(Double.parseDouble(fields[3]) >= minimumQuality) {
++            String strKey = String.valueOf(fields[0]) + "\t" + String.valueOf(fields[1]);
++            Text outputKey = new Text(strKey);
++            IntWritable outputValue = new IntWritable(Integer.parseInt(fields[2]));
++            ctx.write(outputKey, outputValue);
++        }
++    }
++  }
++
++  static class AverageTemperaturePerMonthReducer extends Reducer<Text,IntWritable,Text,DoubleWritable> {
++    @Override
++    protected void reduce(Text key, Iterable<IntWritable> values, Context ctx)
++            throws IOException, InterruptedException {
++      int sum = 0;
++      int size = 0;
++      for(IntWritable value : values)
++      {
++        sum += value.get();
++        size++;
++      }
++      DoubleWritable value = new DoubleWritable((double) sum / size);
++      ctx.write(key, value);
++    }
++  }
++    public List<String> readLines(String path) throws IOException {
++        List<String> lines = new ArrayList<String>();
++        BufferedReader reader = null;
++        try {
++            reader = new BufferedReader(new FileReader(path));
++            String line;
++            while ((line = reader.readLine()) != null) {
++                lines.add(line);
++            }
++        } finally {
++            Closeables.closeQuietly(reader);
++        }
++        return lines;
++    }
+ }
+\ No newline at end of file
+diff --git a/Assignment1/HadoopTask/src/main/java/de/tuberlin/dima/aim3/assignment1/FilteringWordCount.java b/Assignment1/HadoopTask/src/main/java/de/tuberlin/dima/aim3/assignment1/FilteringWordCount.java
+index 59848da..9db754c 100755
+--- a/Assignment1/HadoopTask/src/main/java/de/tuberlin/dima/aim3/assignment1/FilteringWordCount.java
++++ b/Assignment1/HadoopTask/src/main/java/de/tuberlin/dima/aim3/assignment1/FilteringWordCount.java
+@@ -32,7 +32,17 @@ public class FilteringWordCount extends HadoopJob {
+   static class FilteringWordCountMapper extends Mapper<Object,Text,Text,IntWritable> {
+     @Override
+     protected void map(Object key, Text line, Context ctx) throws IOException, InterruptedException {
+-      // IMPLEMENT ME
++      String linie = line.toString();
++      linie = linie.replaceAll("\\bto\\b", "");
++      linie = linie.replaceAll("\\band\\b", "");
++      linie = linie.replaceAll("\\bin\\b", "");
++      linie = linie.replaceAll("\\bthe\\b", "");
++      String[] words = linie.split("\\s+|,");
++      for (String word : words) {
++        Text outputKey = new Text(word.toLowerCase().trim());
++        IntWritable outputValue = new IntWritable(1);
++        ctx.write(outputKey, outputValue);
++      }
+     }
+   }
+ 
+@@ -40,7 +50,12 @@ public class FilteringWordCount extends HadoopJob {
+     @Override
+     protected void reduce(Text key, Iterable<IntWritable> values, Context ctx)
+         throws IOException, InterruptedException {
+-      // IMPLEMENT ME
++      int sum = 0;
++      for(IntWritable value : values)
++      {
++        sum += value.get();
++      }
++      ctx.write(key, new IntWritable(sum));
+     }
+   }
+ 
+diff --git a/Assignment1/HadoopTask/src/main/java/de/tuberlin/dima/aim3/assignment1/PrimeNumbersWritable.java b/Assignment1/HadoopTask/src/main/java/de/tuberlin/dima/aim3/assignment1/PrimeNumbersWritable.java
+index 9d1b0c8..48be7c1 100755
+--- a/Assignment1/HadoopTask/src/main/java/de/tuberlin/dima/aim3/assignment1/PrimeNumbersWritable.java
++++ b/Assignment1/HadoopTask/src/main/java/de/tuberlin/dima/aim3/assignment1/PrimeNumbersWritable.java
+@@ -21,12 +21,21 @@ public class PrimeNumbersWritable implements Writable {
+ 
+   @Override
+   public void write(DataOutput out) throws IOException {
+-    //IMPLEMENT ME
++    int len = numbers.length;
++    out.writeInt(len);
++    for (int primeNumber:numbers) {
++      out.writeInt(primeNumber);
++    }
+   }
+ 
+   @Override
+   public void readFields(DataInput in) throws IOException {
+-    //IMPLEMENT ME
++    int len = in.readInt();
++    numbers = new int[25];
++    for(int i = 0; i < len; i++)
++    {
++      numbers[i] = in.readInt();
++    }
+   }
+ 
+   @Override
+-- 
+2.8.4 (Apple Git-73)
+

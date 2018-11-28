@@ -1,0 +1,220 @@
+----------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\...\Siemens.log
+  log type:  text
+ opened on:   8 Dec 2014, 14:24:55
+
+. 
+. describe
+
+Contains data from C:\...\Siemens.dta
+  obs:            20                          
+ vars:             2                          3 Nov 2008 18:33
+ size:           240 (99.9% of memory free)
+----------------------------------------------------------------------------------------------
+              storage  display     value
+variable name   type   format      label      variable label
+----------------------------------------------------------------------------------------------
+time            float  %tdD.N.CY              Time
+SIE             float  %9.0g                  Siemens
+----------------------------------------------------------------------------------------------
+Sorted by:  
+
+. tsset time
+        time variable:  time, 08.10.2002 to 04.11.2002, but with gaps
+                delta:  1 day
+
+. tsline SIE, clwidth(thick)
+
+. 
+. gen SIE_exp3 = SIE in 1
+(19 missing values generated)
+
+. local alpha = 0.3
+
+. forvalues num = 2/20 {
+  2. replace SIE_exp3 = `alpha'*SIE + (1-`alpha')*SIE_exp3[`num'-1] in `num'
+  3. }
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+
+. tsline SIE SIE_exp3, clwidth(thick thick)
+
+. 
+. regress SIE time
+
+      Source |       SS       df       MS              Number of obs =      20
+-------------+------------------------------           F(  1,    18) =  108.76
+       Model |  407.151469     1  407.151469           Prob > F      =  0.0000
+    Residual |  67.3841375    18  3.74356319           R-squared     =  0.8580
+-------------+------------------------------           Adj R-squared =  0.8501
+       Total |  474.535606    19  24.9755582           Root MSE      =  1.9348
+
+------------------------------------------------------------------------------
+         SIE |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        time |   .5575393   .0534614    10.43   0.000     .4452212    .6698575
+       _cons |  -8675.072   835.8098   -10.38   0.000    -10431.04     -6919.1
+------------------------------------------------------------------------------
+
+. predict res, residuals
+
+. tsline res, clwidth(thick)
+
+. gen res_exp3 = res 
+
+. local alpha = 0.3
+
+. forvalues num = 2/20 {
+  2. replace res_exp3 = `alpha'*res + (1-`alpha')*res_exp3[`num'-1] in `num'
+  3. }
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+
+. tsline res res_exp3, clwidth(thick thick)
+
+. gen SIE_exp3_trend = res_exp3+_b[time]* time+_b[_cons]
+
+. tsline SIE SIE_exp3 SIE_exp3_trend, clwidth(thick thick thick)
+
+. 
+. local alpha = 0.3
+
+. local gamma = 0.6
+
+. gen r = 0
+
+. gen y = 32.05
+
+. forvalues num = 2/20 {
+  2. replace y = `alpha'*SIE + (1-`alpha')*(y[`num'-1]+r[`num'-1]) in `num'
+  3. replace r = `gamma'*(y-y[`num'-1]) + ((1-`gamma')*r[`num'-1]) in `num'
+  4. }
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+
+. tsline SIE SIE_exp3 SIE_exp3_trend y, clwidth(thick thick thick thick)
+
+. 
+. 
+. 
+. list time SIE SIE_exp3 in 1/10
+
+     +-------------------------------+
+     |       time     SIE   SIE_exp3 |
+     |-------------------------------|
+  1. | 08.10.2002   32.05      32.05 |
+  2. | 09.10.2002   32.42     32.161 |
+  3. | 10.10.2002      35    33.0127 |
+  4. | 11.10.2002   37.53   34.36789 |
+  5. | 14.10.2002   36.88   35.12152 |
+     |-------------------------------|
+  6. | 15.10.2002      41   36.88506 |
+  7. | 16.10.2002   39.48   37.66354 |
+  8. | 17.10.2002   42.13   39.00348 |
+  9. | 18.10.2002   42.15   39.94744 |
+ 10. | 21.10.2002   43.25   40.93821 |
+     +-------------------------------+
+
+. tssmooth exponential SIE_exp3_stata=SIE, parms(.3) s0(32.05) replace
+
+exponential coefficient  =       0.3000
+sum-of-squared residuals =       204.45
+root mean squared error  =       3.1973
+
+. list time SIE SIE_exp3 SIE_exp3_stata in 1/10
+
+     +------------------------------------------+
+     |       time     SIE   SIE_exp3   SIE_ex~a |
+     |------------------------------------------|
+  1. | 08.10.2002   32.05      32.05      32.05 |
+  2. | 09.10.2002   32.42     32.161      32.05 |
+  3. | 10.10.2002      35    33.0127     32.161 |
+  4. | 11.10.2002   37.53   34.36789    33.0127 |
+  5. | 12.10.2002       .          .   34.36789 |
+     |------------------------------------------|
+  6. | 13.10.2002       .          .   34.36789 |
+  7. | 14.10.2002   36.88   35.12152   34.36789 |
+  8. | 15.10.2002      41   36.88506   35.12152 |
+  9. | 16.10.2002   39.48   37.66354   36.88506 |
+ 10. | 17.10.2002   42.13   39.00348   37.66354 |
+     +------------------------------------------+
+
+. 
+. 
+. log close
+      name:  <unnamed>
+       log:  C:\...\Siemens.log
+  log type:  text
+ closed on:   8 Dec 2014, 14:24:59
+----------------------------------------------------------------------------------------------

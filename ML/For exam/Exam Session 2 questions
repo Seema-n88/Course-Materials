@@ -1,0 +1,30 @@
+Exam Session 2 questions
+1) Multiple choice
+a) Fisher co-efficient = Between class variance/within class variance
+b) Given  a set of funcions, identify the discriminant function
+c) K-means is a convex/non-convex
+d) Given 2 datasets normally distributed, and means(mu1 and mu2) not equal,
+what is the variance(sigma1 and sigma2) are they equal for data to be linearly separable
+e)
+
+2. draw Decision boundary for a set of functions
+f(x) = ax+b
+f(x) = ax1 + b
+f(x) = ax1
+f(x) = a max(x1,x2) + b
+
+3. PCA derive PCA given e is a eigne vector, C is a covariance matrix
+eCe= and subject to constraint e^2 = 1
+Write a code snippet for PCA using np.linalg.svd
+
+4. Kernels and featuremap
+	e^(-||x1||)  e^(-||x2||)
+	given<xi,xj> = summation of xi.xj
+
+5. Ridge regression Programming
+Write predict, evaluate function
+
+f(x) = beta.x+c
+beta = (X.T * X)^-1 * X.T * Y
+Write mean squared error
+

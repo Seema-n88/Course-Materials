@@ -1,0 +1,1899 @@
+﻿/* import der HISinOne-CSS-Definitionen*/
+@import "HISinOne.css";
+
+/* import der aktiven QIS-CSS-Definitionen des alten Layouts in neuem Design: */
+@import "QISDesignBestand.css";
+
+/* Vorablösung: CSS-Design für PROFIS-Änderungsfunktion einschließen */
+@import "PROFISaendernBewerber.css";
+
+/* XKeyfield(erweiterter Schlüsselauswahldialog)-Styles einbinden*/
+@import "css/xkeyfield.css";
+
+/* Styles fpr JavaScript-Colorpicker */
+@import "color-picker/picker.css";
+
+/*****************************************************************************/
+/*               NAMENSKONVENTIONEN FÜR NEUE CSS STYLES                      */
+/*****************************************************************************/
+/*
+1. Sprechenden Namen in Englisch vergeben, evtl. abgekürzt 
+(z.B. "navi").
+2. Namenskombinationen mit Unterstrich, falls inhaltliche Verbindung zu anderen
+Styles besteht  (z.B. "wizard_navi").
+3. Bei mehreren gleichen Elementen unterschiedlicher Formatierung Nummerierung 
+einführen mit Unterstrich (z.B. "input_45" "input_2"). 
+4. Globale Selektoren sind am Anfang einer Rubrik aufgeführt, damit man sofort
+sehen kann, welche Elemente dieser Rubrik global Einfluß haben.
+5. Bitte die neuen CSS entsprechend dem Inhaltsverzeichnis einsortieren,
+falls neue Inhalte eingebracht werden, neue Überschrift für Inhalte auch im
+Inhaltsverzeichnis ablegen.
+*/
+
+/*****************************************************************************/
+/*  INHALTSVERZEICHNIS: */
+/*****************************************************************************/
+/*  Makrolayout Navigationsrahmen frame.vm */  
+/*  Mikrolayout Contentbereich */
+/*  Allgemeines Layout */   
+/*  Karteikarten */ 
+/*  Links  */   
+/*  Tabellen */ 
+/*  DIV-Container */   
+/*  Überschriften */  
+/*  Texte */ 
+/*  Listen */ 
+/*  Absätze */ 
+/*  Fehlermeldungen */   
+/*  Farben */ 
+/*  Formulare */ 
+/*  Formulare.DIV-Container */ 
+/*  Formulare.Label */ 
+/*  Formulare.Input */ 
+/*  Formulare.Textield */ 
+/*  Submitbuttons */
+/*	Bilder */
+
+/*  Kalender */
+
+
+
+/*****************************************************************************/
+/*  Makrolayout Navigationsrahmen frame.vm */  
+/*****************************************************************************/
+body {
+	color: #000000;
+	background-color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;	
+	margin-top: 5px;	
+    font-size: 82.5%;
+}
+
+body, html {
+	height: 100%;	
+}
+
+#wrapper {
+	height:auto !important;
+	min-height:100%;
+	position:relative;
+    width: auto;
+}
+
+.divcontent {
+	/* UmschließtNavigationsbaum und Inhalt*/
+    /* float:left; */
+	background-color:#FFFFFF;
+	width: 100%;
+	margin-bottom:5px;
+	/* display:inline; */
+	padding:0 0 0.1em; /* bottom padding für den Abstand zum footer */
+}
+/*Header mit Logo und Services*/
+.header_hisinone {
+	width: 99%;
+	margin-top:3px;
+	margin-bottom: 3px;	
+}
+.header_hisinone .logo{
+    float:left;
+}
+.services{
+	float:right;
+	margin-top:8px;
+}
+.services ol{
+	list-style-type:none;
+	margin:0 0;
+	padding:0 0;
+	display:inline;
+}
+.services li{
+	list-style-type:none;
+	margin:10px 0;
+	display:inline;
+}
+.services  span {
+	font-size:95%;
+    font-weight:normal;
+	color:#990000;
+	padding-left:0.1em;
+	padding-right:0.1em;
+	text-decoration: none;	
+} 
+.services  a {	
+	font-size:95%;
+	font-weight: normal;
+	color: #990000;
+	text-decoration: none;
+	padding-left: 0.1em;
+	padding-right: 0.1em;
+	text-decoration: none;		
+} 
+.services a:hover, 
+.services a:focus,
+.services a:hover,
+.services a:active	 {
+	color: #990000;
+   	background-color: #FFFFFF;
+   	text-decoration: underline;	
+}
+
+/***********************************/
+/*	### Breadcrumb ###  */
+/**********************************/
+
+.breadcrumb{
+	clear: both;
+	font-size: 85%;
+	padding-bottom:3px;
+}
+/***********************************/
+/*	### Fussbereich - Anfang ###  */
+/**********************************/
+
+.divfoot {
+	bottom:20px;
+	position:absolute;
+	width:100%;
+}
+
+.divfoot_navigation {
+    background-color: #990000;
+	color: #FAFAFA; 
+	padding: 2px 0px 2px 4px;
+	margin-top: 5px;
+	clear: left;
+}
+
+.divfoot_logo {
+	clear:both;
+	display:block;
+	padding-top:6px;
+}
+
+/****************************************/	
+/*	### Fussbereich - Ende ###          */	
+/****************************************/	
+
+/*	
+	### Makronavigation - Anfang ###
+*/
+#makronavigation {
+	/* Ausgeklapptes Menü*/
+	width: 20%;
+    float: left;
+    background-color: #FFFFFF;
+	padding-left:0px;
+	padding-right:2px;
+	padding-top: 4px;
+}
+#makronavigation .liste{	
+	list-style-type: none;
+	margin-left: 0px;
+	margin-top: 0px;
+	padding-top: 0px;
+	margin-bottom: 20px;
+	padding-left: 0px;
+	line-height: 1.3em;	
+    cursor: pointer; 
+}
+
+#makronavigation .visited {
+	/* Klasse, welche den Link formatiert, wenn die Seite aktiv ist*/
+	background-color: #ffffff;
+	text-decoration:none;	
+	display:block;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding-bottom: 4px;
+	padding-top: 3px;
+	color:#990000;
+	font-weight: bold;	
+}
+#makronavigation .auflistung,
+	#makronavigation .menu_close {
+	/* Klasse, welche den Link formatiert, wenn die Seite nicht aktiv ist*/
+	background-color: #ffffff;
+	text-decoration:none;
+	display:block;	
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding-bottom: 4px;
+	padding-top: 3px;
+	color:#990000;	
+    border-bottom:1px dashed #F1F2F5;
+} 
+/* Fix for IE 6 */   
+* html #makronavigation .auflistung,
+* html #makronavigation .menu_close { 
+	width: 98%;
+}
+#makronavigation .auflistung {
+	/* Klasse, welche den Link formatiert, wenn die Seite nicht aktiv ist*/
+	/*background:#f7f9f9 url(/HISinOne/images/icons/gradient_navigation.gif) repeat-x scroll left bottom;*/	
+	border-bottom:1px dashed #F1F2F5;
+}
+#makronavigation .menu_close {
+	/* Klasse, welche den Link "Navigation ausblenden" formatiert*/
+	/*background-image: url(/HISinOne/images/icons/arrow_left_fat.gif);*/
+} 
+#makronavigation .menu_close img {
+	/*der < wird formatiert */
+	vertical-align:text-bottom;
+	padding-right:0.3em;
+}
+
+#makronavigation a:focus, #makronavigation a:hover, #makronavigation a:active  {
+   	background:#FFFFFF;
+	/* background:#FFFFFF url(/HISinOne/images/icons/background_content.gif) repeat scroll 0%;*/
+   	text-decoration: none; 
+   	display:block;
+	margin-bottom: 1px;
+	margin-top: 0px;
+	padding-bottom: 3px;
+	padding-top: 3px;  	
+}
+
+#min_navigation {   
+	/* Eingeklapptes Menü */ 
+    float: left;
+	width: 16px;	
+}
+.makromenueauf:link, .makromenueauf:visited {
+	/* Eingeklapptes Menü formatieren*/
+	display: block;
+	width: 12px;
+	height: 135px;
+	background: url(../../QIS/images/buttons/menuaufblauObreit.gif);
+}
+.makromenueauf:hover, .makromenueauf:active, .makromenueauf:focus {
+	/* Eingeklapptes Menü formatieren*/
+	background-image: url(../../QIS/images/buttons/menuaufrot.gif);
+}
+.makromenueauf span {
+	/* Eingeklapptes Menü formatieren*/
+	display: none;
+}
+/*
+	### Makronavigation - Ende ###
+*/
+
+
+.currentItem {
+	color: #990000;
+	font-weight: bold;
+}
+
+/* inactive identisch mit auflistung bis auf color */
+/* wegen Internet Explorer identische Einträge wiederholen */
+.inactive {
+	color: darkgrey;
+	text-decoration: none;
+	list-style-type: none;
+	list-style-position: outside;
+	margin-left: 0px;
+	margin-bottom: 10px;
+	padding-left: 0px;
+	left: 0px;
+	font-weight: normal;
+	line-height: 13px;
+}
+
+.content { 
+    width: 77%; 
+    padding:4px;
+	float:left; /* prf */
+	display: block; /* prf */
+	background:#FFFFFF;
+	/* background:#FFFFFF url(/HISinOne/images/icons/background_content.gif) repeat scroll 0%;*/
+}
+.content_max {        
+    background-color: #FFFFFF;
+	/* background:#FFFFFF url(/HISinOne/images/icons/background_content.gif) repeat scroll 0%;*/
+    padding:4px;
+	float:left;
+	display: block;
+	width: 95%;
+}
+.content_max_portal_qis {        
+    background: #FFFFFF;
+	/* background:#FFFFFF url(/HISinOne/images/icons/background_content.gif) repeat scroll 0%;*/
+    margin: 0px;
+    padding: 4px;
+	float: left;
+	display: block;
+	width: 78%;	
+}
+
+/* Fehler im IE 7: übernimmt width nicht */
+* +html .content_max_portal_qis { 
+	width: 78%;	
+}
+
+.content_full_portal {        
+    background-color: #FFFFFF;
+    padding: 4px;
+	float: left;
+	display: block;
+	width: 98%;
+}
+.contentbreit { 
+    width: 99%;    
+    background-color: #FFFFFF;
+    padding:4px;
+}
+.divloginstatus {
+    background-color: #990000;
+	color: #FAFAFA; 
+	padding: 3px 0px 2px 7px;  
+	margin-top: 4px;
+	clear: left;
+	min-height:1.4em;	
+}
+
+.SearchKeyWord {
+    background-color: #006AB3;
+	color: #FAFAFA; 
+	padding: 2px 0px 2px 4px;
+	clear: right;
+	width: 20%;
+	position:absolute;
+	bottom: 75px;	
+	left: 0px;
+}
+
+.divheader{
+    width: 100%;
+	margin-top:3px;
+	margin-bottom: 3px;
+}
+.divlinks {
+	color: #990000; 
+    background-color: #FFFFFF;
+	padding: 3px 0px 5px 0px;  
+	margin-top: 4px;
+}
+.portalcontent{
+	 width:99%;
+	 float:left; 
+	 padding-left:4px; 
+	 padding-right:4px;
+	 margin-top:5px;
+}
+.welcome_text{
+	 width:75%;
+	 float:left; 
+	 padding-left:4px; 
+	 padding-right:4px;
+	 margin-top:5px;  
+}
+.portalcontent1{
+	 width:292px; 
+	 float:left; 
+	 padding-right:4px;
+	 margin-top:5px;
+}
+.portalcontent2{
+    width:40%;
+    min-width:380px;
+    float:left;
+    padding: 4px 0px 4px 4px; 
+	margin-top:5px;
+}
+/* Fix for IE 6 */   
+* html .portalcontent2 { 
+	width: 380px;
+}
+.containerLogin {
+	border: none;
+	padding: 0px 7px 0px 7px;
+	margin-top:1em;
+}
+.containerLogin ol {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+.containerLogin ol li	{
+	margin-bottom: 0.2em;
+	clear: both;
+}
+.demoLinks{
+    width:40%;
+    min-width:380px;
+    float:left;
+    padding: 4px 0px 4px 4px; 
+	margin-top:5px;
+}
+/* Fix for IE 6 */   
+* html .demoLinks { 
+	width: 380px;
+}
+
+/*****************************************************************************/
+/*  Allgemeines Layout */  
+/*****************************************************************************/
+hr {
+	background-color: #990000;
+	padding: 0;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	border-bottom: 0px #00F;
+	height:1px;
+}
+.unsichtbar {
+	position: absolute;
+	left: -3000px;
+}
+label {
+	cursor: pointer;
+}
+/*****************************************************************************/
+/*  Mikrolayout Contentbereich */  
+/*****************************************************************************/
+/*****************************************************************************/
+/*  Karteikarten Mikronavigation*/ 
+/*****************************************************************************/
+.mikronavi {
+    background-color: #FFFFFF;
+    line-height: 170%;
+	padding: 4px 6px 4px 6px;
+	margin: 10px 0px 0px 0px;
+	border: 1px solid #7FB4D8;	 	
+	min-width: 530px;
+}
+.mikronavi  a:link, .mikronavi a:visited, .mikronavi a:focus, .mikronavi a:hover, .mikronavi a:active {
+   	color: #990000;
+   	text-decoration: underline;
+}
+.mikronavi a:focus {
+   color: #990000;
+}
+.mikronavi a:hover {
+   color: #990000;
+}
+.mikronavi a:active {
+   color: #990000;
+}
+.mikronavi ul{
+  	list-style-type:none;
+  	margin: 0;
+  	padding: 0;
+}
+.mikronavi li{
+  	list-style-type:none;
+	border-left: #7FB4D8 1px solid;
+   	padding: 0px 4px 0px 6px;
+  	margin:10px 0;
+  	display:inline;
+}
+.mikronavi li.randlos {
+	border: 0;
+}
+.mikronavi a:visited, .mikronavi a:focus, .mikronavi a:hover, .mikronavi a:active {
+   	color: #990000;
+   	text-decoration: underline;
+}
+/*****************************************************************************/
+/*  Funktionselemente  */  
+/*****************************************************************************/
+.functionnavi {
+    background-color: #FFFFFF;
+    line-height: 170%;
+	padding: 4px 6px 4px 6px;
+	margin: 10px 0px 0px 0px;
+	border: 1px solid #7FB4D8;	 	
+	min-width: 530px;
+}
+.functionnavi a:link {
+   	color: #990000;
+   	text-decoration: none;
+}
+.functionnavi a:focus {
+   color: ##990000;
+}
+.functionnavi a:hover {
+   color: #990000;
+}
+.functionnavi a:active {
+   color: #990000;
+}
+.functionnavi ul{
+  	list-style-type:none;
+  	margin: 0;
+  	padding: 0;
+}
+.functionnavi li{
+  	list-style-type:none;
+	border-left: #7FB4D8 1px solid;
+   	padding: 0px 4px 0px 6px;
+  	margin:10px 0;
+  	display:inline;
+}
+.functionnavi li.randlos {
+	vertical-align: middle;
+	border: 0;
+}
+/*****************************************************************************/
+/*  Links  */  
+/*****************************************************************************/
+/* fuer den Loginstatus */
+.links3 {
+	line-height: 20px;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-decoration: none;
+}
+.links3:focus, .links3:hover, .links3:active {
+	color: #014A7B;
+   	background-color: #F1F2F5;
+   	text-decoration: underline;
+}
+
+/* fuer die Hauptmenuepunkte der Makronavigation */
+
+.links2, .links2visited {
+	font-size: 120%;
+	line-height: 24px;
+}
+.links2, .links2visited {
+	color: #990000;
+	text-decoration: none;
+}
+.links2visited {
+	background-color:#FFFFFF;
+	border:1px solid #7FB4D8;
+	font-weight:bold;
+	padding: 3px 1px 3px 3px;
+	text-decoration:none;
+}
+.links2:focus, .links2:hover, .links2:active {
+	color: #990000;
+   	background-color: #FFFFFF;
+   	text-decoration: underline;
+}
+
+/* fuer einen beliebigen Link im Content-Bereich */
+a.regular:link, a.regular:visited, a.regular:focus, a.regular:hover, a.regular:active {
+   	color: #990000;
+   	text-decoration: underline;
+}
+a.regular:visited {
+	color: #990000;
+}
+a.regular:focus {
+   	color: #990000;
+   	background-color: #FFFFFF;
+}
+a.regular:hover {
+   	color: #990000;
+   	background-color: #FFFFFF;
+}
+a.regular:active {
+   	color: #990000;
+}
+
+/* fuer Registerkarten im Content-Bereich */
+a.register:link, a.register:visited, a.register:focus, a.register:hover, a.register:active {
+   	color: #014A7B;
+   	text-decoration: none;
+}
+a.register:visited {
+	color: #014A7B;
+}
+a.register:focus {
+   	color: #AF2B2B;
+   	background-color: #EFDFC2;
+   	text-decoration: underline;
+}
+a.register:hover {
+   	color: #AF2B2B;
+   	background-color: #EFDFC2;
+   	text-decoration: underline;
+}
+a.register:active {
+   	color: #7FB4D8;
+   	text-decoration: underline;
+}
+.links, .linksvisited {
+	line-height: 20px;
+	list-style-type: none;
+	list-style-image: none;
+	margin-left: 0px;
+	padding: 0;
+}
+.links {
+	text-decoration: none;	
+	font-weight: normal;
+}
+.linksvisited {
+	font-weight: bold;
+}
+
+.minilinks {
+	font-size: 75%;
+	text-decoration: none;
+	font-weight:normal;
+}
+
+/* fuer Links in der Prüfungsanmeldung, die eine An- oder Abmeldung auslöst */
+a.pr_storno:link, a.pr_storno:visited, a.pr_storno:focus, a.pr_storno:hover, a.pr_storno:active,
+a.pr_anmeld:link, a.pr_anmeld:visited, a.pr_anmeld:focus, a.pr_anmeld:hover, a.pr_anmeld:active,
+a.pr_ummeld:link, a.pr_ummeld:visited, a.pr_ummeld:focus, a.pr_ummeld:hover, a.pr_ummeld:active,
+a.pr_beleg:link,  a.pr_beleg:visited,  a.pr_beleg:focus,  a.pr_beleg:hover,  a.pr_beleg:active {
+   	text-decoration: underline;
+}
+a.pr_storno:link, a.pr_storno:visited {
+	color: #DD5555;
+}
+a.pr_anmeld:link, a.pr_anmeld:visited {
+	color: #55BB55;
+}
+a.pr_ummeld:link, a.pr_ummeld:visited {
+	color: #AAAA55;
+}
+a.pr_beleg:link, a.pr_beleg:visited {
+	color: #5555AA;
+}
+a.pr_storno:focus, a.pr_anmeld:focus, a.pr_ummeld:focus, a.pr_beleg:focus {
+   	color: #AF2B2B;
+   	background-color: #EFDFC2;
+}
+a.pr_storno:hover, a.pr_anmeld:hover, a.pr_ummeld:hover, a.pr_beleg:hover {
+   	color: #AF2B2B;
+   	background-color: #EFDFC2;
+}
+a.pr_storno:active, a.pr_anmeld:active, a.pr_ummeld:active, a.pr_beleg:active {
+   	color: #7FB4D8;
+}
+
+/* fuer Links, die mit einem mit einem Icon verbunden sind*/
+.link_eye {
+	float: left;
+	background-position: left top;
+	background-repeat: no-repeat;
+	font-size:100% !important;
+	font-weight: normal;
+	background-color: transparent;
+	color: #014A7B;
+	vertical-align: middle;
+	text-align: left;	
+	text-decoration: underline;
+	padding: 0.2em 2px 0.2em 20px;
+}
+
+.link_eye {
+	background-image: url(/QIS/images/eye.gif);	
+	padding: 0px 0px 0px 20px;
+}   
+
+.link_eye:hover,
+.link_eye:focus {
+	color: #AF2B2B;
+   	background-color: #EFDFC2;
+   	text-decoration: underline;
+}
+
+.align_right	{
+	float:right;
+	margin-right:2em;
+}
+
+/*****************************************************************************/
+/*  Tabellen */ 
+/*****************************************************************************/
+.mod, .mod_header, .mod_modul, .mod_grid {
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	border-left: #7FB4D8 1px solid; 
+	border-bottom: #7FB4D8 1px solid;
+	border-right: #7FB4D8 1px solid;
+	padding: 2px 7px 2px 7px;
+}
+.mod_header {
+	width: 10%;
+}
+.mod_modul {
+	width: 10%;
+}
+.mod_grid {
+	padding: 2px;
+	white-space: normal;
+}
+.mod_n, .mod_n_odd, .mod_n_even, .mod_n_basic, .mod_n_department, .mod_n_error, .mod_n_conflict {
+	border: 0.5pt;
+	background-color: #FFFFFF;
+	font-weight: normal;
+	vertical-align: top;
+	padding: 2px 7px 2px 7px;
+}
+.mod_n_even{
+	background-color: #EFEFEF;
+}
+.mod_n_basic {
+	width: 30%;
+}
+.mod_n_error {
+	color: #FF0000;
+}
+
+.mod_n_conflict {
+	border:1px solid red;
+}
+
+.mod_n_department {
+	width: 50%;
+}
+.mod_t{
+	background-color: #7FB4D8;
+	font-size: 120%;
+	font-weight: bolder;
+	padding-top: 2px;
+	padding-bottom: 2px;	
+}
+.qis_header{
+	background-color: #7FB4D8;
+	font-weight: bold;
+	font-size: 160%;
+}
+.qis_verlauf{
+	background-color: #F1F2F5;
+	font-size: 110%;
+}
+.qis_infos{
+	background-color: #FFFFFF;
+}
+.qis_fach{
+	background-color: #EAEBEC;
+	font-size: 110%;
+	font-weight: bold;
+}
+.qis_records{
+	color: #014A7B;
+}
+.qis_kontoOnTop{
+	font-size: 110%;
+	font-weight: bold;
+	background: #F0FFFF;
+}
+.qis_konto{
+	background: #F0FFFF;
+}
+.qis_veranst {
+	text-align: justify;
+	color: #808080;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: #FAFAFA;
+	line-height: 14px;
+	border: 1px solid #F1F2F5;
+	padding:2px;
+}
+
+.change_PordModul {
+	background-color: #87CEFA;
+	color: #00008B;
+}
+
+.tabelle1, .tabelle1_alignleft, .tabelle1_aligncenter, .tabelle1_alignright {
+	text-align: justify;
+	color: #000000;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: #FFFFFF;
+	line-height: 14px;
+	border: 1px solid #DEE2EB;
+	padding: 2px;
+}
+.tabelle1_alignleft {
+	text-align: left;	
+}
+.tabelle1_aligncenter {
+	text-align: center;
+}
+.tabelle1_alignright {
+	text-align: right;
+}
+
+.tabelle1OK {
+	text-align: justify;
+	color: #375798;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: #AEF49D;
+	line-height: 14px;
+	border: 1px solid #DEE2EB;
+	padding: 2px;
+}
+
+.tabelle1NotOK {
+	text-align: justify;
+	color: #375798;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: #FF7F00;
+	line-height: 14px;
+	border: 1px solid #F1F2F5;
+	padding: 2px;
+}
+
+.tabelleheader {
+	font-weight: bold;
+	color: #FAFAFA;
+	text-decoration: none;
+	text-align:justify;
+	background-color: #5381BE;
+	border: 1px solid #FFFFFF;
+	padding: 2px;
+}
+.tabelleheadertext {
+	font-weight: bold;
+	color: #FAFAFA;
+	text-decoration: none;
+}
+/*****************************************************************************/
+/*  DIV-Container */  
+/*****************************************************************************/
+.menublock{
+   margin-left: 50px;
+   background-color:#FFFFFF;
+   width:100%;
+   padding:5px;
+}
+.abstand_veranstaltung {
+	height: 20px;
+	clear: both;
+}
+.abstand_leistung, .abstand_info {
+	height: 20px;
+	clear: both;
+}
+.abstand_search {
+	height: 10px;
+	clear: both;
+}
+.abstand_pruefinfo {
+	height: 20px;
+	clear: both;
+}
+#searchHelp {
+	float: right;
+}
+.cal_LineBegin, .cal_LineMiddle, .cal_LineEnd {
+	height:130px;
+	padding: 0px 5% 5% 0px;
+	float:left;
+}
+.cal_LineBegin {
+	clear:left;
+}
+.cal_LineMiddle {
+	clear:none;
+}
+.cal_LineEnd {
+	clear:right;
+	float:none;
+}
+.Kruemelpfad {
+	font-size: 85%;
+	font-weight: normal;
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+	padding: 6px 0px 6px 0px;
+}
+.KruemelpfadEintrag {
+	background-image: url('/QIS/images/his_minipfeile.gif');
+	background-repeat: no-repeat; 
+	background-position: 0px center;
+	padding-left: 20px;
+	display: inline;
+}
+#Studienganginfo, .InfoLeiste {
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+	padding: 6px 0px 6px 0px;
+}
+.Leistungen_Inhalt {
+	padding-left: 16px;
+}
+.inputlabel, .pseudolabel {
+	width: 20%;
+	text-align: right;
+	vertical-align: middle; 
+	float: left;
+	margin-right: 5px;
+}
+.infolabel {
+	width: 12%;
+	text-align: right;
+	clear: both;
+	float: left;
+	margin-right: 5px;
+}
+.bezeichner, .bezeichner_exam {
+	font-weight: bold;
+	width: 20%;
+	border-left: 1px solid #7fb4d8;
+	border-bottom: 1px solid #7fb4d8;
+	border-right: 1px solid #7fb4d8;
+	padding: 2px 7px 2px 7px;
+	clear: both;
+	float: left;
+}
+.feld, .feld_exam {
+	width: 50%;
+	background-color: #FFFFFF;
+	padding: 2px 7px 2px 7px;
+}
+#change_header {
+	background-color: #FFFFCC;
+	padding: 3px;
+}
+#change_header_text {
+	float: left;
+}
+#change_header_detail {
+	float: right;
+}
+.missing_checkbox {
+	margin-right: 5px;
+	float: left;
+}
+.erg_list_entry, .fieldset_entry {
+	line-height: 150%;
+	clear: both;
+	display: block;
+}
+.fieldset_entry {
+	margin-bottom: 3px;
+}
+
+.erg_list_label, .erg_list_label_small, .erg_list_label_title, .erg_list_label_narrow{
+	font-weight: bold;
+	text-align: right;
+	width: 25%;
+	margin-right: 10px;
+	float: left;
+}
+.erg_list_label_small {
+	width: 20%;
+}
+.erg_list_label_title {
+	width: 5%;
+}
+.erg_list_label_narrow {
+	font-weight: normal;
+	width: 20%;
+}
+.tabMenuContainer {
+	margin: 0px;
+	border-bottom: solid 2px #014A7B;
+}
+.divMod {
+	font-weight: bold;
+	white-space: nowrap;	
+	border-left: #7FB4D8 1px solid; 
+	border-bottom: #7FB4D8 1px solid;
+	border-right: #7FB4D8 1px solid;
+	padding: 2px 7px 2px 7px;
+}
+.divMod_n_basic {
+	width: 30%;
+	background-color: #FFFFFF;
+	padding: 2px 7px 2px 7px;
+}
+.divModLineLeft {
+	float: left;
+}
+.divModLineBreak {
+	clear: both;
+	padding-top: 7px;
+}
+.table_1 {
+        overflow:auto;  
+        border-right:2px solid #7FB4D8; 
+        border-left:2px solid #7FB4D8;
+        padding:0.2em;
+        margin-top:0.4em;
+        margin-bottom:0.5em;
+        float:left;
+        width:98%;
+}
+.table_matrix {
+        overflow:auto;  
+        border:1px solid #7FB4D8; 
+        padding:0.2em;
+        margin-top:0.4em;
+        margin-bottom:0.5em;
+        float:left;
+        width:98%;
+        border-collapse:collapse;
+}
+.tabelleheader_matrix {
+	font-weight: bold;
+	text-decoration: none;
+	text-align:justify;
+	background-color: #e2e2e2;
+	border: 1px solid #7FB4D8;
+	padding: 2px;
+}
+.tabelle_color_1_matrix,
+.tabelle_color_2_matrix,
+.tabelle_color_3_matrix,
+.tabelle_color_3_matrix_right,
+.tabelle_color_4_matrix,
+.tabelle_color_5_matrix {
+	font-size:110%;
+	font-weight:normal;
+	text-decoration:none;
+}
+.tabelle_color_1_matrix {
+	border:1px solid #7FB4D8;
+	color:#ffffff;
+	background-color: #006AB3;
+}
+.tabelle_color_2_matrix {
+	border:1px solid #7FB4D8;
+	background-color: #FFBA00;
+}
+.tabelle_color_3_matrix, .tabelle_color_3_matrix_right {
+    border:1px solid #7FB4D8;
+	background-color:#FFFFFF;
+}
+
+.tabelle_color_3_matrix_right{
+	text-align:right ;
+}
+.tabelle_color_4_matrix {
+    border:1px solid #7FB4D8;
+	background-color:#7FB4D8;
+	color:#ffffff;
+}
+.tabelle_color_5_matrix {
+    border:1px solid #7FB4D8;
+    background-color:#FFFFFF;
+    padding-right: 2pt;
+    text-align: right;
+}
+
+/*****************************************************************************/
+/*  Überschriften */  
+/*****************************************************************************/
+h1{
+	font-size:150%;
+	font-weight: bold;
+	margin-bottom: 3px;
+	margin-top: 3px;
+}
+h2, .t_capt {
+	font-size: 120%;
+	font-weight: bold;
+	margin-bottom: 3px;
+	margin-top: 3px;
+	white-space:nowrap;
+}
+.t_capt {
+	text-align: left;
+	margin-bottom: 10px;
+}
+h4{
+	font-size: 100%;	
+	text-decoration: none;
+	font-weight: normal;
+	list-style-type: none;
+	list-style-image: none;
+	margin-left: 0px;
+	padding: 0;	
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+/*	deprecated: -- h1 verwenden --*/
+.inhalt {
+	font-size:200%;
+	color: #014A7B;
+	font-weight: bold;
+	padding-left:8px;	
+} 
+/*****************************************************************************/
+/*  Texte */ 
+/*****************************************************************************/
+.warnung{
+	color: #FF0000;
+	font-weight: bolder;
+}
+.grueneWarnung{
+	color: #119022;
+	font-weight: bolder;
+}
+.standardgroesse {
+	font-size: 82.5%;
+}
+/*****************************************************************************/
+/*  Listen */ 
+/*****************************************************************************/
+ul.treelist, ul.treelist ul, ul.treelist1, ul.treelist1 ul {
+	margin: 0;
+	padding-left: 20px;
+}
+ul.treelist li, ul.treelist1 li {
+	margin-top: 0.2em;
+	list-style-type: none;
+}
+ul.treelist1, ul.treelist1 ul {
+	padding-left: 8px;
+	font-weight: bold;
+	text-decoration: none;
+}
+ul.treelist1 li {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/*  ANFANG: Listen im contentbereich, bspw. Hilfe-Center*/ 
+.mikronavi_list {
+	/*width: 50%;*/
+    background-color: #FFFFFF;
+    line-height: 170%;
+	padding: 4px 6px 4px 6px;
+	margin: 10px 0px 0px 0px;
+	border: 1px solid #7FB4D8;	 	
+	min-width: 430px;
+}
+.mikronavi_list .liste_lang{
+	width: 90%;
+	background-color: red;
+}
+.mikronavi_list a:link, .mikronavi_list a:visited, .mikronavi_list a:focus, .mikronavi_list a:hover, .mikronavi_list a:active {
+   	color: #014A7B;
+   	text-decoration: underline;
+}
+.mikronavi_list a:focus {
+   color: #7FB4D8;
+}
+.mikronavi_list a:hover {
+   color: #7FB4D8;
+}
+.mikronavi_list a:active {
+   color: #7FB4D8;
+}
+.mikronavi_list ul{
+  	margin: 0;
+  	padding-left: 10px;
+  	list-style-type:none;
+}
+.mikronavi_list ol{
+  	
+}
+.mikronavi_list li{
+	  	  
+}
+.tabMenuList {
+	list-style-type: none;
+	margin-top: 5px;
+	margin-bottom: 3px;
+	padding: 0px;
+}
+.tabMenuList li {
+	margin: 0px;
+	padding: 3px 1px 3px 1px;
+	display: inline;
+}
+.tabMenuList li.current {
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #014A7B;
+	border: 1px solid #014A7B;
+}
+.tabMenuList li.entry {
+	margin-left: 2px;
+	border: 1px solid #014A7B;
+	background-color: #FFFFFF;
+}
+.tabMenuList li.weitere {
+	margin-left: 2px;
+	border: 1px solid #014A7B;
+	background-color: #FFFFCC;
+}
+.abstand20 {
+	display: block;
+	float: left;
+	width: 20%; /* Breite.*/
+	min-width: 120px;
+}
+.abstand80 {
+	display: block;
+	float: left;
+	width: 75%; /* Breite.*/
+}
+.abstandEnde {
+	display: block; 
+	width: 0%; /* Breite.*/
+	clear: left;
+}
+/*  ENDE: Listen im Contentbereich  */
+
+
+
+li.Abstand_in_Listen {
+	padding: 0px 0px 6px 0px;
+}
+
+/* Meldungen RSS-Feed Liste */
+
+.title_rssfeed{
+	background-color: #ffffff;
+	border-top:dashed 1px #ccc;
+	border-bottom:dashed 1px #ccc;
+	padding:5px;
+	margin-top:3px;
+	font-size:120%;
+}
+
+.title_rssfeed h3{
+	font-size:85%;
+}
+   
+.newsListing_frontpage {
+	/*list-style-image: url(/qisserver/ROOT/QIS/images/bullet_star.gif);*/
+	list-style-type:none;	
+	padding-top: 3px;
+	margin-top:0px;
+	padding-left:0px;
+	padding-bottom: 16px;
+	padding-top:0px;
+	font-weight: normal;
+}
+
+.newsListing_frontpage li {
+	border-bottom: dashed 1px #ccc;
+	padding: 2px;	
+	background-color:#fff;
+	margin-top:0px;
+}
+
+  
+   
+/*****************************************************************************/
+/*  Absätze */ 
+/*****************************************************************************/
+p {
+    margin: 1px;
+	padding: 1px;
+}
+/*****************************************************************************/
+/*  Fehlermeldungen */  
+/*****************************************************************************/
+.fehlermeldung {
+	font-size: 75%;
+	line-height: 10px;
+	color: #CC3300;
+	text-decoration: none;
+}
+/*****************************************************************************/
+/*  Farben */ 
+/*****************************************************************************/
+.color {
+	color: #014A7B;
+}
+.darkbluecolor {
+	color: #014C7E;		
+}
+.kleinemeldung {
+	color: #014C7E;
+	text-decoration: none;
+	font-size: 12px;
+}
+.orangecolor {
+	color: #F0B413;		
+}
+.redcolor {
+	color: #BB0000;		
+}
+.background {
+	background-color: #FFFFFF;	
+	padding-left:7px;
+	padding-top:5px;
+	padding-right:7px;
+}
+.termWeekDay {
+	background-color: #FFFFCC;
+}
+.termWeekendDay {
+	background-color: #FFFF99;
+}
+.feiertag {
+	color: #2299BB;
+	font-weight: bold;
+}
+.day {
+	background-color: #dbdde9;
+}
+.weekend {
+   background-color: #bdc0d7;
+}
+.today {
+	color: #FF0000;
+	font-weight: bold;
+}
+.todayweekend {
+	font-weight: bold;
+	color: #FF0000;
+	background-color: #bdc0d7;
+}
+.color_white{
+	background-color: #FFFFFF;
+}
+.color_pale_yellow{
+	background-color: #FFFCDF;
+}
+.color_pale_rose{
+	background-color: #FFF1CC;
+}
+.color_pale_green{
+	background-color: #E7EFD1;
+}
+.color_pale_grey{
+	background-color: #FFFFFF;
+}
+.color_pale_blue{
+	background-color: #FFFFFF;
+}
+/*****************************************************************************/
+/*  Formulare */ 
+/*****************************************************************************/
+
+
+
+
+/*****************************************************************************/
+/*  Formulare.DIV-Container */ 
+/*****************************************************************************/
+.formular{
+    margin: 1px;
+	padding: 1px
+}
+
+/*****************************************************************************/
+/*  Formulare.Label */ 
+/*****************************************************************************/
+.label{
+	width:40%;
+	border: 0px solid #851395;
+	text-align: right;
+	display: block;
+	float: left;
+	margin-right: 5px;
+	line-height: 20px;
+	font-weight: normal;
+	margin-left: 0px;
+	padding: 0;
+}
+.nolabel{
+	width: 40%;
+	border: 0px solid #851395;
+	text-align: right;
+	display: block;
+	float: left;
+	margin-right: 5px;
+	line-height: 20px;
+	font-weight: normal;
+	margin-left: 0px;
+	padding: 0;
+}
+/*****************************************************************************/
+/*  Formulare.Input */ 
+/*****************************************************************************/
+input:focus, input:hover, input:active,
+select:focus, select:hover, select:active,
+textarea:focus, textarea:hover, textarea:active {
+	background-color: #EFDFC2;
+	/*background-color: #eaedd7;*/
+}
+.radio {
+	text-align: left;
+}
+.input_login{
+	font-size: 1em;
+	width: 30%;
+
+}
+/*****************************************************************************/
+/*  Formulare.Textield */ 
+/*****************************************************************************/
+/*****************************************************************************/
+/*  Submitbuttons */  
+/*****************************************************************************/
+.button {
+	font-size: 120%;
+	line-height: 24px;
+	color: #FFFFFF;
+	background-color: #014A7B;
+	border: #6B8AC9;
+}
+
+input.submit,.linkAsButton  {
+	background-position: center bottom;
+	background-repeat: repeat-x;
+	border: 1px solid;
+	font-size:100% !important;
+	font-weight: normal;
+	padding-bottom: 1px;
+	background-color: #fafbfc;
+	background-image: url(/QIS/images/submit_passive.gif);
+	border-color :#a7a7a7;
+	color: #014A7B;
+	vertical-align: middle;
+	cursor: pointer;
+	padding:1px 2px 1px 2px;		
+}
+
+input.submit:hover,.linkAsButton:hover {
+	background-position: center top;
+	padding-bottom: 1px;
+	background-image: url(/QIS/images/submit_active.gif);
+	border-color: #efd9ab;
+	color: #333;
+	text-decoration: underline;
+	vertical-align: middle;
+}
+
+/*input:focus, input:hover, input:active {
+	color: #AF2B2B;
+   	background-color: #EFDFC2;
+}*/
+/*****************************************************************************/
+/*  Bilder */  
+/*****************************************************************************/
+
+img {
+	border: 0px;
+}
+/*img:focus, img:hover {
+	border: 1px solid #AF2B2B;
+	background-color: #EFDFC2;
+}*/
+img.edit {
+	width: 25px;
+	height: 15px;
+}
+img.termin_stift {
+	width: 14px;
+	height: 14px;
+}
+img.pdf {
+	width: 35px;
+	height: 16px;
+}
+img.matrix {
+	width: 20px;
+	height: 17px;
+}
+img.bubble {
+	width: 14px;
+	height: 12px;
+}
+img.email {
+	width: 15px;
+	height: 15px;
+}
+img.protocol {
+	width: 13px;
+	height: 14px;
+}
+img.lupe {
+	width: 20px;
+	height: 18px;
+}
+img.vvzueberschrift {
+	width: 12px;
+	height: 12px;
+}
+
+/*****************************************************************************/
+/*  under construction */  
+/*****************************************************************************/
+
+fieldset {
+	padding: 7px;
+	border: 1px solid #999999;
+}
+
+.abstand_passwort, .abstand_vvz {
+	height: 20px;
+}
+
+.hidden {
+	display: none;
+}
+
+.Tree {
+	padding: 0px;
+}
+
+.aboutHIS {
+	padding: 10px;
+	float: left;
+}
+
+.about_Eintrag {
+	padding-left: 40px;
+}
+
+.erg_list_line {
+	background-color: #F1F2F5;
+	border: dashed 1px #FFFFFF;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.macro_div {
+	margin-right: 5px;
+	float: left;
+}
+.just_float_left {
+	margin-right: 5px;
+	float: left;
+}
+.webTerm_activities {
+	margin: 3px 0px 5px 0px;
+}
+
+/*****************************************************************************/
+/*  SVA */  
+/*****************************************************************************/
+
+.sva_auswahl {width:150px }
+.sva_button {
+	font-size: 100%;
+	line-height: 20px;
+	background-color: #D0D0D0;
+	color: #014A7B;
+	font-weight: 600;
+}
+
+.sva_bearbeiten_button {
+	font-size: 100%;
+	line-height: 20px;
+	background-color: #D0D0D0;
+	color: #014A7B;
+	font-weight: 600;
+	width: 100px;
+}
+
+.sva_tableheader{
+	font-size: 110%;
+	line-height: 24px;
+	color: #014A7B;
+	font-weight: 600;
+}
+
+.sva_zeitform{
+		border:2px solid #e0a998;
+		padding-left:5px;
+		padding-right:5px;
+		border-collapse:collapse;
+		}
+		
+.sva_zeile{
+	border-width:1px;
+	border-style:solid;
+	border-color:#e0a998;
+	background-color:#c1c7d5;
+	}
+.sva_statistic{
+	border-width:1px;
+	border-style:inset;
+}
+.sva_split{
+	border-bottom-width:1px;
+	border-style:solid;
+}
+.sva_gerade{
+	border-width:1px;
+	border-style:none;
+	/*border-color:#e0a998;*/
+	background-color:#cecae1;
+	}
+	
+.sva_note{font-size:xx-small}
+
+.sva_arbeitstag{
+	background-color: #ffffff;
+	font-size:18px;
+}
+.sva_ohnevertrag{
+	background-color: #c0c0c0;
+	font-size:18px;
+}
+.sva_keinarbeitstag{
+	background-color: #bbbbbb;
+	font-size:18px;
+}
+.sva_feiertag{
+	background-color: #000000;
+	font-size:18px;
+	color:yellow;
+}
+.sva_erholungsurlaub{
+	background-color: #00ff00;
+	font-size:18px;
+}
+.sva_resturlaub{
+	background-color: #00ff00;
+	font-size:18px;
+}
+.sva_freistellungstag{
+	background-color: #808080;
+	font-size:18px;
+	color:white;
+}
+.sva_krankheit{
+	background-color: #ff0000;
+	font-size:18px;
+	color:white;
+}
+.sva_ueberstunden{
+	background-color: #000080;
+	font-size:18px;
+	color:white;
+}
+.sva_bildungsurlaub{
+	background-color: #ffff00;
+	font-size:18px;
+}
+.sva_fehltag{
+	background-color: #c0c0c0;
+	color:red;
+	font-size:18px;
+}
+.sva_sonderurlaub{
+	background-color: #ff00ff;
+	font-size:18px;
+	color:black;
+}
+.sva_sonder_behindert{
+	background-color: #0000ff;
+	font-size:18px;
+	color:white;
+}
+.sva_grey{
+	text-align:right;
+	padding-right:10px;
+	
+}
+
+/*****************************************************************/
+/*  QISZUL														 */  
+/*****************************************************************/
+#qiszul_navigation {
+	font-size: 0.91em;
+	float: left;
+	margin: 0; 
+	padding: 3px;
+	background-color: #F1F2F5;
+	width: 23%;
+	position:relative;
+	min-width: 18em;    
+}
+
+#qiszul_content {
+	margin-left: 1%; 
+	float: left;
+	background-color: #F1F2F5;    
+	padding: 1%;
+	width: 70%;
+	position: relative;
+}
+label.qiszul_left {
+	position: relative;
+	float: left;
+	text-align: right;
+	width: 10em;
+	margin-right: 5em;
+
+}
+label.qiszul_longleft {
+	position: relative;
+	float: left;
+	text-align: right;
+	width: 15em;
+	margin-right: .3em;
+	cursor: pointer;
+}
+label.qiszul_verylongleft {
+	float: left;
+	text-align: right;
+	width: 25em;
+	margin-right: .3em;
+	cursor: pointer;
+}
+
+select.qiszul_right {
+	text-align:left;
+}
+input.qiszul_right {
+	text-align:left;
+}
+
+.qiszul_error {
+	text-align: left;	
+	margin-left: 1em;
+	color: #CF0000;
+}
+.qiszul_fieldsetInvisible {
+	border: none;
+}
+.qiszul_legendInvisible {
+	visibility:hidden;
+}
+
+/*****************************************************************************/
+/*                            Kalender                                       */
+/*****************************************************************************/
+/* Default attributes of table container for entire calendar */
+.jscalendar-DB-table-style {
+	font-family: arial;
+	font-size: 11px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #7fb4d8;
+	background-color: #fffcdf;
+}
+
+/* Default attributes of DIV containing table container for entire calendar.
+ * You probably don't want to alter this style.
+ */
+.jscalendar-DB-div-style {
+	z-index: +999;
+	position: absolute;
+	visibility: hidden;
+}
+
+/* Default attributes used in calendar title (month and year columns).*/
+.jscalendar-DB-title-style {
+	padding: 2px;
+	font-family: arial;
+	font-size: 11px;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+/* Default attributes used in calendar title background.*/
+.jscalendar-DB-title-background-style { 
+	background-color: #0000AA;
+}
+
+/* Normal appearance of controls in calendar title. */
+/* Note: The right, left and down icons are images, jscalendar-DBich must be edited if you need to change them. */
+.jscalendar-DB-title-control-normal-style { /*	border-style: solid;
+	border-width: 1px;
+	border-color: #7fb4d8;
+	border-style: none;
+	background-color: #0000aa;
+	background-color: #006ab3;	*/
+	
+}
+
+/* Moused-over (selected) appearance of controls in calendar title. */
+.jscalendar-DB-title-control-select-style {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #7fb4d8;
+	color: #fff;
+	background-color: #006ab3;
+	background-color: #0000aa;
+}
+
+/* Default attributes of drop down lists (month and year). */
+.jscalendar-DB-dropdown-style {
+	font-family: arial;
+	font-size: 11px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #a0a0a0;
+	background-color: #FFFFDD;
+}
+
+/* Default attributes selected (mouse-over) item in drop down lists (month and year). */
+.jscalendar-DB-dropdown-select-style {
+	background-color: #FFCC99;
+}
+
+/* Default attributes unselected (mouse-off) item in drop down lists (month and year). */
+.jscalendar-DB-dropdown-normal-style {
+	background-color: inherit;
+}
+
+/* Default attributes of calendar body (weekday titles and numbers). */
+.jscalendar-DB-body-style {
+	background-color: #FFFFFF;
+	font-family: verdana;
+	font-size: 10px;
+	border-top: 1px solid #7fb4d8;
+	border-bottom: 1px solid #7fb4d8;
+}
+
+/* Attributes of current day in calendar body. */
+.jscalendar-DB-current-day-style {
+	color: red;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* Attributes of end-of-week days (Sundays) in calendar body. */
+.jscalendar-DB-end-of-weekday-style {
+	color: #909090;
+	color: #666;
+	text-decoration: none;
+}
+
+/* Attributes of all other days in calendar body. */
+.jscalendar-DB-normal-day-style {
+	color: black;
+	text-decoration: none;
+}
+
+a.jscalendar-DB-normal-day-style:hover,a.jscalendar-DB-normal-day-style:focus,a.jscalendar-DB-end-of-weekday-style:hover,a.jscalendar-DB-end-of-weekday-style:focus
+	{
+	background-color: #FFF1CC;
+	text-decoration: none;
+}
+
+.jscalendar-DB-would-be-selected-day-style {
+	background-color: #EEEEEE;
+}
+
+/* Attributes of border around selected day in calendar body. */
+.jscalendar-DB-selected-day-style {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #7fb4d8;
+}
+
+/* Default attributes of designated holidays. */
+.jscalendar-DB-holiday-style {
+	background-color: #FFDDDD;
+}
+
+.jscalendar-DB-today-lbl-style {
+	color: black;
+}
+
+/* Attributes of today display at bottom on calendar */
+.jscalendar-DB-today-style {
+	color: #014A7B;
+	background-color: #fffcdf;
+	text-decoration: underline;
+}
+
+a.jscalendar-DB-today-style:hover,a.jscalendar-DB-today-style:focus {
+	color: #333;
+	background-color: #FFCC99;
+	text-decoration: none;
+}
+
+/* Attributes of week number division (divider.gif) */
+.jscalendar-DB-weeknumber-div-style {
+	background-color: #7fb4d8;
+}

@@ -1,0 +1,1363 @@
+Last login: Fri Jun 23 14:30:54 on ttys000
+complete:13: command not found: compdef
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=a36d76ba-d124-4ae0-8138-33b9362767de;zone=Cloud Computing 2017;security_group=cc17g2_security_group” CCG2_Network_Instances_Stack
+
+dquote> q
+dquote> 
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=a36d76ba-d124-4ae0-8138-33b9362767de;zone=Cloud Computing 2017;security_group=cc17g2_security_group” CCG2_Network_Instances_Stack
+
+dquote> 
+dquote> 
+dquote> 
+dquote> 
+dquote> 
+dquote> 2
+dquote> 
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=a36d76ba-d124-4ae0-8138-33b9362767de;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+Missing value auth-url required for auth plugin password
+~ ❯❯❯ source cc17-group02-openrc.sh                                                                                                                                                   ⏎ master ◼
+Please enter your OpenStack Password: 
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=a36d76ba-d124-4ae0-8138-33b9362767de;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "backend_instances" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=a36d76ba-d124-4ae0-8138-33b9362767de;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "my_resource_group" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=a36d76ba-d124-4ae0-8138-33b9362767de;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "my_indexed_group" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=a36d76ba-d124-4ae0-8138-33b9362767de;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "my_indexed_group" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=a36d76ba-d124-4ae0-8138-33b9362767de;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "instancegroup" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=a36d76ba-d124-4ae0-8138-33b9362767de;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "port" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=a36d76ba-d124-4ae0-8138-33b9362767de;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "po" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=a36d76ba-d124-4ae0-8138-33b9362767de;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "zz" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=a36d76ba-d124-4ae0-8138-33b9362767de;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "port" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=a36d76ba-d124-4ae0-8138-33b9362767de;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "port" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=a36d76ba-d124-4ae0-8138-33b9362767de;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "port" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group” CCG2_Network_Instances_Stack
+dquote> q
+dquote> 
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "port" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack network list                                                                                                                                                          ⏎ master ◼
++--------------------------------------+-------------+----------------------------------------------------------------------------+
+| ID                                   | Name        | Subnets                                                                    |
++--------------------------------------+-------------+----------------------------------------------------------------------------+
+| 25fe17bd-c5a2-44c6-af49-fe93aad066b7 | tu-internal | bc1ae648-efc8-4c46-9719-7edd86080ff1, f062897e-3446-4f3b-b362-361b821b96bc |
+| 64a7d16e-91b9-4ab4-a1fb-8a48368e1fdb | cc17-net    | 9b345a37-c64d-46b0-9286-d3a8c453e412                                       |
++--------------------------------------+-------------+----------------------------------------------------------------------------+
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group” CCG2_Network_Instances_Stack
+dquote> openstack network list
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "rg" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "resourcegroup" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+Error parsing template file:///Users/JulieAllard/server-landscape.yml while parsing a block mapping
+  in "<unicode string>", line 1, column 1:
+    heat_template_version: 2015-10-15
+    ^
+expected <block end>, but found '<block mapping start>'
+  in "<unicode string>", line 46, column 5:
+        public_net:
+        ^
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "security_group" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "resourcegroup" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "resource_group" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "resource_group" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "ResourceGroup" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "rg" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "rg" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+Error parsing template file:///Users/JulieAllard/server-landscape.yml while parsing a block mapping
+  in "<unicode string>", line 1, column 1:
+    heat_template_version: 2015-10-15
+    ^
+expected <block end>, but found '<block mapping start>'
+  in "<unicode string>", line 86, column 3:
+      private_net:
+      ^
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+Error parsing template file:///Users/JulieAllard/server-landscape.yml while parsing a block mapping
+  in "<unicode string>", line 1, column 1:
+    heat_template_version: 2015-10-15
+    ^
+expected <block end>, but found '<block mapping start>'
+  in "<unicode string>", line 86, column 3:
+      private_net:
+      ^
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+Error parsing template file:///Users/JulieAllard/server-landscape.yml while parsing a block mapping
+  in "<unicode string>", line 1, column 1:
+    heat_template_version: 2017-06-23
+    ^
+expected <block end>, but found '<block mapping start>'
+  in "<unicode string>", line 86, column 3:
+      private_net:
+      ^
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+Error parsing template file:///Users/JulieAllard/server-landscape.yml while parsing a block mapping
+  in "<unicode string>", line 1, column 1:
+    heat_template_version: 2017-06-23
+    ^
+expected <block end>, but found '<block mapping start>'
+  in "<unicode string>", line 86, column 3:
+      private_net:
+      ^
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: The template version is invalid: "heat_template_version: 2017-06-23". "heat_template_version" should be one of: 2013-05-23, 2014-10-16, 2015-04-30, 2015-10-15, 2016-04-08
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: "rg" is not a valid keyword inside a resource definition
+~ ❯❯❯ heat validate-template server-landscape.yml                                                                                                                                     ⏎ master ◼
+usage: heat [--version] [-d] [-v] [--api-timeout API_TIMEOUT]
+            [--os-no-client-auth] [--heat-url HEAT_URL]
+            [--heat-api-version HEAT_API_VERSION] [--include-password] [-k]
+            [--os-cert OS_CERT] [--cert-file OS_CERT] [--os-key OS_KEY]
+            [--key-file OS_KEY] [--os-cacert <ca-certificate-file>]
+            [--ca-file OS_CACERT] [--os-username OS_USERNAME]
+            [--os-user-id OS_USER_ID] [--os-user-domain-id OS_USER_DOMAIN_ID]
+            [--os-user-domain-name OS_USER_DOMAIN_NAME]
+            [--os-project-id OS_PROJECT_ID]
+            [--os-project-name OS_PROJECT_NAME]
+            [--os-project-domain-id OS_PROJECT_DOMAIN_ID]
+            [--os-project-domain-name OS_PROJECT_DOMAIN_NAME]
+            [--os-password OS_PASSWORD] [--os-tenant-id OS_TENANT_ID]
+            [--os-tenant-name OS_TENANT_NAME] [--os-auth-url OS_AUTH_URL]
+            [--os-region-name OS_REGION_NAME] [--os-auth-token OS_AUTH_TOKEN]
+            [--os-service-type OS_SERVICE_TYPE]
+            [--os-endpoint-type OS_ENDPOINT_TYPE]
+            <subcommand> ...
+heat: error: argument <subcommand>: invalid choice: 'validate-template' (choose from 'action-check', 'action-resume', 'action-suspend', 'build-info', 'config-create', 'config-delete', 'config-list', 'config-show', 'deployment-create', 'deployment-delete', 'deployment-list', 'deployment-metadata-show', 'deployment-output-show', 'deployment-show', 'event', 'event-list', 'event-show', 'hook-clear', 'hook-poll', 'output-list', 'output-show', 'resource-list', 'resource-mark-unhealthy', 'resource-metadata', 'resource-show', 'resource-signal', 'resource-template', 'resource-type-list', 'resource-type-show', 'resource-type-template', 'service-list', 'snapshot-delete', 'snapshot-list', 'snapshot-show', 'stack-abandon', 'stack-adopt', 'stack-cancel-update', 'stack-create', 'stack-delete', 'stack-list', 'stack-preview', 'stack-restore', 'stack-show', 'stack-snapshot', 'stack-update', 'template-function-list', 'template-show', 'template-validate', 'template-version-list', 'bash-completion', 'help', 'bash_completion')
+~ ❯❯❯ openstack validate-template server-landscape.yml                                                                                                                                ⏎ master ◼
+openstack: 'validate-template server-landscape.yml' is not an openstack command. See 'openstack --help'.
+Did you mean one of these?
+  availability zone list
+~ ❯❯❯ openstack --help                                                                                                                                                                ⏎ master ◼
+usage: openstack [--version] [-v | -q] [--log-file LOG_FILE] [-h] [--debug]
+                 [--os-cloud <cloud-config-name>]
+                 [--os-region-name <auth-region-name>]
+                 [--os-cacert <ca-bundle-file>] [--os-cert <certificate-file>]
+                 [--os-key <key-file>] [--verify | --insecure]
+                 [--os-default-domain <auth-domain>]
+                 [--os-interface <interface>] [--timing] [--os-beta-command]
+                 [--os-compute-api-version <compute-api-version>]
+                 [--os-network-api-version <network-api-version>]
+                 [--os-image-api-version <image-api-version>]
+                 [--os-volume-api-version <volume-api-version>]
+                 [--os-identity-api-version <identity-api-version>]
+                 [--os-object-api-version <object-api-version>]
+                 [--os-orchestration-api-version <orchestration-api-version>]
+                 [--os-auth-type <auth-type>]
+                 [--os-project-domain-id <auth-project-domain-id>]
+                 [--os-protocol <auth-protocol>]
+                 [--os-project-name <auth-project-name>]
+                 [--os-trust-id <auth-trust-id>]
+                 [--os-domain-name <auth-domain-name>]
+                 [--os-user-domain-id <auth-user-domain-id>]
+                 [--os-access-token-type <auth-access-token-type>]
+                 [--os-code <auth-code>]
+                 [--os-default-domain-name <auth-default-domain-name>]
+                 [--os-access-token-endpoint <auth-access-token-endpoint>]
+                 [--os-access-token <auth-access-token>]
+                 [--os-domain-id <auth-domain-id>]
+                 [--os-user-domain-name <auth-user-domain-name>]
+                 [--os-openid-scope <auth-openid-scope>]
+                 [--os-user-id <auth-user-id>]
+                 [--os-identity-provider <auth-identity-provider>]
+                 [--os-username <auth-username>]
+                 [--os-auth-url <auth-auth-url>]
+                 [--os-client-secret <auth-client-secret>]
+                 [--os-default-domain-id <auth-default-domain-id>]
+                 [--os-discovery-endpoint <auth-discovery-endpoint>]
+                 [--os-client-id <auth-client-id>]
+                 [--os-project-domain-name <auth-project-domain-name>]
+                 [--os-password <auth-password>]
+                 [--os-redirect-uri <auth-redirect-uri>]
+                 [--os-endpoint <auth-endpoint>] [--os-url <auth-url>]
+                 [--os-token <auth-token>] [--os-passcode <auth-passcode>]
+                 [--os-project-id <auth-project-id>]
+
+Command-line interface to the OpenStack APIs
+
+optional arguments:
+  --version             show program's version number and exit
+  -v, --verbose         Increase verbosity of output. Can be repeated.
+  -q, --quiet           Suppress output except warnings and errors.
+  --log-file LOG_FILE   Specify a file to log output. Disabled by default.
+  -h, --help            Show help message and exit.
+  --debug               Show tracebacks on errors.
+  --os-cloud <cloud-config-name>
+                        Cloud name in clouds.yaml (Env: OS_CLOUD)
+  --os-region-name <auth-region-name>
+                        Authentication region name (Env: OS_REGION_NAME)
+  --os-cacert <ca-bundle-file>
+                        CA certificate bundle file (Env: OS_CACERT)
+  --os-cert <certificate-file>
+                        Client certificate bundle file (Env: OS_CERT)
+  --os-key <key-file>   Client certificate key file (Env: OS_KEY)
+  --verify              Verify server certificate (default)
+  --insecure            Disable server certificate verification
+  --os-default-domain <auth-domain>
+                        Default domain ID, default=default. (Env:
+                        OS_DEFAULT_DOMAIN)
+  --os-interface <interface>
+                        Select an interface type. Valid interface types:
+                        [admin, public, internal]. (Env: OS_INTERFACE)
+  --timing              Print API call timing info
+  --os-beta-command     Enable beta commands which are subject to change
+  --os-compute-api-version <compute-api-version>
+                        Compute API version, default=2.1 (Env:
+                        OS_COMPUTE_API_VERSION)
+  --os-network-api-version <network-api-version>
+                        Network API version, default=2.0 (Env:
+                        OS_NETWORK_API_VERSION)
+  --os-image-api-version <image-api-version>
+                        Image API version, default=2 (Env:
+                        OS_IMAGE_API_VERSION)
+  --os-volume-api-version <volume-api-version>
+                        Volume API version, default=2 (Env:
+                        OS_VOLUME_API_VERSION)
+  --os-identity-api-version <identity-api-version>
+                        Identity API version, default=3 (Env:
+                        OS_IDENTITY_API_VERSION)
+  --os-object-api-version <object-api-version>
+                        Object API version, default=1 (Env:
+                        OS_OBJECT_API_VERSION)
+  --os-orchestration-api-version <orchestration-api-version>
+                        Orchestration API version, default=1 (Env:
+                        OS_ORCHESTRATION_API_VERSION)
+  --os-auth-type <auth-type>
+                        Select an authentication type. Available types:
+                        v2token, password, admin_token, v3oidcauthcode,
+                        v2password, v3password, v3tokenlessauth,
+                        v3oidcaccesstoken, token_endpoint, token,
+                        v3oidcclientcredentials, noauth, v1password, v3token,
+                        v3totp, v3oidcpassword. Default: selected based on
+                        --os-username/--os-token (Env: OS_AUTH_TYPE)
+  --os-project-domain-id <auth-project-domain-id>
+                        With password: Domain ID containing project With
+                        v3oidcauthcode: Domain ID containing project With
+                        v3password: Domain ID containing project With
+                        v3tokenlessauth: Domain ID containing project With
+                        v3oidcaccesstoken: Domain ID containing project With
+                        token: Domain ID containing project With
+                        v3oidcclientcredentials: Domain ID containing project
+                        With v3token: Domain ID containing project With
+                        v3totp: Domain ID containing project With
+                        v3oidcpassword: Domain ID containing project (Env:
+                        OS_PROJECT_DOMAIN_ID)
+  --os-protocol <auth-protocol>
+                        With v3oidcauthcode: Protocol for federated plugin
+                        With v3oidcaccesstoken: Protocol for federated plugin
+                        With v3oidcclientcredentials: Protocol for federated
+                        plugin With v3oidcpassword: Protocol for federated
+                        plugin (Env: OS_PROTOCOL)
+  --os-project-name <auth-project-name>
+                        With password: Project name to scope to With
+                        v3oidcauthcode: Project name to scope to With
+                        v3password: Project name to scope to With
+                        v3tokenlessauth: Project name to scope to With
+                        v3oidcaccesstoken: Project name to scope to With
+                        token: Project name to scope to With
+                        v3oidcclientcredentials: Project name to scope to With
+                        v1password: Swift account to use With v3token: Project
+                        name to scope to With v3totp: Project name to scope to
+                        With v3oidcpassword: Project name to scope to (Env:
+                        OS_PROJECT_NAME)
+  --os-trust-id <auth-trust-id>
+                        With v2token: Trust ID With password: Trust ID With
+                        v3oidcauthcode: Trust ID With v2password: Trust ID
+                        With v3password: Trust ID With v3oidcaccesstoken:
+                        Trust ID With token: Trust ID With
+                        v3oidcclientcredentials: Trust ID With v3token: Trust
+                        ID With v3totp: Trust ID With v3oidcpassword: Trust ID
+                        (Env: OS_TRUST_ID)
+  --os-domain-name <auth-domain-name>
+                        With password: Domain name to scope to With
+                        v3oidcauthcode: Domain name to scope to With
+                        v3password: Domain name to scope to With
+                        v3tokenlessauth: Domain name to scope to With
+                        v3oidcaccesstoken: Domain name to scope to With token:
+                        Domain name to scope to With v3oidcclientcredentials:
+                        Domain name to scope to With v3token: Domain name to
+                        scope to With v3totp: Domain name to scope to With
+                        v3oidcpassword: Domain name to scope to (Env:
+                        OS_DOMAIN_NAME)
+  --os-user-domain-id <auth-user-domain-id>
+                        With password: User's domain id With v3password:
+                        User's domain id With v3totp: User's domain id (Env:
+                        OS_USER_DOMAIN_ID)
+  --os-access-token-type <auth-access-token-type>
+                        With v3oidcauthcode: OAuth 2.0 Authorization Server
+                        Introspection token type, it is used to decide which
+                        type of token will be used when processing token
+                        introspection. Valid values are: "access_token" or
+                        "id_token" With v3oidcclientcredentials: OAuth 2.0
+                        Authorization Server Introspection token type, it is
+                        used to decide which type of token will be used when
+                        processing token introspection. Valid values are:
+                        "access_token" or "id_token" With v3oidcpassword:
+                        OAuth 2.0 Authorization Server Introspection token
+                        type, it is used to decide which type of token will be
+                        used when processing token introspection. Valid values
+                        are: "access_token" or "id_token" (Env:
+                        OS_ACCESS_TOKEN_TYPE)
+  --os-code <auth-code>
+                        With v3oidcauthcode: OAuth 2.0 Authorization Code
+                        (Env: OS_CODE)
+  --os-default-domain-name <auth-default-domain-name>
+                        With password: Optional domain name to use with v3 API
+                        and v2 parameters. It will be used for both the user
+                        and project domain in v3 and ignored in v2
+                        authentication. With token: Optional domain name to
+                        use with v3 API and v2 parameters. It will be used for
+                        both the user and project domain in v3 and ignored in
+                        v2 authentication. (Env: OS_DEFAULT_DOMAIN_NAME)
+  --os-access-token-endpoint <auth-access-token-endpoint>
+                        With v3oidcauthcode: OpenID Connect Provider Token
+                        Endpoint. Note that if a discovery document is being
+                        passed this option will override the endpoint provided
+                        by the server in the discovery document. With
+                        v3oidcclientcredentials: OpenID Connect Provider Token
+                        Endpoint. Note that if a discovery document is being
+                        passed this option will override the endpoint provided
+                        by the server in the discovery document. With
+                        v3oidcpassword: OpenID Connect Provider Token
+                        Endpoint. Note that if a discovery document is being
+                        passed this option will override the endpoint provided
+                        by the server in the discovery document. (Env:
+                        OS_ACCESS_TOKEN_ENDPOINT)
+  --os-access-token <auth-access-token>
+                        With v3oidcaccesstoken: OAuth 2.0 Access Token (Env:
+                        OS_ACCESS_TOKEN)
+  --os-domain-id <auth-domain-id>
+                        With password: Domain ID to scope to With
+                        v3oidcauthcode: Domain ID to scope to With v3password:
+                        Domain ID to scope to With v3tokenlessauth: Domain ID
+                        to scope to With v3oidcaccesstoken: Domain ID to scope
+                        to With token: Domain ID to scope to With
+                        v3oidcclientcredentials: Domain ID to scope to With
+                        v3token: Domain ID to scope to With v3totp: Domain ID
+                        to scope to With v3oidcpassword: Domain ID to scope to
+                        (Env: OS_DOMAIN_ID)
+  --os-user-domain-name <auth-user-domain-name>
+                        With password: User's domain name With v3password:
+                        User's domain name With v3totp: User's domain name
+                        (Env: OS_USER_DOMAIN_NAME)
+  --os-openid-scope <auth-openid-scope>
+                        With v3oidcauthcode: OpenID Connect scope that is
+                        requested from authorization server. Note that the
+                        OpenID Connect specification states that "openid" must
+                        be always specified. With v3oidcclientcredentials:
+                        OpenID Connect scope that is requested from
+                        authorization server. Note that the OpenID Connect
+                        specification states that "openid" must be always
+                        specified. With v3oidcpassword: OpenID Connect scope
+                        that is requested from authorization server. Note that
+                        the OpenID Connect specification states that "openid"
+                        must be always specified. (Env: OS_OPENID_SCOPE)
+  --os-user-id <auth-user-id>
+                        With password: User id With v2password: User ID to
+                        login with With v3password: User ID With noauth: User
+                        ID With v3totp: User ID (Env: OS_USER_ID)
+  --os-identity-provider <auth-identity-provider>
+                        With v3oidcauthcode: Identity Provider's name With
+                        v3oidcaccesstoken: Identity Provider's name With
+                        v3oidcclientcredentials: Identity Provider's name With
+                        v3oidcpassword: Identity Provider's name (Env:
+                        OS_IDENTITY_PROVIDER)
+  --os-username <auth-username>
+                        With password: Username With v2password: Username to
+                        login with With v3password: Username With v1password:
+                        Username to login with With v3totp: Username With
+                        v3oidcpassword: Username (Env: OS_USERNAME)
+  --os-auth-url <auth-auth-url>
+                        With v2token: Authentication URL With password:
+                        Authentication URL With v3oidcauthcode: Authentication
+                        URL With v2password: Authentication URL With
+                        v3password: Authentication URL With v3tokenlessauth:
+                        Authentication URL With v3oidcaccesstoken:
+                        Authentication URL With token: Authentication URL With
+                        v3oidcclientcredentials: Authentication URL With
+                        v1password: Authentication URL With v3token:
+                        Authentication URL With v3totp: Authentication URL
+                        With v3oidcpassword: Authentication URL (Env:
+                        OS_AUTH_URL)
+  --os-client-secret <auth-client-secret>
+                        With v3oidcauthcode: OAuth 2.0 Client Secret With
+                        v3oidcclientcredentials: OAuth 2.0 Client Secret With
+                        v3oidcpassword: OAuth 2.0 Client Secret (Env:
+                        OS_CLIENT_SECRET)
+  --os-default-domain-id <auth-default-domain-id>
+                        With password: Optional domain ID to use with v3 and
+                        v2 parameters. It will be used for both the user and
+                        project domain in v3 and ignored in v2 authentication.
+                        With token: Optional domain ID to use with v3 and v2
+                        parameters. It will be used for both the user and
+                        project domain in v3 and ignored in v2 authentication.
+                        (Env: OS_DEFAULT_DOMAIN_ID)
+  --os-discovery-endpoint <auth-discovery-endpoint>
+                        With v3oidcauthcode: OpenID Connect Discovery Document
+                        URL. The discovery document will be used to obtain the
+                        values of the access token endpoint and the
+                        authentication endpoint. This URL should look like
+                        https://idp.example.org/.well-known/openid-
+                        configuration With v3oidcclientcredentials: OpenID
+                        Connect Discovery Document URL. The discovery document
+                        will be used to obtain the values of the access token
+                        endpoint and the authentication endpoint. This URL
+                        should look like https://idp.example.org/.well-known
+                        /openid-configuration With v3oidcpassword: OpenID
+                        Connect Discovery Document URL. The discovery document
+                        will be used to obtain the values of the access token
+                        endpoint and the authentication endpoint. This URL
+                        should look like https://idp.example.org/.well-known
+                        /openid-configuration (Env: OS_DISCOVERY_ENDPOINT)
+  --os-client-id <auth-client-id>
+                        With v3oidcauthcode: OAuth 2.0 Client ID With
+                        v3oidcclientcredentials: OAuth 2.0 Client ID With
+                        v3oidcpassword: OAuth 2.0 Client ID (Env:
+                        OS_CLIENT_ID)
+  --os-project-domain-name <auth-project-domain-name>
+                        With password: Domain name containing project With
+                        v3oidcauthcode: Domain name containing project With
+                        v3password: Domain name containing project With
+                        v3tokenlessauth: Domain name containing project With
+                        v3oidcaccesstoken: Domain name containing project With
+                        token: Domain name containing project With
+                        v3oidcclientcredentials: Domain name containing
+                        project With v3token: Domain name containing project
+                        With v3totp: Domain name containing project With
+                        v3oidcpassword: Domain name containing project (Env:
+                        OS_PROJECT_DOMAIN_NAME)
+  --os-password <auth-password>
+                        With password: User's password With v2password:
+                        Password to use With v3password: User's password With
+                        v1password: Password to use With v3oidcpassword:
+                        Password (Env: OS_PASSWORD)
+  --os-redirect-uri <auth-redirect-uri>
+                        With v3oidcauthcode: OpenID Connect Redirect URL (Env:
+                        OS_REDIRECT_URI)
+  --os-endpoint <auth-endpoint>
+                        With admin_token: The endpoint that will always be
+                        used With noauth: Cinder endpoint (Env: OS_ENDPOINT)
+  --os-url <auth-url>   With token_endpoint: Specific service endpoint to use
+                        (Env: OS_URL)
+  --os-token <auth-token>
+                        With v2token: Token With admin_token: The token that
+                        will always be used With token_endpoint:
+                        Authentication token to use With token: Token to
+                        authenticate with With v3token: Token to authenticate
+                        with (Env: OS_TOKEN)
+  --os-passcode <auth-passcode>
+                        With v3totp: User's TOTP passcode (Env: OS_PASSCODE)
+  --os-project-id <auth-project-id>
+                        With password: Project ID to scope to With
+                        v3oidcauthcode: Project ID to scope to With
+                        v3password: Project ID to scope to With
+                        v3tokenlessauth: Project ID to scope to With
+                        v3oidcaccesstoken: Project ID to scope to With token:
+                        Project ID to scope to With v3oidcclientcredentials:
+                        Project ID to scope to With noauth: Project ID With
+                        v3token: Project ID to scope to With v3totp: Project
+                        ID to scope to With v3oidcpassword: Project ID to
+                        scope to (Env: OS_PROJECT_ID)
+
+Commands:
+  address scope create  Create a new Address Scope
+  address scope delete  Delete address scope(s)
+  address scope list  List address scopes
+  address scope set  Set address scope properties
+  address scope show  Display address scope details
+  aggregate add host  Add host to aggregate
+  aggregate create  Create a new aggregate
+  aggregate delete  Delete existing aggregate(s)
+  aggregate list  List all aggregates
+  aggregate remove host  Remove host from aggregate
+  aggregate set  Set aggregate properties
+  aggregate show  Display aggregate details
+  aggregate unset  Unset aggregate properties
+  availability zone list  List availability zones and their status
+  bgpvpn create  Create BGP VPN resource
+  bgpvpn delete  Delete BGP VPN resource(s)
+  bgpvpn list    List BGP VPN resources
+  bgpvpn network association create  Create a BGP VPN network association
+  bgpvpn network association delete  Delete a BGP VPN network association(s) for a given BGP VPN
+  bgpvpn network association list  List BGP VPN network associations for a given BGP VPN
+  bgpvpn network association show  Show information of a given BGP VPN network association
+  bgpvpn router association create  Create a BGP VPN router association
+  bgpvpn router association delete  Delete a BGP VPN router association(s) for a given BGP VPN
+  bgpvpn router association list  List BGP VPN router associations for a given BGP VPN
+  bgpvpn router association show  Show information of a given BGP VPN router association
+  bgpvpn set     Set BGP VPN properties
+  bgpvpn show    Show information of a given BGP VPN
+  bgpvpn unset   Unset BGP VPN properties
+  catalog list   List services in the service catalog
+  catalog show   Display service catalog details
+  command list   List recognized commands by group
+  complete       print bash completion command
+  compute agent create  Create compute agent
+  compute agent delete  Delete compute agent(s)
+  compute agent list  List compute agents
+  compute agent set  Set compute agent properties
+  compute service delete  Delete compute service(s)
+  compute service list  List compute services
+  compute service set  Set compute service properties
+  configuration show  Display configuration details
+  consistency group add volume  Add volume(s) to consistency group
+  consistency group create  Create new consistency group.
+  consistency group delete  Delete consistency group(s).
+  consistency group list  List consistency groups.
+  consistency group remove volume  Remove volume(s) from consistency group
+  consistency group set  Set consistency group properties
+  consistency group show  Display consistency group details.
+  consistency group snapshot create  Create new consistency group snapshot.
+  consistency group snapshot delete  Delete consistency group snapshot(s).
+  consistency group snapshot list  List consistency group snapshots.
+  consistency group snapshot show  Display consistency group snapshot details
+  console log show  Show server's console output
+  console url show  Show server's remote console URL
+  container create  Create new container
+  container delete  Delete container
+  container list  List containers
+  container save  Save container contents locally
+  container set  Set container properties
+  container show  Display container details
+  container unset  Unset container properties
+  ec2 credentials create  Create EC2 credentials
+  ec2 credentials delete  Delete EC2 credentials
+  ec2 credentials list  List EC2 credentials
+  ec2 credentials show  Display EC2 credentials details
+  endpoint create  Create new endpoint
+  endpoint delete  Delete endpoint(s)
+  endpoint list  List endpoints
+  endpoint show  Display endpoint details
+  extension list  List API extensions
+  extension show  Show API extension
+  firewall group create  Create a new firewall group
+  firewall group delete  Delete firewall group(s)
+  firewall group list  List firewall groups
+  firewall group policy add rule  Insert a rule into a given firewall policy
+  firewall group policy create  Create a new firewall policy
+  firewall group policy delete  Delete firewall policy(s)
+  firewall group policy list  List firewall policies
+  firewall group policy remove rule  Remove a rule from a given firewall policy
+  firewall group policy set  Set firewall policy properties
+  firewall group policy show  Display firewall policy details
+  firewall group policy unset  Unset firewall policy properties
+  firewall group rule create  Create a new firewall rule
+  firewall group rule delete  Delete firewall rule(s)
+  firewall group rule list  List firewall rules that belong to a given tenant
+  firewall group rule set  Set firewall rule properties
+  firewall group rule show  Display firewall rule details
+  firewall group rule unset  Unset firewall rule properties
+  firewall group set  Set firewall group properties
+  firewall group show  Display firewall group details
+  firewall group unset  Unset firewall group properties
+  flavor create  Create new flavor
+  flavor delete  Delete flavor(s)
+  flavor list    List flavors
+  flavor set     Set flavor properties
+  flavor show    Display flavor details
+  flavor unset   Unset flavor properties
+  floating ip create  Create floating IP
+  floating ip delete  Delete floating IP(s)
+  floating ip list  List floating IP(s)
+  floating ip pool list  List pools of floating IP addresses
+  floating ip set  Set floating IP Properties
+  floating ip show  Display floating IP details
+  floating ip unset  Unset floating IP Properties
+  help           print detailed help for another command
+  host list      List hosts
+  host set       Set host properties
+  host show      Display host details
+  hypervisor list  List hypervisors
+  hypervisor show  Display hypervisor details
+  hypervisor stats show  Display hypervisor stats details
+  image add project  Associate project with image
+  image create   Create/upload an image
+  image delete   Delete image(s)
+  image list     List available images
+  image remove project  Disassociate project with image
+  image save     Save an image locally
+  image set      Set image properties
+  image show     Display image details
+  image unset    Unset image tags and properties
+  ip availability list  List IP availability for network
+  ip availability show  Show network IP availability details
+  keypair create  Create new public or private key for server ssh access
+  keypair delete  Delete public or private key(s)
+  keypair list   List key fingerprints
+  keypair show   Display key details
+  limits show    Show compute and block storage limits
+  module list    List module versions
+  network agent add network  Add network to an agent
+  network agent delete  Delete network agent(s)
+  network agent list  List network agents
+  network agent remove network  Remove network from an agent.
+  network agent set  Set network agent properties
+  network agent show  Display network agent details
+  network auto allocated topology create  Create the  auto allocated topology for project
+  network auto allocated topology delete  Delete auto allocated topology for project
+  network create  Create new network
+  network delete  Delete network(s)
+  network flavor add profile  Add a service profile to a network flavor
+  network flavor create  Create new network flavor
+  network flavor delete  Delete network flavors
+  network flavor list  List network flavors
+  network flavor profile create  Create new network flavor profile
+  network flavor profile delete  Delete network flavor profile
+  network flavor profile list  List network flavor profile(s)
+  network flavor profile set  Set network flavor profile properties
+  network flavor profile show  Display network flavor profile details
+  network flavor remove profile  Remove service profile from network flavor
+  network flavor set  Set network flavor properties
+  network flavor show  Display network flavor details
+  network list   List networks
+  network meter create  Create network meter
+  network meter delete  Delete network meter
+  network meter list  List network meters
+  network meter rule create  Create a new meter rule
+  network meter rule delete  Delete meter rule(s)
+  network meter rule list  List meter rules
+  network meter rule show  Display meter rules details
+  network meter show  Show network meter
+  network qos policy create  Create a QoS policy
+  network qos policy delete  Delete Qos Policy(s)
+  network qos policy list  List QoS policies
+  network qos policy set  Set QoS policy properties
+  network qos policy show  Display QoS policy details
+  network qos rule create  Create new Network QoS rule
+  network qos rule delete  Delete Network QoS rule
+  network qos rule list  List Network QoS rules
+  network qos rule set  Set Network QoS rule properties
+  network qos rule show  Display Network QoS rule details
+  network qos rule type list  List QoS rule types
+  network rbac create  Create network RBAC policy
+  network rbac delete  Delete network RBAC policy(s)
+  network rbac list  List network RBAC policies
+  network rbac set  Set network RBAC policy properties
+  network rbac show  Display network RBAC policy details
+  network segment create  Create new network segment
+  network segment delete  Delete network segment(s)
+  network segment list  List network segments
+  network segment set  Set network segment properties
+  network segment show  Display network segment details
+  network service provider list  List Service Providers
+  network set    Set network properties
+  network show   Show network details
+  network subport list  List all subports for a given network trunk
+  network trunk create  Create a network trunk for a given project
+  network trunk delete  Delete a given network trunk
+  network trunk list  List all network trunks
+  network trunk set  Set network trunk properties
+  network trunk show  Show information of a given network trunk
+  network trunk unset  Unset subports from a given network trunk
+  object create  Upload object to container
+  object delete  Delete object from container
+  object list    List objects
+  object save    Save object locally
+  object set     Set object properties
+  object show    Display object details
+  object store account set  Set account properties
+  object store account show  Display account details
+  object store account unset  Unset account properties
+  object unset   Unset object properties
+  orchestration build info  Retrieve build information.
+  orchestration resource type list  List resource types.
+  orchestration resource type show  Show details and optionally generate a template for a resource type.
+  orchestration service list  List the Heat engines.
+  orchestration template function list  List the available functions.
+  orchestration template validate  Validate a template
+  orchestration template version list  List the available template versions.
+  port create    Create a new port
+  port delete    Delete port(s)
+  port list      List ports
+  port set       Set port properties
+  port show      Display port details
+  port unset     Unset port properties
+  project create  Create new project
+  project delete  Delete project(s)
+  project list   List projects
+  project set    Set project properties
+  project show   Display project details
+  project unset  Unset project properties
+  quota list     List quotas for all projects with non-default quota values
+  quota set      Set quotas for project or class
+  quota show     Show quotas for project or class
+  role add       Add role to project:user
+  role assignment list  List role assignments
+  role create    Create new role
+  role delete    Delete role(s)
+  role list      List roles
+  role remove    Remove role from project : user
+  role show      Display role details
+  router add port  Add a port to a router
+  router add subnet  Add a subnet to a router
+  router create  Create a new router
+  router delete  Delete router(s)
+  router list    List routers
+  router remove port  Remove a port from a router
+  router remove subnet  Remove a subnet from a router
+  router set     Set router properties
+  router show    Display router details
+  router unset   Unset router properties
+  security group create  Create a new security group
+  security group delete  Delete security group(s)
+  security group list  List security groups
+  security group rule create  Create a new security group rule
+  security group rule delete  Delete security group rule(s)
+  security group rule list  List security group rules
+  security group rule show  Display security group rule details
+  security group set  Set security group properties
+  security group show  Display security group details
+  server add fixed ip  Add fixed IP address to server
+  server add floating ip  Add floating IP address to server
+  server add port  Add port to server
+  server add security group  Add security group to server
+  server add volume  Add volume to server
+  server backup create  Create a server backup image
+  server create  Create a new server
+  server delete  Delete server(s)
+  server dump create  Create a dump file in server(s)
+  server event list  List recent events of a server
+  server event show  Show server event details
+  server group create  Create a new server group.
+  server group delete  Delete existing server group(s).
+  server group list  List all server groups.
+  server group show  Display server group details.
+  server image create  Create a new server disk image from an existing server
+  server list    List servers
+  server lock    Lock server(s). A non-admin user will not be able to execute actions
+  server migrate  Migrate server to different host
+  server pause   Pause server(s)
+  server reboot  Perform a hard or soft server reboot
+  server rebuild  Rebuild server
+  server remove fixed ip  Remove fixed IP address from server
+  server remove floating ip  Remove floating IP address from server
+  server remove port  Remove port from server
+  server remove security group  Remove security group from server
+  server remove volume  Remove volume from server
+  server rescue  Put server in rescue mode
+  server resize  Scale server to a new flavor
+  server restore  Restore server(s)
+  server resume  Resume server(s)
+  server set     Set server properties
+  server shelve  Shelve server(s)
+  server show    Show server details
+  server ssh     SSH to server
+  server start   Start server(s).
+  server stop    Stop server(s).
+  server suspend  Suspend server(s)
+  server unlock  Unlock server(s)
+  server unpause  Unpause server(s)
+  server unrescue  Restore server from rescue mode
+  server unset   Unset server properties
+  server unshelve  Unshelve server(s)
+  service create  Create new service
+  service delete  Delete service(s)
+  service list   List services
+  service show   Display service details
+  snapshot create  Create new snapshot
+  snapshot delete  Delete volume snapshot(s)
+  snapshot list  List snapshots
+  snapshot set   Set snapshot properties
+  snapshot show  Display snapshot details
+  snapshot unset  Unset snapshot properties
+  software config create  Create software config
+  software config delete  Delete software configs
+  software config list  List software configs
+  software config show  Show software config details
+  software deployment create  Create a software deployment.
+  software deployment delete  Delete software deployment(s) and correlative config(s).
+  software deployment list  List software deployments.
+  software deployment metadata show  Get deployment configuration metadata for the specified server.
+  software deployment output show  Show a specific deployment output.
+  software deployment show  Show SoftwareDeployment Details.
+  stack abandon  Abandon stack and output results.
+  stack adopt    Adopt a stack.
+  stack cancel   Cancel current task for a stack.
+  stack check    Check a stack.
+  stack create   Create a stack.
+  stack delete   Delete stack(s).
+  stack environment show  Show a stack's environment.
+  stack event list  List events.
+  stack event show  Show event details.
+  stack export   Export stack data json.
+  stack failures list  Show information about failed stack resources.
+  stack file list  Show a stack's files map.
+  stack hook clear  Clear resource hooks on a given stack.
+  stack hook poll  List resources with pending hook for a stack.
+  stack list     List stacks.
+  stack output list  List stack outputs.
+  stack output show  Show stack output.
+  stack resource list  List stack resources.
+  stack resource mark unhealthy  Set resource's health.
+  stack resource metadata  Show resource metadata
+  stack resource show  Display stack resource.
+  stack resource signal  Signal a resource with optional data.
+  stack resume   Resume a stack.
+  stack show     Show stack details.
+  stack snapshot create  Create stack snapshot.
+  stack snapshot delete  Delete stack snapshot.
+  stack snapshot list  List stack snapshots.
+  stack snapshot restore  Restore stack snapshot
+  stack snapshot show  Show stack snapshot.
+  stack suspend  Suspend a stack.
+  stack template show  Display stack template.
+  stack update   Update a stack.
+  subnet create  Create a subnet
+  subnet delete  Delete subnet(s)
+  subnet list    List subnets
+  subnet pool create  Create subnet pool
+  subnet pool delete  Delete subnet pool(s)
+  subnet pool list  List subnet pools
+  subnet pool set  Set subnet pool properties
+  subnet pool show  Display subnet pool details
+  subnet pool unset  Unset subnet pool properties
+  subnet set     Set subnet properties
+  subnet show    Display subnet details
+  subnet unset   Unset subnet properties
+  token issue    Issue new token
+  token revoke   Revoke existing token
+  usage list     List resource usage per project
+  usage show     Show resource usage for a single project
+  user create    Create new user
+  user delete    Delete user(s)
+  user list      List users
+  user role list  List user-role assignments
+  user set       Set user properties
+  user show      Display user details
+  volume backup create  Create new volume backup
+  volume backup delete  Delete volume backup(s)
+  volume backup list  List volume backups
+  volume backup restore  Restore volume backup
+  volume backup set  Set volume backup properties
+  volume backup show  Display volume backup details
+  volume create  Create new volume
+  volume delete  Delete volume(s)
+  volume host failover  Failover volume host to different backend
+  volume host set  Set volume host properties
+  volume list    List volumes
+  volume migrate  Migrate volume to a new host
+  volume qos associate  Associate a QoS specification to a volume type
+  volume qos create  Create new QoS specification
+  volume qos delete  Delete QoS specification
+  volume qos disassociate  Disassociate a QoS specification from a volume type
+  volume qos list  List QoS specifications
+  volume qos set  Set QoS specification properties
+  volume qos show  Display QoS specification details
+  volume qos unset  Unset QoS specification properties
+  volume service list  List service command
+  volume service set  Set volume service properties
+  volume set     Set volume properties
+  volume show    Display volume details
+  volume snapshot create  Create new volume snapshot
+  volume snapshot delete  Delete volume snapshot(s)
+  volume snapshot list  List volume snapshots
+  volume snapshot set  Set volume snapshot properties
+  volume snapshot show  Display volume snapshot details
+  volume snapshot unset  Unset volume snapshot properties
+  volume transfer request accept  Accept volume transfer request.
+  volume transfer request create  Create volume transfer request.
+  volume transfer request delete  Delete volume transfer request(s).
+  volume transfer request list  Lists all volume transfer requests.
+  volume transfer request show  Show volume transfer request details.
+  volume type create  Create new volume type
+  volume type delete  Delete volume type(s)
+  volume type list  List volume types
+  volume type set  Set volume type properties
+  volume type show  Display volume type details
+  volume type unset  Unset volume type properties
+  volume unset   Unset volume properties
+~ ❯❯❯ openstack orchestration template validate server-landscape.yml                                                                                                                    master ◼
+usage: openstack orchestration template validate [-h]
+                                                 [-f {json,shell,table,value,yaml}]
+                                                 [-c COLUMN]
+                                                 [--max-width <integer>]
+                                                 [--print-empty] [--noindent]
+                                                 [--prefix PREFIX]
+                                                 [-e <environment>]
+                                                 [--show-nested]
+                                                 [--parameter <key=value>]
+                                                 [--ignore-errors <error1,error2,...>]
+                                                 -t <template>
+openstack orchestration template validate: error: argument -t/--template is required
+~ ❯❯❯ openstack orchestration template validate -t server-landscape.yml                                                                                                               ⏎ master ◼
+ERROR: "rg" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack orchestration template validate -t server.yml                                                                                                                         ⏎ master ◼
+Description: One VM instance
+Parameters:
+  flavor:
+    CustomConstraint: nova.flavor
+    Description: ''
+    Label: Flavor
+    NoEcho: 'false'
+    Type: String
+  image:
+    CustomConstraint: glance.image
+    Description: ''
+    Label: Image Name
+    NoEcho: 'false'
+    Type: String
+  key_pair:
+    CustomConstraint: nova.keypair
+    Description: ''
+    Label: Key Pair
+    NoEcho: 'false'
+    Type: String
+  name:
+    Description: ''
+    Label: Name of the VM
+    NoEcho: 'false'
+    Type: String
+  network:
+    CustomConstraint: neutron.network
+    Description: ''
+    Label: Network
+    NoEcho: 'false'
+    Type: String
+  security_groups:
+    Default: default
+    Description: ''
+    Label: Security Group(s)
+    NoEcho: 'false'
+    Type: CommaDelimitedList
+  zone:
+    Default: Default
+    Description: ''
+    Label: Availability Zone
+    NoEcho: 'false'
+    Type: String
+~ ❯❯❯ openstack orchestration template validate -t server-landscape.yml                                                                                                                 master ◼
+ERROR: "rg" is not a valid keyword inside a resource definition
+~ ❯❯❯ openstack orchestration build info                                                                                                                                              ⏎ master ◼
++--------+-------------------------+
+| Field  | Value                   |
++--------+-------------------------+
+| api    | {                       |
+|        |   "revision": "unknown" |
+|        | }                       |
+| engine | {                       |
+|        |   "revision": "unknown" |
+|        | }                       |
++--------+-------------------------+
+~ ❯❯❯ openstack orchestration template validate -t server-landscape.yml                                                                                                                 master ◼
+ERROR: "rg" is not a valid keyword inside a resource definition
+~ ❯❯❯ heat --version                                                                                                                                                                  ⏎ master ◼
+1.10.0
+~ ❯❯❯ openstack orchestration template validate -t server-landscape.yml                                                                                                                 master ◼
+ERROR: The Resource Type (server.yml) could not be found.
+~ ❯❯❯ openstack orchestration template validate -t server.yml                                                                                                                         ⏎ master ◼
+Description: One VM instance
+Parameters:
+  flavor:
+    CustomConstraint: nova.flavor
+    Description: ''
+    Label: Flavor
+    NoEcho: 'false'
+    Type: String
+  image:
+    CustomConstraint: glance.image
+    Description: ''
+    Label: Image Name
+    NoEcho: 'false'
+    Type: String
+  key_pair:
+    CustomConstraint: nova.keypair
+    Description: ''
+    Label: Key Pair
+    NoEcho: 'false'
+    Type: String
+  name:
+    Description: ''
+    Label: Name of the VM
+    NoEcho: 'false'
+    Type: String
+  network:
+    CustomConstraint: neutron.network
+    Description: ''
+    Label: Network
+    NoEcho: 'false'
+    Type: String
+  security_groups:
+    Default: default
+    Description: ''
+    Label: Security Group(s)
+    NoEcho: 'false'
+    Type: CommaDelimitedList
+  zone:
+    Default: Default
+    Description: ''
+    Label: Availability Zone
+    NoEcho: 'false'
+    Type: String
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: The Parameter (name) was not defined in template.
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "name=CCG2_Network_Instances;public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;key_pair=cloudgroup02;flavor=604de11c-3222-4902-8523-11cc61b5b485;image=11f6b8aa-31df-4b66-8b42-5ee9760c47ba;network=cc17G2-privnet;zone=Cloud Computing 2017;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: The Parameter (name) was not defined in template.
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1;security_group=cc17g2_security_group" CCG2_Network_Instances_Stack
+
+ERROR: The Parameter (security_group) was not defined in template.
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+ERROR: The Resource Type (server.yml) could not be found.
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+ERROR: The Resource Type (file:///Users/JulieAllard/server.yml) could not be found.
+~ ❯❯❯ openstack stack create --help                                                                                                                                                   ⏎ master ◼
+usage: openstack stack create [-h] [-f {json,shell,table,value,yaml}]
+                              [-c COLUMN] [--max-width <integer>]
+                              [--print-empty] [--noindent] [--prefix PREFIX]
+                              [-e <environment>] [--timeout <timeout>]
+                              [--pre-create <resource>] [--enable-rollback]
+                              [--parameter <key=value>]
+                              [--parameter-file <key=file>] [--wait]
+                              [--tags <tag1,tag2...>] [--dry-run] -t
+                              <template>
+                              <stack-name>
+
+Create a stack.
+
+positional arguments:
+  <stack-name>          Name of the stack to create
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -e <environment>, --environment <environment>
+                        Path to the environment. Can be specified multiple
+                        times
+  --timeout <timeout>   Stack creating timeout in minutes
+  --pre-create <resource>
+                        Name of a resource to set a pre-create hook to.
+                        Resources in nested stacks can be set using slash as a
+                        separator: nested_stack/another/my_resource. You can
+                        use wildcards to match multiple stacks or resources:
+                        nested_stack/an*/*_resource. This can be specified
+                        multiple times
+  --enable-rollback     Enable rollback on create/update failure
+  --parameter <key=value>
+                        Parameter values used to create the stack. This can be
+                        specified multiple times
+  --parameter-file <key=file>
+                        Parameter values from file used to create the stack.
+                        This can be specified multiple times. Parameter values
+                        would be the content of the file
+  --wait                Wait until stack goes to CREATE_COMPLETE or
+                        CREATE_FAILED
+  --tags <tag1,tag2...>
+                        A list of tags to associate with the stack
+  --dry-run             Do not actually perform the stack create, but show
+                        what would be created
+  -t <template>, --template <template>
+                        Path to the template
+
+output formatters:
+  output formatter options
+
+  -f {json,shell,table,value,yaml}, --format {json,shell,table,value,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, <1 to disable. You can also use
+                        the CLIFF_MAX_TERM_WIDTH environment variable, but the
+                        parameter takes precedence.
+  --print-empty         Print empty table if there is no data to show.
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+~ ❯❯❯ ls                                                                                                                                                                                master ◼
+Applications                Library                     anaconda                    exit                        openstack_notes_assignment2 web_client.py
+Desktop                     Movies                      camera                      exit.pub                    responsive-wedding          wedding
+Documents                   Music                       cc17-group02-openrc.sh      firesystem                  server-backup.yml
+Downloads                   OneDrive                    cc17g2.pem                  iolite-developer-resources  server-landscape-backup.yml
+Dropbox                     Pictures                    cloudgroup2.key             iolite.jar                  server-landscape.yml
+Google Drive                Public                      cloudgroup2.key.pub         logs                        server.yml
+Java                        TUBCloudComputingGroup2     devenv-key.pem              mini-dbs-grp2               trifacta
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+ERROR: The Resource Type (/Users/JulieAllard/server.yml) could not be found.
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+ERROR: The Resource Type (server.yml) could not be found.
+~ ❯❯❯ heat template verions                                                                                                                                                           ⏎ master ◼
+usage: heat [--version] [-d] [-v] [--api-timeout API_TIMEOUT]
+            [--os-no-client-auth] [--heat-url HEAT_URL]
+            [--heat-api-version HEAT_API_VERSION] [--include-password] [-k]
+            [--os-cert OS_CERT] [--cert-file OS_CERT] [--os-key OS_KEY]
+            [--key-file OS_KEY] [--os-cacert <ca-certificate-file>]
+            [--ca-file OS_CACERT] [--os-username OS_USERNAME]
+            [--os-user-id OS_USER_ID] [--os-user-domain-id OS_USER_DOMAIN_ID]
+            [--os-user-domain-name OS_USER_DOMAIN_NAME]
+            [--os-project-id OS_PROJECT_ID]
+            [--os-project-name OS_PROJECT_NAME]
+            [--os-project-domain-id OS_PROJECT_DOMAIN_ID]
+            [--os-project-domain-name OS_PROJECT_DOMAIN_NAME]
+            [--os-password OS_PASSWORD] [--os-tenant-id OS_TENANT_ID]
+            [--os-tenant-name OS_TENANT_NAME] [--os-auth-url OS_AUTH_URL]
+            [--os-region-name OS_REGION_NAME] [--os-auth-token OS_AUTH_TOKEN]
+            [--os-service-type OS_SERVICE_TYPE]
+            [--os-endpoint-type OS_ENDPOINT_TYPE]
+            <subcommand> ...
+heat: error: argument <subcommand>: invalid choice: 'template' (choose from 'action-check', 'action-resume', 'action-suspend', 'build-info', 'config-create', 'config-delete', 'config-list', 'config-show', 'deployment-create', 'deployment-delete', 'deployment-list', 'deployment-metadata-show', 'deployment-output-show', 'deployment-show', 'event', 'event-list', 'event-show', 'hook-clear', 'hook-poll', 'output-list', 'output-show', 'resource-list', 'resource-mark-unhealthy', 'resource-metadata', 'resource-show', 'resource-signal', 'resource-template', 'resource-type-list', 'resource-type-show', 'resource-type-template', 'service-list', 'snapshot-delete', 'snapshot-list', 'snapshot-show', 'stack-abandon', 'stack-adopt', 'stack-cancel-update', 'stack-create', 'stack-delete', 'stack-list', 'stack-preview', 'stack-restore', 'stack-show', 'stack-snapshot', 'stack-update', 'template-function-list', 'template-show', 'template-validate', 'template-version-list', 'bash-completion', 'help', 'bash_completion')
+~ ❯❯❯ heat template-version-list                                                                                                                                                      ⏎ master ◼
+WARNING (shell) "heat template-version-list" is deprecated, please use "openstack orchestration template version list" instead
++--------------------------------------+------+
+| version                              | type |
++--------------------------------------+------+
+| AWSTemplateFormatVersion.2010-09-09  | cfn  |
+| HeatTemplateFormatVersion.2012-12-12 | cfn  |
+| heat_template_version.2013-05-23     | hot  |
+| heat_template_version.2014-10-16     | hot  |
+| heat_template_version.2015-04-30     | hot  |
+| heat_template_version.2015-10-15     | hot  |
+| heat_template_version.2016-04-08     | hot  |
++--------------------------------------+------+
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+ERROR: The Resource Type (server.yml) could not be found.
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+ERROR: The Resource Type (server.yml) could not be found.
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+ERROR: The Parameter (network) was not provided.
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+Error parsing template file:///Users/JulieAllard/server-landscape.yml while scanning a plain scalar
+  in "<unicode string>", line 111, column 24:
+                network: { get_resource:private_net }
+                           ^
+found unexpected ':'
+  in "<unicode string>", line 111, column 36:
+                network: { get_resource:private_net }
+                                       ^
+Please check http://pyyaml.org/wiki/YAMLColonInFlowContext for details.
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+ERROR: Failed to validate: Property error: resources[0].properties: Unknown Property name
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+Error parsing template file:///Users/JulieAllard/server-landscape.yml while parsing a block mapping
+  in "<unicode string>", line 71, column 5:
+        private_net:
+        ^
+expected <block end>, but found '<block mapping start>'
+  in "<unicode string>", line 140, column 9:
+            properties:
+            ^
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+Error parsing template file:///Users/JulieAllard/server-landscape.yml while parsing a block mapping
+  in "<unicode string>", line 71, column 5:
+        private_net:
+        ^
+expected <block end>, but found '<block mapping start>'
+  in "<unicode string>", line 140, column 9:
+            properties:
+            ^
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+ERROR: Property error: : resources.port1.properties.name: : The Parameter (frontend_name) was not provided.
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+ERROR: u'u\'"str_replace" syntax should be str_replace:\\n              template: This is var1 template var2\\n              params:\\n                var1: a\\n                var2: string\'\n
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+Error parsing template file:///Users/JulieAllard/server-landscape.yml while parsing a block mapping
+  in "<unicode string>", line 71, column 5:
+        private_net:
+        ^
+expected <block end>, but found '<block mapping start>'
+  in "<unicode string>", line 140, column 9:
+            properties:
+            ^
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+Error parsing template file:///Users/JulieAllard/server-landscape.yml while parsing a block mapping
+  in "<unicode string>", line 71, column 5:
+        private_net:
+        ^
+expected <block end>, but found '<block mapping start>'
+  in "<unicode string>", line 140, column 9:
+            properties:
+            ^
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+ERROR: u'u\'"str_replace" syntax should be str_replace:\\n              template: This is var1 template var2\\n              params:\\n                var1: a\\n                var2: string\'\n
+~ ❯❯❯ openstack orchestration validate template server-landscape.yml                                                                                                                  ⏎ master ◼
+openstack: 'orchestration validate template server-landscape.yml' is not an openstack command. See 'openstack --help'.
+Did you mean one of these?
+  orchestration build info
+  orchestration resource type list
+  orchestration resource type show
+  orchestration service list
+  orchestration template function list
+  orchestration template validate
+  orchestration template version list
+  configuration show
+~ ❯❯❯ openstack orchestration template validate server-landscape.yml                                                                                                                  ⏎ master ◼
+usage: openstack orchestration template validate [-h]
+                                                 [-f {json,shell,table,value,yaml}]
+                                                 [-c COLUMN]
+                                                 [--max-width <integer>]
+                                                 [--print-empty] [--noindent]
+                                                 [--prefix PREFIX]
+                                                 [-e <environment>]
+                                                 [--show-nested]
+                                                 [--parameter <key=value>]
+                                                 [--ignore-errors <error1,error2,...>]
+                                                 -t <template>
+openstack orchestration template validate: error: argument -t/--template is required
+~ ❯❯❯ openstack orchestration template validate -t server-landscape.yml                                                                                                               ⏎ master ◼
+ERROR: u'u\'"str_replace" syntax should be str_replace:\\n              template: This is var1 template var2\\n              params:\\n                var1: a\\n                var2: string\'\n
+~ ❯❯❯ openstack orchestration template validate -t server-landscape.yml                                                                                                               ⏎ master ◼
+ERROR: Output validation error: outputs.ip.value: The specified reference "instance" (in unknown) is incorrect.
+~ ❯❯❯ openstack orchestration template validate -t server-landscape.yml                                                                                                               ⏎ master ◼
+ERROR: Output validation error: outputs.ip: Each Output must contain a Value key.
+~ ❯❯❯ openstack orchestration template validate -t server-landscape.yml                                                                                                               ⏎ master ◼
+Description: Three VM instances
+Parameters:
+  private_net_cidr:
+    Description: Private network address (CIDR notation)
+    Label: private_net_cidr
+    NoEcho: 'false'
+    Type: String
+  private_net_gateway:
+    Description: Private network gateway address
+    Label: private_net_gateway
+    NoEcho: 'false'
+    Type: String
+  private_net_name:
+    Description: Name of private network to be created
+    Label: private_net_name
+    NoEcho: 'false'
+    Type: String
+  private_subnet_name:
+    Description: Name of private sub network to be created
+    Label: private_subnet_name
+    NoEcho: 'false'
+    Type: String
+  public_net:
+    Description: ID or name of public network for which floating IP addresses will
+      be allocated
+    Label: public_net
+    NoEcho: 'false'
+    Type: String
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
++---------------------+--------------------------------------+
+| Field               | Value                                |
++---------------------+--------------------------------------+
+| id                  | c263454c-268e-4dee-b5b3-892d3e198041 |
+| stack_name          | CCG2_Network_Instances_Stack         |
+| description         | Three VM instances                   |
+| creation_time       | 2017-06-23T15:21:18                  |
+| updated_time        | None                                 |
+| stack_status        | CREATE_IN_PROGRESS                   |
+| stack_status_reason |                                      |
++---------------------+--------------------------------------+
+~ ❯❯❯ openstack orchestration template validate -t server-landscape.yml                                                                                                                 master ◼
+Description: Three VM instances
+Parameters:
+  private_net_cidr:
+    Description: Private network address (CIDR notation)
+    Label: private_net_cidr
+    NoEcho: 'false'
+    Type: String
+  private_net_gateway:
+    Description: Private network gateway address
+    Label: private_net_gateway
+    NoEcho: 'false'
+    Type: String
+  private_net_name:
+    Description: Name of private network to be created
+    Label: private_net_name
+    NoEcho: 'false'
+    Type: String
+  private_subnet_name:
+    Description: Name of private sub network to be created
+    Label: private_subnet_name
+    NoEcho: 'false'
+    Type: String
+  public_net:
+    Description: ID or name of public network for which floating IP addresses will
+      be allocated
+    Label: public_net
+    NoEcho: 'false'
+    Type: String
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
++---------------------+--------------------------------------+
+| Field               | Value                                |
++---------------------+--------------------------------------+
+| id                  | 17a58a26-94aa-4620-b8e1-23ab14786b8d |
+| stack_name          | CCG2_Network_Instances_Stack         |
+| description         | Three VM instances                   |
+| creation_time       | 2017-06-23T15:29:03                  |
+| updated_time        | None                                 |
+| stack_status        | CREATE_IN_PROGRESS                   |
+| stack_status_reason |                                      |
++---------------------+--------------------------------------+
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
++---------------------+--------------------------------------+
+| Field               | Value                                |
++---------------------+--------------------------------------+
+| id                  | 116596c5-437f-4035-86f9-ff29c4c5c06f |
+| stack_name          | CCG2_Network_Instances_Stack         |
+| description         | Three VM instances                   |
+| creation_time       | 2017-06-23T15:30:36                  |
+| updated_time        | None                                 |
+| stack_status        | CREATE_IN_PROGRESS                   |
+| stack_status_reason |                                      |
++---------------------+--------------------------------------+
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+ERROR: The Stack (CCG2_Network_Instances_Stack) already exists.
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
+ERROR: Failed to validate: Failed to validate: resources[0]: Property error: resources.port.properties: Unknown Property security_group
+~ ❯❯❯ openstack stack create --template server-landscape.yml --parameter "public_net=tu-internal;private_net_name=cc17G2-privnet;private_subnet_name=cc17G2-subnet;private_net_cidr=10.12.1.0/24;private_net_gateway=10.12.1.1" CCG2_Network_Instances_Stack
++---------------------+--------------------------------------+
+| Field               | Value                                |
++---------------------+--------------------------------------+
+| id                  | 2e588fbf-b983-4227-8b87-254bcdc6abc9 |
+| stack_name          | CCG2_Network_Instances_Stack         |
+| description         | Three VM instances                   |
+| creation_time       | 2017-06-23T15:35:06                  |
+| updated_time        | None                                 |
+| stack_status        | CREATE_IN_PROGRESS                   |
+| stack_status_reason |                                      |
++---------------------+--------------------------------------+
+~ ❯❯❯                                                                                                                                                                                   master ◼

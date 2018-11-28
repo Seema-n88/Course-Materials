@@ -1,0 +1,50 @@
+package com.tub.inventory.src;
+
+import com.tub.common.src.TransformedOrder;
+import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.camel.component.ActiveMQComponent;
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
+import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.impl.DefaultCamelContext;
+
+import javax.jms.*;
+import java.io.IOException;
+
+/**
+ * Created by seema on 15/01/2017.
+ */
+public class InventorySystem {
+    private static Processor BillingProcessor;
+
+    static {
+        BillingProcessor = new Processor() {
+            @Override
+            public void process(Exchange exchange) throws Exception {
+                TransformedOrder order = (TransformedOrder) exchange.getIn().getBody();
+                exchange.getIn().setHeader("OrderId", order.getOrderID());
+                exchange.getIn().setBody(order);
+            }
+        };
+    }
+    public static void main(String[] args) throws Exception{
+        DefaultCamelContext ctxt = new DefaultCamelContext();
+        ActiveMQComponent activeMQComponent = ActiveMQComponent.activeMQComponent();
+        activeMQComponent.setTrustAllPackages(true);
+        ctxt.addComponent("activemq", activeMQComponent);
+
+        RouteBuilder route = new RouteBuilder() {
+            @Override
+            public void configure() throws Exception {
+                from("activemq:queue:inventory")
+                        .to("activemq:queue:aggregatorQueue");
+            }
+        };
+
+        ctxt.addRoutes(route);
+
+        ctxt.start();
+        System.in.read();
+        ctxt.stop();
+    }
+}

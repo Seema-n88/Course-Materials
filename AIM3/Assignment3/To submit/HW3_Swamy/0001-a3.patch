@@ -1,0 +1,254 @@
+From 058ccdc99b1c15be53bb1392bc70b2d1cff1d7fd Mon Sep 17 00:00:00 2001
+From: Seema-n88 <seemabharadwaj29@gmail.com>
+Date: Fri, 14 Jul 2017 08:29:05 +0200
+Subject: [PATCH] a3
+
+---
+ .../dima/aim3/classification/Classification.java   | 90 ++++++++++++++++++++--
+ .../tuberlin/dima/aim3/classification/Config.java  | 14 +++-
+ .../dima/aim3/classification/Evaluator.java        | 11 ++-
+ .../dima/aim3/classification/Training.java         |  9 ++-
+ 4 files changed, 108 insertions(+), 16 deletions(-)
+
+diff --git a/Assignment3/Classification/src/main/java/de/tuberlin/dima/aim3/classification/Classification.java b/Assignment3/Classification/src/main/java/de/tuberlin/dima/aim3/classification/Classification.java
+index 07e7a2d..4f5237d 100755
+--- a/Assignment3/Classification/src/main/java/de/tuberlin/dima/aim3/classification/Classification.java
++++ b/Assignment3/Classification/src/main/java/de/tuberlin/dima/aim3/classification/Classification.java
+@@ -18,7 +18,6 @@
+ 
+ package de.tuberlin.dima.aim3.classification;
+ 
+-
+ import com.google.common.collect.Maps;
+ import org.apache.flink.api.common.functions.MapFunction;
+ import org.apache.flink.api.common.functions.RichMapFunction;
+@@ -30,10 +29,9 @@ import org.apache.flink.api.java.tuple.Tuple3;
+ import org.apache.flink.configuration.Configuration;
+ import org.apache.flink.core.fs.FileSystem;
+ 
+-import java.util.Map;
++import java.util.*;
+ 
+ public class Classification {
+-
+     public static void main(String[] args) throws Exception {
+ 
+         ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
+@@ -44,14 +42,25 @@ public class Classification {
+         DataSet<Tuple3<String, String, Long>> conditionals = conditionalInput.map(new ConditionalReader());
+         DataSet<Tuple2<String, Long>> sums = sumInput.map(new SumReader());
+ 
++        double smoothingParameter = Config.getSmoothingParameter();
++
+         DataSource<String> testData = env.readTextFile(Config.pathToTestSet());
+ 
+-        DataSet<Tuple3<String, String, Double>> classifiedDataPoints = testData.map(new Classifier())
++        DataSet<Tuple3<String, String, Double>> classifiedDataPoints = testData.map(new Classifier(smoothingParameter))
+                 .withBroadcastSet(conditionals, "conditionals")
+                 .withBroadcastSet(sums, "sums");
+ 
+         classifiedDataPoints.writeAsCsv(Config.pathToOutput(), "\n", "\t", FileSystem.WriteMode.OVERWRITE);
+ 
++        // Secret
++        DataSource<String> secretTestData = env.readTextFile(Config.pathToSecretTestSet());
++
++        DataSet<Tuple3<String, String, Double>> secretDataPoints = secretTestData.map(new Classifier(smoothingParameter ))
++                .withBroadcastSet(conditionals, "conditionals")
++                .withBroadcastSet(sums, "sums");
++
++        secretDataPoints.writeAsCsv(Config.pathToSecretOutput(), "\n", "\t", FileSystem.WriteMode.OVERWRITE);
++
+         env.execute();
+     }
+ 
+@@ -78,12 +87,19 @@ public class Classification {
+ 
+         private final Map<String, Map<String, Long>> wordCounts = Maps.newHashMap();
+         private final Map<String, Long> wordSums = Maps.newHashMap();
++        private double smoothing;
+ 
++        public Classifier(double smootingParameter) {
++            this.smoothing = smootingParameter;
++        }
+         @Override
+         public void open(Configuration parameters) throws Exception {
+             super.open(parameters);
+ 
+-            //TODO
++            final List<Tuple3<String, String, Long>> conditionals = getRuntimeContext().getBroadcastVariable("conditionals");
++            final List<Tuple2<String, Long>> sums = getRuntimeContext().getBroadcastVariable("sums");
++            initCountPerCategory(sums);
++            initConditionalWordCounts(conditionals);
+ 
+         }
+ 
+@@ -97,10 +113,70 @@ public class Classification {
+             double maxProbability = Double.NEGATIVE_INFINITY;
+             String predictionLabel = "";
+ 
+-            //TODO
++            for (String labelVal : wordCounts.keySet()) {
++                double logProb = calculateLogProbability(labelVal, terms);
++                if (logProb > maxProbability) {
++                    maxProbability = logProb;
++                    predictionLabel = labelVal;
++                }
++            }
+ 
+-             return new Tuple3<String, String, Double>(label, predictionLabel, maxProbability);
++
++            return new Tuple3<String, String, Double>(label, predictionLabel, maxProbability);
+         }
++
++        private double calculateLogProbability(String label, String[] words) {
++            double logProb = 0.0;//= priors.get(label);
++            Map<String, Long> countsPerLabel = wordCounts.get(label);
++
++            Double num;
++            for (String word : words) {
++                Long count_word = countsPerLabel.get(word);
++                if (count_word != null) {
++                    num = count_word + this.smoothing;
++                } else {
++                    num = this.smoothing;
++                }
++                Long den = wordSums.get(label);
++                if (den == null)
++                    den = 0L;
++                double count_wihout_word =  den - num + ((wordSums.size()-1)*this.smoothing);
++
++                logProb += Math.log(num/count_wihout_word);
++            }
++
++            return logProb;
++        }
++
++        private void initCountPerCategory(List<Tuple2<String, Long>> input) {
++            for (Tuple2<String, Long> tuple : input) {
++                wordSums.put(tuple.f0, tuple.f1);
++            }
++        }
++
++        private void initConditionalWordCounts(List<Tuple3<String, String, Long>> input) {
++
++            Set<String> distinctWords = new HashSet<String>();
++
++            for (Tuple3<String, String, Long> tuple : input) {
++                distinctWords.add(tuple.f1);
++                if(wordCounts.containsKey(tuple.f0))
++                {
++                    Map<String, Long> valMap = wordCounts.get(tuple.f0);
++                    valMap.put(tuple.f1,tuple.f2);
++                    wordCounts.put(tuple.f0,valMap);
++                }
++                else
++                {
++                    Map<String, Long> valMap = new HashMap<String, Long>();
++                    valMap.put(tuple.f1,tuple.f2);
++                    wordCounts.put(tuple.f0,valMap);
++                }
++
++            }
++
++        }
++
+     }
+ 
+ }
+diff --git a/Assignment3/Classification/src/main/java/de/tuberlin/dima/aim3/classification/Config.java b/Assignment3/Classification/src/main/java/de/tuberlin/dima/aim3/classification/Config.java
+index 0b62f8c..e943a82 100755
+--- a/Assignment3/Classification/src/main/java/de/tuberlin/dima/aim3/classification/Config.java
++++ b/Assignment3/Classification/src/main/java/de/tuberlin/dima/aim3/classification/Config.java
+@@ -20,8 +20,8 @@ package de.tuberlin.dima.aim3.classification;
+ 
+ public class Config {
+ 
+-  private static final String INPUT_PATH = "<your path to the project>/src/test/resources/classification/";
+-  private static final String OUTPUT_PATH = "<some tmp directory (e.g your desktop)>";
++  private static final String INPUT_PATH = "/Users/seema/Documents/Semester2/AIM3/Assignment3/SS-2017-Assignments-master-23f94c277d2734d55a59d536744c0a7f5e649ef9/Assignment3/Classification/src/test/resources/classification/";
++  private static final String OUTPUT_PATH = "/Users/seema/Documents/Semester2/AIM3/Assignment3/";
+   private static final double SMOOTHING_PARAM = 1.0;
+ 
+   private Config() {}
+@@ -46,8 +46,16 @@ public class Config {
+     return OUTPUT_PATH + "conditionals";
+   }
+ 
+-  public static Long getSmoothingParameter() {
++  public static double getSmoothingParameter() {
+     return SMOOTHING_PARAM;
+   }
+ 
++  public static String pathToSecretTestSet() {
++    return INPUT_PATH + "secrettest.dat";
++  }
++
++  public static String pathToSecretOutput() {
++    return OUTPUT_PATH + "secretresult";
++  }
++
+ }
+diff --git a/Assignment3/Classification/src/main/java/de/tuberlin/dima/aim3/classification/Evaluator.java b/Assignment3/Classification/src/main/java/de/tuberlin/dima/aim3/classification/Evaluator.java
+index f31c1f0..45a8dd8 100755
+--- a/Assignment3/Classification/src/main/java/de/tuberlin/dima/aim3/classification/Evaluator.java
++++ b/Assignment3/Classification/src/main/java/de/tuberlin/dima/aim3/classification/Evaluator.java
+@@ -56,12 +56,17 @@ public class Evaluator {
+ 
+     @Override
+     public void reduce(Iterable<Tuple3<String, String, Double>> predictions, Collector<String> collector)
+-        throws Exception {
++            throws Exception {
+ 
+       double accuracy = 0.0;
+ 
+-      //TODO
+-
++      for(Tuple3<String, String, Double> val : predictions)
++      {
++        total++;
++        if(val.f0.equals(val.f1))
++          correct++;
++      }
++      accuracy = correct * 100/total;
+       collector.collect("Classifier achieved: " + accuracy + " % accuracy");
+     }
+   }
+diff --git a/Assignment3/Classification/src/main/java/de/tuberlin/dima/aim3/classification/Training.java b/Assignment3/Classification/src/main/java/de/tuberlin/dima/aim3/classification/Training.java
+index bb797d6..051af71 100755
+--- a/Assignment3/Classification/src/main/java/de/tuberlin/dima/aim3/classification/Training.java
++++ b/Assignment3/Classification/src/main/java/de/tuberlin/dima/aim3/classification/Training.java
+@@ -19,6 +19,9 @@
+ package de.tuberlin.dima.aim3.classification;
+ 
+ import org.apache.flink.api.common.functions.FlatMapFunction;
++import org.apache.flink.api.common.functions.GroupReduceFunction;
++import org.apache.flink.api.common.functions.MapFunction;
++import org.apache.flink.api.common.functions.ReduceFunction;
+ import org.apache.flink.api.java.DataSet;
+ import org.apache.flink.api.java.ExecutionEnvironment;
+ import org.apache.flink.api.java.operators.DataSource;
+@@ -40,13 +43,12 @@ public class Training {
+     DataSet<Tuple3<String, String, Long>> labeledTerms = input.flatMap(new DataReader());
+ 
+     // conditional counter per word per label
+-    DataSet<Tuple3<String, String, Long>> termCounts = null; // IMPLEMENT ME
++    DataSet<Tuple3<String, String, Long>> termCounts = labeledTerms.groupBy(0,1).sum(2);
+ 
+     termCounts.writeAsCsv(Config.pathToConditionals(), "\n", "\t", FileSystem.WriteMode.OVERWRITE);
+ 
+     // word counts per label
+-    DataSet<Tuple2<String, Long>> termLabelCounts = null; // IMPLEMENT ME
+-
++    DataSet<Tuple2<String, Long>> termLabelCounts = labeledTerms.groupBy(0).sum(2).project(0, 2);
+     termLabelCounts.writeAsCsv(Config.pathToSums(), "\n", "\t", FileSystem.WriteMode.OVERWRITE);
+ 
+     env.execute();
+@@ -65,4 +67,5 @@ public class Training {
+       }
+     }
+   }
++
+ }
+-- 
+2.8.4 (Apple Git-73)
+

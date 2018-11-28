@@ -1,0 +1,97 @@
+WRITTEN EXAM: TOPICS
+
+legend: numbers without tut/exc indicate lecture slide sections
+
+INCLUDED (=> potential exam topics except for content listed under EXCLUDED below):
+--> 1.1 Introduction
+--> 1.2 Connectionist Neurons
+--> 1.3 Multilayer Perceptrons
+--> 1.4 Additional Topics
+--> 1.5 Deep Learning
+--> 1.6 Recurrent Neural Networks: only standard RNN (forward pass only), idea of vanishing/exploding gradient problem & potential solution (without eqs./details)
+--> 1.7 RBF Networks
+--> 2.2 Support Vector Machines including Support Vector Regression (cf. Tutorial)
+--> 3.1 Uncertainty and Inference
+--> 3.2 Bayesian Networks: applications of the concepts/algorithms (no derivations)
+--> 4.1 Reinforcement Learning (Evaluation)
+--> tut4/5: linear regression model [analytical solution of with quadratic cost function -- also including monomial basis functions and L2 regularization] (no derivations)
+--> tut7: kNN & Parzen window classifier
+--> tut10: Support Vector Regression
+--> exc3: cross entropy cost function for binary classification
+
+
+REMARKS: 
+--> the exam will be 90 minutes / only a pen as a tool is required & allowed
+--> we refer throughout the course including the exam to the following naming convention when splitting the data into disjoint sets: 1) training-test-validation, where the training set is to optimize model parameters, the test set is used for hyper parameter optimization and the validation for estimating the generalization performance (in the literature it is often the other way around, i.e., validation test for hyperparam optimization, test set for generalization error estimation). 2) when disregarding hyper parameter optimization and splitting the data into only two disjoint subsets both training-test or training-validation mean the same thing, i.e., training data is for model parameter optimization and validation (or test) set to estimate generalization performance of the model
+--> w.r.t. 1.4: the proper learning rate schedule: first plateau, then 1/t decay of learning rate (=> satisfies Robbins & Munro conditions) but not its justification/derivation is potential exam content
+
+
+EXCLUDED (=> will not be examined): 
+--> generally "optional" material
+--> 1.2: stochastic binary neuron
+--> 1.3: derivation of backpropagation
+--> 1.4: derivation/background of Robbins & Munro conditions [*1]
+--> 1.4.3 conjugate gradient method: complete subsection excluded
+--> 1.4: derivation of bias/variance decomposition
+--> 1.4: Lp-regularizations different than L1, L2
+--> 1.4: symmetry regularizations
+--> 1.4: derivation of the relation of early stopping and L2 regularization
+--> 1.4 derivation of the cross entropy cost function
+--> 1.5 autoencoder, deep belief networks, layerwise pretraining
+--> 1.5 details of the ensemble method interpretation of dropout
+--> 1.5 equations involving convolutions (including backpropagation with convolutions)
+--> 1.5 deconvolution/unpooling
+--> 1.6 Recurrent Neural Networks (most of the content excluded: everything that is not explicitly mentioned under "included")
+--> 1.7 derivation of analytical solution minimizing quadratic cost
+--> 1.7 normalization layer
+--> 1.7.3 RBF-networks and Regularization: complete subsection excluded (but note that L2 regularization is included which is contained _before_ 1.7.3 in the lecture slides)
+--> 2.1 Statisical Learning Theory: complete section excluded
+--> 2.2 specific form of generalization error bound used in structural risk minimization 
+--> 2.2 specific form of theorem by Vapnik relating VC dimension and margin
+--> 2.2 Lagrange multiplier method details (but derivation of the dual problem from the primal of SVM/SVR applying this method could be examined)
+--> 2.2 derivation/form of the bias as sum over support vectors
+--> 2.2 Mercer's theorem details (only idea that every positive semidefinite kernel induces a nonlinear feature map and represents an inner product in feature space)
+--> 2.2 neural network/Plummer kernel
+--> 2.2.6 Sequential Minimal Optimization: complete subsection excluded
+--> 3.1 Naive Bayes
+--> 3.2 general form of sum-product algorithm
+--> 3.3 Bayesian Inference and Neural Networks: complete section excluded
+--> 4.1 factorizaion of the Markov chain
+--> 4.1 Monte Carlo estimation of the value function
+--> 4.1 derivation of Bellman eq.
+--> 4.1 convergence/solvability properties of analytical solution and value iteration
+--> 4.1 details of temporal difference learning (only algorithm and idea)
+--> 4.1.6 Model-free Approaches: Eligibility Traces & TD(lambda): complete subsection excluded
+--> 4.1.7 Model-free approaches: Batch Value Estimation: complete subsection excluded
+--> 4.2: Reinforcement Learning (Improvement): complete section excluded
+
+
+Excluded: 
+
+--> '1.4: Lp-regularizations different than L1, L2' : 'LP' what does it means  ?
+
+L1, L2 are Lp with p=1,2, i.e. p \ne 1,2 are not included
+
+
+
+--> '1.5 autoencoder, deep belief networks, layerwise pretraining': what about  Mini-batch stochastic gradient descend in this section?
+
+mini-batch stochastic gradient is included
+
+-->'1.5 details of the ensemble method interpretation of dropout': what do you mean by details? would be anything from this section important or whole section excluded?
+
+dropout is included but the (sub)slide 20.2 ("all probabilistic predictions are (geometrically) averaged [...]") is excluded
+
+
+-->' 1.7 normalization layer' : is this only page 17/27 or  also contains 18/27 and 19/27?
+
+only slide 17 is excluded
+
+
+
+Included:
+
+
+--> 1.6 Recurrent Neural Networks: only standard RNN (forward pass only), idea of vanishing/exploding gradient problem & potential solution (without eqs./details): Could you please clarify  what pages are included ?
+
+included: all slides until 15 (except slide 9) as well as knowledge of vanishing gradient problem as well as that LSTM architecture solves this problem (no eqs required for the latter)

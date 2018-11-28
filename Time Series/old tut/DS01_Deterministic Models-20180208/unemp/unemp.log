@@ -1,0 +1,123 @@
+-------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\...\unemp.log
+  log type:  text
+ opened on:   8 Nov 2012, 14:00:48
+
+. 
+. describe
+
+Contains data from C:\...\unemp.dta
+  obs:            37                          
+ vars:             2                          8 Nov 2010 08:39
+ size:           592 (99.9% of memory free)
+-------------------------------------------------------------------------------------------------------------------------------
+              storage  display     value
+variable name   type   format      label      variable label
+-------------------------------------------------------------------------------------------------------------------------------
+unemp           double %12.0g                 Number of unemployed people (million)
+time            float  %tm                    Time
+-------------------------------------------------------------------------------------------------------------------------------
+Sorted by:  time
+
+. 
+. tsset time
+        time variable:  time, 2006m1 to 2009m1
+                delta:  1 month
+
+. twoway connect unemp time, xline(552(6)588, lpattern(dash) lcolor(black)) xlabel(552(6)588) lwidth(medthick)
+
+. 
+. regress unemp time
+
+      Source |       SS       df       MS              Number of obs =      37
+-------------+------------------------------           F(  1,    35) =  322.32
+       Model |  11.2661364     1  11.2661364           Prob > F      =  0.0000
+    Residual |   1.2233632    35  .034953234           R-squared     =  0.9020
+-------------+------------------------------           Adj R-squared =  0.8993
+       Total |  12.4894996    36  .346930546           Root MSE      =  .18696
+
+------------------------------------------------------------------------------
+       unemp |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        time |  -.0516814   .0028787   -17.95   0.000    -.0575254   -.0458374
+       _cons |   33.29268   1.641124    20.29   0.000     29.96102    36.62434
+------------------------------------------------------------------------------
+
+. predict res, res
+
+. twoway connect res time, xline(552(6)588, lpattern(dash) lcolor(black)) xlabel(552(6)588) lwidth(medthick)
+
+. 
+. tssmooth ma unemp_ma12 = unemp, weights(1 2 2 2 2 2 <2> 2 2 2 2 2 1)
+The smoother applied was
+     (1/24)*[1*x(t-6) + 2*x(t-5) + 2*x(t-4) + 2*x(t-3) + 2*x(t-2) + 2*x(t-1) + 2*x(t) + 2*x(t+1) + 2*x(t+2) + 2*x(t+3) +
+     2*x(t+4) + 2*x(t+5) + ...; x(t)= unemp
+
+. twoway connect unemp time, xline(552(6)588, lpattern(dash) lcolor(black)) xlabel(552(6)588) lwidth(medthick) || ///
+>        tsline unemp_ma12, lwidth(thick) legend(rows(2))
+
+. 
+. generate SI = unemp / unemp_ma12
+
+. twoway connect SI time, lwidth(medthick) xline(552(6)588, lpattern(dash) lcolor(black)) xlabel(552(6)588)
+
+. 
+. generate month = month(dofm(time))
+
+. label var month "Month"
+
+. twoway scatter SI month, xlabel(1(1)12) xtitle(, margin(t+2)) ylabel(0.96(0.02)1.12) ytick(0.96(0.01)1.12)
+
+. 
+. egen Q = mean(SI), by(month)
+
+. twoway scatter SI month || scatter Q month, xlabel(1(1)12) xtitle(, margin(t+2)) ylabel(0.96(0.02)1.12) ytick(0.96(0.01)1.12)
+
+. 
+. list month Q in 1/12
+
+     +------------------+
+     | month          Q |
+     |------------------|
+  1. |     1   1.067169 |
+  2. |     2   1.061885 |
+  3. |     3   1.048618 |
+  4. |     4   1.026062 |
+  5. |     5   .9925745 |
+     |------------------|
+  6. |     6    .969637 |
+  7. |     7    .986414 |
+  8. |     8   .9947245 |
+  9. |     9   .9708399 |
+ 10. |    10    .952306 |
+     |------------------|
+ 11. |    11   .9500977 |
+ 12. |    12   .9751537 |
+     +------------------+
+
+. sum Q in 1/12
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+           Q |        12    .9996233    .0413462   .9500977   1.067169
+
+. di r(sum)
+11.99548
+
+. 
+. gen S=Q
+
+. 
+. generate unemp_sa = unemp/S
+
+. twoway connect unemp time, xline(552(6)588, lpattern(dash) lcolor(black)) xlabel(552(6)588) lwidth(medthick) || ///
+>        tsline unemp_sa, clwidth(thick)
+
+. 
+. log close
+      name:  <unnamed>
+       log:  C:\...\unemp.log
+  log type:  text
+ closed on:   8 Nov 2012, 14:00:59
+-------------------------------------------------------------------------------------------------------------------------------

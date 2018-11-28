@@ -1,0 +1,68 @@
+InputDB.csv is an address data set. However, it is quite messy.
+
+
+Task 1:
+
+
+
+Clean the dataset! 
+
+Consider the following example records:
+
+RecID	FirstName	MiddleName	LastName	Address	City	State	ZIP	POBox	POCityStateZip	SSN	DOB
+A904694	CHRISTINE		URIAS	5404 ROCKLAND DR	PEARLAND	TX	77584			166910767	
+A904695	RICHARD	S	STOKES	2384 MOUNTAIN PINE RD	HOT SPRINGS NATIONAL PARK	AR	71901				4/12/72
+A904696	MICHELLE		DAUGHTRY	2301 PLUMERIA LANE	PALMDALE	CA	93551	PO MBOX 901243	PALMDALE, CA 93590	86711424	1956
+A904697	A		GARFIO	1305 NORTH FOYD STR LOT 10	JONESBORO	AR	72401			22542011	
+A904698	MICHAEL	L	VALENCIA	3 HOPE DR	WATSONVILLE	CA	95076	P BOX 1353	WATSONVILE, CALIF. 95077	157146562	
+A904699	DELORES	E	GARRISON	6880 NEWPORT COVE WAY	SACRAMENTO	CA	95823	POST OFFICE 293357	SACRAMENTO, CA 95829	
+
+This is a desired transformation.
+0. All non-numerical characters in all columns should be capitalized!!!
+
+1. You do not need to fix the DOB and PO BOX and the POCityStateZi.
+2. address data should be cleaned according to the standard in https://tools.usps.com/go/ZipLookupAction!input.action
+
+3.  the State column should contain the correct two character US state code.
+
+4. City should contain real city names
+
+5. zip code should be formatted as a 5 digit value.
+6. SSN should contain an 8-10 digit number.
+
+Tools: Everything you can use. Consider using OpenRefine or Trifacta. 
+Task 2:
+Use CleaningEvaluator.java to check your cleaned result as depicted below:
+
+$ java -jar CleaningEvaluator.jar yourcleanfile.csv
+Num Rows: 94306 NumCols: 12
+input table
+Num Rows: 94306 NumCols: 12
+Num Rows: 94306 NumCols: 12
+*******************
+yourcleanfile.csv
+Number of dirty cells: 383003 (Number of erroneous cells in the data)
+Number of detected cells: 370616 (Number of changed values)
+Number of Correctly Detected cells: 356944 (cell was correctly identified as an error)
+Detection Precision: 0.9631100654046236 (ratio of correctly detected cells over all detected cells)
+Detection Recall: 0.9319613684488111 (ratio of correctly detected cells over all erroneous cells in the data)
+Destroyed clean cells: 13672 (cell was correct but has been transformed into a wrong value)
+Wrongly cleaned cells: 156142 (cell was wrong but the cleaning was also not correct)
+Undetected cells: 26059 (cell was erroneous but was not touched)
+Number of cells that need yet to be cleaned: 195873 (sum of the 3 cell types above)
+
+
+
+Note that the output distinguishes between detection and cleaning (repairing). 
+
+When ever you change a value in a field the algorithm will assume that you detected an error in that field. This is detection.
+if you transform the value into the actual correct value, the data is indeed cleaned.
+
+Thus, if you simply replace any wrong value with a random dummy string you will have Detection precision and recall of 100%. But your cleanliness numbers will be low.
+
+Make sure that your output file, the inputDB.csv file and the support.zip file are all in the same folder. 
+
+
+Task 3: Submit your final cleaned result, the performance scores, and a documentation file where you describe your cleaning strategy. Again make sure to report the time you spent on this task. 
+
+The submission deadline is December 6th. 6 groups will present their results in one of the following courses. Announcement will follow

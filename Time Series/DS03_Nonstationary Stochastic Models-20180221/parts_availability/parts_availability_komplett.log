@@ -1,0 +1,493 @@
+-----------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\...\parts_availability.log
+  log type:  text
+ opened on:  19 Jan 2012, 13:06:31
+
+. 
+. set more off
+
+. 
+. tsset time
+        time variable:  time, 1 to 90
+                delta:  1 unit
+
+. sum parts_availability
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+parts_avai~y |        90    82.12111    2.381223       76.2       88.9
+
+. di r(mean)
+82.121111
+
+. tsline parts_availability, yline(`r(mean)', lwidth(thick)) lwidth(thick) xtitle(, margin(t+2)) ytitle(, margin(r+2))
+
+. di 90/4
+22.5
+
+. ac parts_availability, lags(23) xtitle(, margin(t+2)) ytitle(, margin(r+2)) ciopts(color(gs10))
+
+. 
+. twoway tsline parts_availability, lwidth(thick) xtitle(, margin(t+2)) ytitle(, margin(r+2)) || ///
+>        lfit parts_availability time, legend(off) lwidth(thick)
+
+. regress parts_availability time
+
+      Source |       SS       df       MS              Number of obs =      90
+-------------+------------------------------           F(  1,    88) =    9.31
+       Model |  48.2660077     1  48.2660077           Prob > F      =  0.0030
+    Residual |  456.383779    88  5.18617931           R-squared     =  0.0956
+-------------+------------------------------           Adj R-squared =  0.0854
+       Total |  504.649787    89  5.67022232           Root MSE      =  2.2773
+
+------------------------------------------------------------------------------
+parts_avai~y |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        time |   .0281887   .0092401     3.05   0.003     .0098259    .0465514
+       _cons |   80.83853   .4841298   166.98   0.000     79.87642    81.80063
+------------------------------------------------------------------------------
+
+. predict res_OLS, res
+
+. tsline res_OLS, lwidth(thick) xtitle(, margin(t+2)) ytitle(, margin(r+2))
+
+. ac res_OLS, lags(23) xtitle(, margin(t+2)) ytitle(, margin(r+2)) ciopts(color(gs10))
+
+. 
+. sum D.parts_availability
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+parts_avai~y |
+         D1. |        89    .0955056    2.580165  -6.099998          9
+
+. tsline D.parts_availability, yline(`r(mean)', lwidth(thick)) lwidth(thick) xtitle(, margin(t+2)) ytitle(, margin(r+2))
+
+. ac  D.parts_availability, lags(23) xtitle(, margin(t+2)) ytitle(, margin(r+2)) ciopts(color(gs10))
+
+. pac D.parts_availability, lags(23) xtitle(, margin(t+2)) ytitle(, margin(r+2)) ciopts(color(gs10)) 
+
+. 
+. arima D.parts_availability, ma(1)
+
+(setting optimization to BHHH)
+Iteration 0:   log likelihood = -192.88816  
+Iteration 1:   log likelihood = -189.46806  
+Iteration 2:   log likelihood = -188.81253  
+Iteration 3:   log likelihood = -188.72704  
+Iteration 4:   log likelihood = -188.70866  
+(switching optimization to BFGS)
+Iteration 5:   log likelihood = -188.70852  
+Iteration 6:   log likelihood = -188.70807  
+Iteration 7:   log likelihood = -188.70807  
+
+ARIMA regression
+
+Sample:  2 - 90                                 Number of obs      =        89
+                                                Wald chi2(1)       =     69.20
+Log likelihood = -188.7081                      Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+D.           |                 OPG
+parts_avai~y |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+parts_avai~y |
+       _cons |   .0426991   .0657141     0.65   0.516    -.0860981    .1714963
+-------------+----------------------------------------------------------------
+ARMA         |
+          ma |
+         L1. |  -.7242702   .0870639    -8.32   0.000    -.8949124    -.553628
+-------------+----------------------------------------------------------------
+      /sigma |   2.008118   .1710866    11.74   0.000     1.672794    2.343441
+------------------------------------------------------------------------------
+
+. arima parts_availability, arima(0 1 1)
+
+(setting optimization to BHHH)
+Iteration 0:   log likelihood = -192.88816  
+Iteration 1:   log likelihood = -189.46806  
+Iteration 2:   log likelihood = -188.81253  
+Iteration 3:   log likelihood = -188.72704  
+Iteration 4:   log likelihood = -188.70866  
+(switching optimization to BFGS)
+Iteration 5:   log likelihood = -188.70852  
+Iteration 6:   log likelihood = -188.70807  
+Iteration 7:   log likelihood = -188.70807  
+
+ARIMA regression
+
+Sample:  2 - 90                                 Number of obs      =        89
+                                                Wald chi2(1)       =     69.20
+Log likelihood = -188.7081                      Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+D.           |                 OPG
+parts_avai~y |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+parts_avai~y |
+       _cons |   .0426991   .0657141     0.65   0.516    -.0860981    .1714963
+-------------+----------------------------------------------------------------
+ARMA         |
+          ma |
+         L1. |  -.7242702   .0870639    -8.32   0.000    -.8949124    -.553628
+-------------+----------------------------------------------------------------
+      /sigma |   2.008118   .1710866    11.74   0.000     1.672794    2.343441
+------------------------------------------------------------------------------
+
+. arima parts_availability, arima(0 1 1) noconstant
+
+(setting optimization to BHHH)
+Iteration 0:   log likelihood = -192.59705  
+Iteration 1:   log likelihood = -189.11201  
+Iteration 2:   log likelihood =  -189.0508  
+Iteration 3:   log likelihood = -188.96548  
+Iteration 4:   log likelihood =  -188.9509  
+(switching optimization to BFGS)
+Iteration 5:   log likelihood = -188.95073  
+Iteration 6:   log likelihood = -188.95072  
+
+ARIMA regression
+
+Sample:  2 - 90                                 Number of obs      =        89
+                                                Wald chi2(1)       =     63.33
+Log likelihood = -188.9507                      Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+D.           |                 OPG
+parts_avai~y |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+ARMA         |
+          ma |
+         L1. |  -.7175448   .0901645    -7.96   0.000    -.8942639   -.5408257
+-------------+----------------------------------------------------------------
+      /sigma |    2.01387   .1709397    11.78   0.000     1.678834    2.348906
+------------------------------------------------------------------------------
+
+. predict res_ARIMA011, residuals
+(1 missing value generated)
+
+. predict x_tilde, xb
+
+. 
+. ac res_ARIMA011, lags(23) xtitle(, margin(t+2)) ytitle(, margin(r+2)) ciopts(color(gs10))
+
+. pac res_ARIMA011, lags(23) xtitle(, margin(t+2)) ytitle(, margin(r+2)) ciopts(color(gs10))
+
+. corrgram res_ARIMA011, lags(22)
+
+                                          -1       0       1 -1       0       1
+ LAG       AC       PAC      Q     Prob>Q  [Autocorrelation]  [Partial Autocor]
+-------------------------------------------------------------------------------
+1       -0.1034  -0.1132   .98422  0.3212          |                  |        
+2       -0.0256  -0.0343    1.045  0.5930          |                  |        
+3        0.1172   0.1351   2.3394  0.5050          |                  |-       
+4        0.0415   0.0648   2.5036  0.6440          |                  |        
+5        0.0629   0.0833   2.8846  0.7178          |                  |        
+6       -0.0504  -0.0593   3.1327  0.7920          |                  |        
+7        0.0719   0.0642   3.6431  0.8198          |                  |        
+8       -0.0491  -0.0794   3.8843  0.8674          |                  |        
+9       -0.0503  -0.0831   4.1405  0.9019          |                  |        
+10       0.1553   0.1755   6.6142  0.7613          |-                 |-       
+11      -0.0049   0.0606   6.6167  0.8292          |                  |        
+12       0.0590   0.1052   6.9822  0.8588          |                  |        
+13      -0.0689  -0.0963   7.4876  0.8753          |                  |        
+14      -0.0168  -0.0833   7.5181  0.9129          |                  |        
+15      -0.0856  -0.2088   8.3196  0.9103          |                 -|        
+16      -0.0279   0.0180   8.4058  0.9359          |                  |        
+17      -0.0672  -0.1072   8.9144  0.9429          |                  |        
+18      -0.0307   0.0264   9.0221  0.9592          |                  |        
+19      -0.0397  -0.0253   9.2042  0.9699          |                  |        
+20       0.1282   0.2464   11.133  0.9427          |-                 |-       
+21      -0.1067  -0.1214   12.489  0.9255          |                  |        
+22      -0.0606  -0.1801   12.933  0.9350          |                 -|        
+
+. wntestq res_ARIMA011, lags(22)
+
+Portmanteau test for white noise
+---------------------------------------
+ Portmanteau (Q) statistic =    12.9332
+ Prob > chi2(22)           =     0.9350
+
+. twoway function y = ((x^(22/2-1))*(exp(-x/2)))/((2^(22/2)*(exp(lngamma((22/2)))))), range(0 40) lwidth(thick) || ///
+>        function y = ((x^(21/2-1))*(exp(-x/2)))/((2^(21/2)*(exp(lngamma((21/2)))))), range(0 40) lwidth(thick) ||,   ///
+>        legend(label(1 "chi2den(22)")label(2 "chi2den(21)")) xline(12.933, lwidth(medthick) lcolor(black) lpattern(dash)) xtitle("
+> ") ytitle("")
+
+. twoway function y = ((x^(22/2-1))*(exp(-x/2)))/((2^(22/2)*(exp(lngamma((22/2)))))), range(0 40) lwidth(thick) || ///
+>        function y = ((x^(21/2-1))*(exp(-x/2)))/((2^(21/2)*(exp(lngamma((21/2)))))), range(0 12.933) lwidth(thick) ||  ///
+>        function y = ((x^(21/2-1))*(exp(-x/2)))/((2^(21/2)*(exp(lngamma((21/2)))))), range(12.933 40) lwidth(thick) color(gs12) re
+> cast(area) ||,   ///
+>        legend(label(1 "chi2den(22)")label(2 "chi2den(21)") order(1 2)) xline(12.933, lwidth(medthick) lcolor(black) lpattern(dash
+> )) xtitle("") ytitle("")
+
+. di 1-chi2(22, 12.933)
+.93501291
+
+. di 1-chi2(21, 12.933)
+.91095258
+
+. 
+. list time parts_availability x_tilde in 88/90
+
+     +-----------------------------+
+     | time   parts_~y     x_tilde |
+     |-----------------------------|
+ 88. |   88       84.7    -.947457 |
+ 89. |   89       79.9   -.0340514 |
+ 90. |   90       88.9    3.419778 |
+     +-----------------------------+
+
+. 
+. drop x_tilde
+
+. set obs 110
+obs was 90, now 110
+
+. replace time = _n
+(20 real changes made)
+
+. replace parts_availability = 87   in 91
+(1 real change made)
+
+. replace parts_availability = 86.5 in 92
+(1 real change made)
+
+. tsset time
+        time variable:  time, 1 to 110
+                delta:  1 unit
+
+. 
+. arima parts_availability in 1/90, arima(0,1,1) noconstant
+
+(setting optimization to BHHH)
+Iteration 0:   log likelihood = -192.59705  
+Iteration 1:   log likelihood = -189.11201  
+Iteration 2:   log likelihood =  -189.0508  
+Iteration 3:   log likelihood = -188.96548  
+Iteration 4:   log likelihood =  -188.9509  
+(switching optimization to BFGS)
+Iteration 5:   log likelihood = -188.95073  
+Iteration 6:   log likelihood = -188.95072  
+
+ARIMA regression
+
+Sample:  2 - 90                                 Number of obs      =        89
+                                                Wald chi2(1)       =     63.33
+Log likelihood = -188.9507                      Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+D.           |                 OPG
+parts_avai~y |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+ARMA         |
+          ma |
+         L1. |  -.7175448   .0901645    -7.96   0.000    -.8942639   -.5408257
+-------------+----------------------------------------------------------------
+      /sigma |    2.01387   .1709397    11.78   0.000     1.678834    2.348906
+------------------------------------------------------------------------------
+
+. predict x_tilde_dyn, xb dynamic(91)
+
+. predict y_tilde_dyn, y dynamic(91)
+(1 missing value generated)
+
+. predict x_tilde, xb
+
+. predict y_tilde, y
+(18 missing values generated)
+
+. list time parts_availability x_tilde_dyn y_tilde_dyn x_tilde y_tilde in 91/94
+
+     +---------------------------------------------------------------+
+     | time   parts_~y   x_tilde~n   y_tild~n     x_tilde    y_tilde |
+     |---------------------------------------------------------------|
+ 91. |   91         87   -4.004059   84.89594   -4.004059   84.89594 |
+ 92. |   92       86.5           0   84.89594   -1.509755   85.49024 |
+ 93. |   93          .           0   84.89594   -.7245447   85.77545 |
+ 94. |   94          .           0   84.89594           0          . |
+     +---------------------------------------------------------------+
+
+. 
+. tsline  parts_availability if time <=90 || tsline y_tilde_dyn  if time>90, xline(90.5)
+
+. 
+. gen upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1) in 91
+(109 missing values generated)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2) in 92
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2) in 93
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 94
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 95
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2) in 96
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2) in 97
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2) in 98
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 99
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 100
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 101
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 102
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 103
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) 
+> in 104
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(
+> 1-.7175448)^2) in 105
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(
+> 1-.7175448)^2+(1-.7175448)^2) in 106
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(
+> 1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 107
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(
+> 1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 108
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(
+> 1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 109
+(1 real change made)
+
+. replace upper_CI= y_tilde_dyn+invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(
+> 1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 110
+(1 real change made)
+
+. 
+. gen lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1) in 91
+(109 missing values generated)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2) in 92
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2) in 93
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 94
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 95
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2) in 96
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2) in 97
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2) in 98
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 99
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 100
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 101
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 102
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 103
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) 
+> in 104
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(
+> 1-.7175448)^2) in 105
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(
+> 1-.7175448)^2+(1-.7175448)^2) in 106
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(
+> 1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 107
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(
+> 1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 108
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(
+> 1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 109
+(1 real change made)
+
+. replace lower_CI= y_tilde_dyn-invnormal(0.975)*2.01387*sqrt(1+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.717
+> 5448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(
+> 1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2+(1-.7175448)^2) in 110
+(1 real change made)
+
+. 
+. 
+. tsline  parts_availability if time <=90, lwidth(thick) || ///
+> tsline y_tilde_dyn upper_CI lower_CI if time>90, lwidth(thick thick thick) lcolor(cranberry orange orange)xline(90.5, lpattern(da
+> sh) lcolor(gray) lwidth(thick)) || , ///
+> xtitle(, margin(t+2)) ytitle(, margin(r+2)) legend(off)
+
+. 
+. log close
+      name:  <unnamed>
+       log:  C:\...\parts_availability.log
+  log type:  text
+ closed on:  19 Jan 2012, 13:06:50
+-----------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,34 @@
+--------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\...\winesales.log
+  log type:  text
+ opened on:  23 Oct 2014, 11:54:02
+
+. 
+. generate time=_n+239
+
+. format time %tm
+
+. generate time_2=tm(1980m1)+_n-1
+
+. format  time_2 %tm
+
+. list time time_2 in 1/5
+
+     +-----------------+
+     |   time   time_2 |
+     |-----------------|
+  1. | 1980m1   1980m1 |
+  2. | 1980m2   1980m2 |
+  3. | 1980m3   1980m3 |
+  4. | 1980m4   1980m4 |
+  5. | 1980m5   1980m5 |
+     +-----------------+
+
+. 
+. log close
+      name:  <unnamed>
+       log:  C:\...\winesales.log
+  log type:  text
+ closed on:  23 Oct 2014, 11:54:02
+--------------------------------------------------------------------------------

@@ -1,0 +1,18 @@
+html {max-width:100%;width:100%;}
+body {max-width:100%;width:100%;border:none;}
+
+#content { /* container */
+  width:100%;
+  padding-left: 0px;   /* nav width */
+  padding-right: 0px; 
+}
+
+#main{
+    width: 100%;
+}
+
+#wrapper {
+  margin:0px 0pt 0pt;
+  width:100%;
+  max-width:none;
+}

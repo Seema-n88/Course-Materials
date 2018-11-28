@@ -1,0 +1,13 @@
+Almost anyone who has deployed machine learning systems in the real world has encountered the task of domain adaptation: We build our models from some fixed source domain, but we wish to deploy them across one or more different target domains. 
+
+Object recognition system trained on Amazon and applied to Webcam, Perform poorly
+
+Measures how data distribution has shifted between 2 domains inorder to derive classification rules for the target domain
+For instance, covariate shift
+
+The marginal distribution of domains are different across domains while the posterior distribution remains the same
+
+ the labeled instances from the source domain are
+first weighted so as to compensate the difference in
+marginal distributions. Then, a classifier is trained using
+the labels and then applied to the unlabeled data

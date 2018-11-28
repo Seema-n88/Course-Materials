@@ -1,0 +1,62 @@
+package com.tub.billing.src;
+
+import com.tub.common.src.TransformedOrder;
+import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
+
+import javax.jms.*;
+import java.io.IOException;
+
+/**
+ * Created by seema on 15/01/2017.
+ */
+public class BillingSystem {
+    public static void main(String[] args)
+    {
+        try {
+            ActiveMQConnectionFactory conFactory = new ActiveMQConnectionFactory();
+            conFactory.setTrustAllPackages(true);
+            Connection con = conFactory.createConnection();
+
+            final Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+            Queue inQueue = session.createQueue("billing");
+            Queue outQueue = session.createQueue("aggregatorQueue");
+            MessageConsumer consumer = session.createConsumer(inQueue);
+            consumer.setMessageListener(new MessageListener() {
+                @Override
+                public void onMessage(Message message) {
+                    try {
+                        TransformedOrder order = (TransformedOrder)((ObjectMessage)message).getObject();
+                        boolean validated = Math.random() > 0.5;
+                        order.setValid(validated);
+                        System.out.println(order);
+
+                        ObjectMessage answer = session.createObjectMessage(order);
+
+                        MessageProducer producer = session.createProducer(outQueue);
+                        producer.send(new Processor() {
+                            public void process(Exchange outExchange) {
+                                outExchange.getIn().setBody(answer);
+                                outExchange.getIn().setHeader("OrderID", order.getOrderID());
+                            }
+                        });
+
+                    } catch (JMSException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            con.start();
+            System.in.read();
+            con.close();
+        } catch (JMSException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+}
+

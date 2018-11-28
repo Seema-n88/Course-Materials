@@ -1,0 +1,151 @@
+heat_template_version: 2015-10-15
+description: Three VM instances
+
+parameters:
+    name:
+        type: string
+        label: Name of the frontend VM
+        default: Frontend Server
+    
+    key_pair:
+        type: string
+        label: Key Pair
+        default: cloudgroup02
+        constraints:
+            - custom_constraint: nova.keypair
+    flavor:
+        type: string
+        label: Flavor
+        default: 610f44b0-d25a-44bc-a6b1-8b22e68675e5
+        constraints:
+            - custom_constraint: nova.flavor
+    image:
+        type: string
+        label: Image Name
+        default: 11f6b8aa-31df-4b66-8b42-5ee9760c47ba
+        constraints:
+            - custom_constraint: glance.image
+
+    zone:
+        type: string
+        label: Availability Zone
+        default: Cloud Computing 2017
+    
+    public_net:
+        type: string
+        description: ID or name of public network for which floating IP addresses will be allocated
+        default: tu-internal
+        
+    private_net_name:
+        type: string
+        description: Name of private network to be created
+        default: cc17G2-privnet
+        
+    private_subnet_name:
+        type: string
+        description: Name of private sub network to be created
+        default: cc17G2-subnet
+        
+    private_net_cidr:
+        type: string
+        description: Private network address (CIDR notation)
+        default: 10.2.1.0/24
+        
+    private_net_gateway:
+        type: string
+        description: Private network gateway address
+        default: 10.2.1.1
+
+resources:
+
+    # This port is a separate resource used to assign the security groups
+    # to the VM. Can also be used to attach a OS::Neutron::FloatingIP to the VM.
+    
+    private_net:
+        type: OS::Neutron::Net
+        properties:
+            name: { get_param: private_net_name }
+
+    private_subnet:
+        type: OS::Neutron::Subnet
+        properties:
+            name: { get_param: private_subnet_name }
+            network_id: { get_resource: private_net }
+            cidr: { get_param: private_net_cidr }
+            gateway_ip: { get_param: private_net_gateway }
+
+    router:
+        type: OS::Neutron::Router
+        properties:
+        #name: { get_param: router_name }
+            external_gateway_info:
+                network: { get_param: public_net }
+
+    router_interface:
+        type: OS::Neutron::RouterInterface
+        properties:
+            router: { get_resource: router }
+            subnet: { get_resource: private_subnet }
+
+    custom_security_group:
+        type: OS::Neutron::SecurityGroup
+        properties:
+            name: cc17g2_security_group
+            rules:
+                - protocol: tcp
+                  port_range_min: 80
+                  port_range_max: 80
+                - protocol: tcp
+                  port_range_min: 22
+                  port_range_max: 22
+                     
+   
+    backend_instances:
+       type: OS::Heat::ResourceGroup
+       properties:
+           count: 2
+           resource_def:
+                type: server.yaml
+                properties:
+                    network: { get_attr: [private_subnet, network_id] }
+#                    security_groups: [{ get_resource: custom_security_group }]
+                    name: backend_server_%index%
+                    key_pair: { get_param: key_pair }
+                    image: { get_param: image }
+                    flavor: { get_param: flavor }
+                    zone: { get_param: zone }
+           
+
+    frontend_instance:
+        type: server.yaml
+        properties:
+            network: { get_attr: [private_subnet, network_id] }
+            security_groups: [{ get_resource: custom_security_group }]
+            name: { get_param: name }
+            key_pair: { get_param: key_pair }
+            image: { get_param: image }
+            flavor: { get_param: flavor }
+            zone: { get_param: zone }
+            
+    fp_ip:
+        type: OS::Neutron::FloatingIP
+        properties:
+            floating_network: tu-internal
+            
+    
+    fp_association:
+        type: OS::Neutron::FloatingIPAssociation
+        properties:
+#            floatingip_id: 4f7b88c1-47fe-4f47-8523-a24e6d6415b4
+            floatingip_id: { get_resource: fp_ip } 
+            port_id: { get_attr: [frontend_instance,port]}
+            
+outputs:
+    
+    floating_ip:
+        description: Floating point IP address of instance
+        value: { get_attr: [ fp_ip, floating_ip_address] }
+    
+                    
+
+
